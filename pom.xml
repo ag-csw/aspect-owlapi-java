@@ -1,0 +1,32 @@
+<!--
+  This file is part of the Corporate Smart Content Project at Freie Universitaet Berlin, Corporate Semantic Web Group.
+  
+  This work has been partially supported by the "InnoProfile-Corporate Semantic Web" project funded by the German Federal Ministry of Education and Research (BMBF) and the BMBF Innovation Initiative for the New German Laender - Entrepreneurial Regions.
+  
+  http://www.corporate-smart-content.de/
+  
+  Freie Universitaet Berlin
+  Copyright (c) 2013-2016
+  
+  Institut fuer Informatik
+  Working Group Corporate Semantic Web
+  Koenigin-Luise-Strasse 24-26
+  14195 Berlin
+  
+  http://www.mi.fu-berlin.de/en/inf/groups/ag-csw/
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>de.fuberlin.csw</groupId>
+  <artifactId>aspect-owlapi</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>aspect-owlapi</name>
+  <description>An aspect-oriented extension to the OWL API</description>
+  <dependencies>
+  	<dependency>
+  		<groupId>net.sourceforge.owlapi</groupId>
+  		<artifactId>owlapi-distribution</artifactId>
+  		<version>4.0.2</version>
+  	</dependency>
+  </dependencies>
+</project>
