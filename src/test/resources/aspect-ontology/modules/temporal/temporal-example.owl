@@ -1,0 +1,485 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE Ontology [
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY xml "http://www.w3.org/XML/1998/namespace" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.corporate-semantic-web.de/ontologies/aspect/owl/temporal/example"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl/temporal/example">
+    <Prefix name="" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="prov" IRI="http://www.w3.org/ns/prov-o-20130430#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Prefix name="aspect" IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#"/>
+    <Import>http://www.corporate-semantic-web.de/ontologies/aspect/owl/temporal</Import>
+    <Declaration>
+        <NamedIndividual IRI="#TemporalAspect456"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Years1494-1945"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Years1496-1945"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Years1503-1945"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Years1513-1754"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Years1754-1945"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Years1945-1955"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Years1945-2000"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Years1993-1993"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Years1997-2001"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Years2003-2004"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#YearsSince1955"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#YearsSince2000"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#YearsSince2001"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#YearsSince2004"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#instant1494"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#instant1496"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#instant1503"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#instant1513"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#instant1754"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#instant1945"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#instant1955"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#instant1993"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#instant1997"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#instant2000"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#instant2001"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#instant2003"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#instant2004"/>
+    </Declaration>
+    <ClassAssertion>
+        <Class IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl/temporal#TemporalAspect"/>
+        <NamedIndividual IRI="#TemporalAspect456"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl/temporal#TemporalAspect"/>
+        <NamedIndividual IRI="#Years1494-1945"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.w3.org/2006/time#DateTimeInterval"/>
+        <NamedIndividual IRI="#Years1494-1945"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl/temporal#TemporalAspect"/>
+        <NamedIndividual IRI="#Years1496-1945"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.w3.org/2006/time#DateTimeInterval"/>
+        <NamedIndividual IRI="#Years1496-1945"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl/temporal#TemporalAspect"/>
+        <NamedIndividual IRI="#Years1503-1945"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.w3.org/2006/time#DateTimeInterval"/>
+        <NamedIndividual IRI="#Years1503-1945"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl/temporal#TemporalAspect"/>
+        <NamedIndividual IRI="#Years1513-1754"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.w3.org/2006/time#DateTimeInterval"/>
+        <NamedIndividual IRI="#Years1513-1754"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl/temporal#TemporalAspect"/>
+        <NamedIndividual IRI="#Years1754-1945"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.w3.org/2006/time#DateTimeInterval"/>
+        <NamedIndividual IRI="#Years1754-1945"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl/temporal#TemporalAspect"/>
+        <NamedIndividual IRI="#Years1945-1955"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.w3.org/2006/time#DateTimeInterval"/>
+        <NamedIndividual IRI="#Years1945-1955"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl/temporal#TemporalAspect"/>
+        <NamedIndividual IRI="#Years1945-2000"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.w3.org/2006/time#DateTimeInterval"/>
+        <NamedIndividual IRI="#Years1945-2000"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl/temporal#TemporalAspect"/>
+        <NamedIndividual IRI="#Years1993-1993"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.w3.org/2006/time#DateTimeInterval"/>
+        <NamedIndividual IRI="#Years1993-1993"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl/temporal#TemporalAspect"/>
+        <NamedIndividual IRI="#Years1997-2001"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.w3.org/2006/time#DateTimeInterval"/>
+        <NamedIndividual IRI="#Years1997-2001"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl/temporal#TemporalAspect"/>
+        <NamedIndividual IRI="#Years2003-2004"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.w3.org/2006/time#DateTimeInterval"/>
+        <NamedIndividual IRI="#Years2003-2004"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl/temporal#TemporalAspect"/>
+        <NamedIndividual IRI="#YearsSince1955"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.w3.org/2006/time#DateTimeInterval"/>
+        <NamedIndividual IRI="#YearsSince1955"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl/temporal#TemporalAspect"/>
+        <NamedIndividual IRI="#YearsSince2000"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.w3.org/2006/time#DateTimeInterval"/>
+        <NamedIndividual IRI="#YearsSince2000"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl/temporal#TemporalAspect"/>
+        <NamedIndividual IRI="#YearsSince2001"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.w3.org/2006/time#DateTimeInterval"/>
+        <NamedIndividual IRI="#YearsSince2001"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl/temporal#TemporalAspect"/>
+        <NamedIndividual IRI="#YearsSince2004"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.w3.org/2006/time#DateTimeInterval"/>
+        <NamedIndividual IRI="#YearsSince2004"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.w3.org/2006/time#Instant"/>
+        <NamedIndividual IRI="#instant1494"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.w3.org/2006/time#Instant"/>
+        <NamedIndividual IRI="#instant1496"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.w3.org/2006/time#Instant"/>
+        <NamedIndividual IRI="#instant1503"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.w3.org/2006/time#Instant"/>
+        <NamedIndividual IRI="#instant1513"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.w3.org/2006/time#Instant"/>
+        <NamedIndividual IRI="#instant1754"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.w3.org/2006/time#Instant"/>
+        <NamedIndividual IRI="#instant1945"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl/temporal#TemporalAspect"/>
+        <NamedIndividual IRI="#instant1955"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.w3.org/2006/time#Instant"/>
+        <NamedIndividual IRI="#instant1955"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.w3.org/2006/time#Instant"/>
+        <NamedIndividual IRI="#instant1993"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.w3.org/2006/time#Instant"/>
+        <NamedIndividual IRI="#instant1997"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl/temporal#TemporalAspect"/>
+        <NamedIndividual IRI="#instant2000"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.w3.org/2006/time#Instant"/>
+        <NamedIndividual IRI="#instant2000"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl/temporal#TemporalAspect"/>
+        <NamedIndividual IRI="#instant2001"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.w3.org/2006/time#Instant"/>
+        <NamedIndividual IRI="#instant2001"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.w3.org/2006/time#Instant"/>
+        <NamedIndividual IRI="#instant2003"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl/temporal#TemporalAspect"/>
+        <NamedIndividual IRI="#instant2004"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.w3.org/2006/time#Instant"/>
+        <NamedIndividual IRI="#instant2004"/>
+    </ClassAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.w3.org/2006/time#hasBeginning"/>
+        <NamedIndividual IRI="#Years1494-1945"/>
+        <NamedIndividual IRI="#instant1494"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.w3.org/2006/time#hasEnd"/>
+        <NamedIndividual IRI="#Years1494-1945"/>
+        <NamedIndividual IRI="#instant1945"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.w3.org/2006/time#hasBeginning"/>
+        <NamedIndividual IRI="#Years1496-1945"/>
+        <NamedIndividual IRI="#instant1496"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.w3.org/2006/time#hasEnd"/>
+        <NamedIndividual IRI="#Years1496-1945"/>
+        <NamedIndividual IRI="#instant1945"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.w3.org/2006/time#hasBeginning"/>
+        <NamedIndividual IRI="#Years1503-1945"/>
+        <NamedIndividual IRI="#instant1503"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.w3.org/2006/time#hasEnd"/>
+        <NamedIndividual IRI="#Years1503-1945"/>
+        <NamedIndividual IRI="#instant1945"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.w3.org/2006/time#hasBeginning"/>
+        <NamedIndividual IRI="#Years1513-1754"/>
+        <NamedIndividual IRI="#instant1513"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.w3.org/2006/time#hasEnd"/>
+        <NamedIndividual IRI="#Years1513-1754"/>
+        <NamedIndividual IRI="#instant1754"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.w3.org/2006/time#hasBeginning"/>
+        <NamedIndividual IRI="#Years1754-1945"/>
+        <NamedIndividual IRI="#instant1754"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.w3.org/2006/time#hasEnd"/>
+        <NamedIndividual IRI="#Years1754-1945"/>
+        <NamedIndividual IRI="#instant1945"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.w3.org/2006/time#hasBeginning"/>
+        <NamedIndividual IRI="#Years1945-1955"/>
+        <NamedIndividual IRI="#instant1945"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.w3.org/2006/time#hasEnd"/>
+        <NamedIndividual IRI="#Years1945-1955"/>
+        <NamedIndividual IRI="#instant1955"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.w3.org/2006/time#hasBeginning"/>
+        <NamedIndividual IRI="#Years1945-2000"/>
+        <NamedIndividual IRI="#instant1945"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.w3.org/2006/time#hasEnd"/>
+        <NamedIndividual IRI="#Years1945-2000"/>
+        <NamedIndividual IRI="#instant2000"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.w3.org/2006/time#hasBeginning"/>
+        <NamedIndividual IRI="#Years1993-1993"/>
+        <NamedIndividual IRI="#instant1993"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.w3.org/2006/time#hasEnd"/>
+        <NamedIndividual IRI="#Years1993-1993"/>
+        <NamedIndividual IRI="#instant1993"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.w3.org/2006/time#hasBeginning"/>
+        <NamedIndividual IRI="#Years1997-2001"/>
+        <NamedIndividual IRI="#instant1997"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.w3.org/2006/time#hasEnd"/>
+        <NamedIndividual IRI="#Years1997-2001"/>
+        <NamedIndividual IRI="#instant2001"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.w3.org/2006/time#hasBeginning"/>
+        <NamedIndividual IRI="#Years2003-2004"/>
+        <NamedIndividual IRI="#instant2003"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.w3.org/2006/time#hasEnd"/>
+        <NamedIndividual IRI="#Years2003-2004"/>
+        <NamedIndividual IRI="#instant2004"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.w3.org/2006/time#hasBeginning"/>
+        <NamedIndividual IRI="#YearsSince1955"/>
+        <NamedIndividual IRI="#instant1955"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.w3.org/2006/time#hasBeginning"/>
+        <NamedIndividual IRI="#YearsSince2000"/>
+        <NamedIndividual IRI="#instant2000"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.w3.org/2006/time#hasBeginning"/>
+        <NamedIndividual IRI="#YearsSince2001"/>
+        <NamedIndividual IRI="#instant2001"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.w3.org/2006/time#hasBeginning"/>
+        <NamedIndividual IRI="#YearsSince2004"/>
+        <NamedIndividual IRI="#instant2004"/>
+    </ObjectPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.w3.org/2006/time#inXSDDateTime"/>
+        <NamedIndividual IRI="#instant1494"/>
+        <Literal datatypeIRI="&xsd;dateTime">1494-01-01T00:00:00</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.w3.org/2006/time#inXSDDateTime"/>
+        <NamedIndividual IRI="#instant1496"/>
+        <Literal datatypeIRI="&xsd;dateTime">1496-01-01T00:00:00</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.w3.org/2006/time#inXSDDateTime"/>
+        <NamedIndividual IRI="#instant1503"/>
+        <Literal datatypeIRI="&xsd;dateTime">1503-01-01T00:00:00</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.w3.org/2006/time#inXSDDateTime"/>
+        <NamedIndividual IRI="#instant1513"/>
+        <Literal datatypeIRI="&xsd;dateTime">1513-01-01T00:00:00</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.w3.org/2006/time#inXSDDateTime"/>
+        <NamedIndividual IRI="#instant1754"/>
+        <Literal datatypeIRI="&xsd;dateTime">1754-01-01T00:00:00</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.w3.org/2006/time#inXSDDateTime"/>
+        <NamedIndividual IRI="#instant1945"/>
+        <Literal datatypeIRI="&xsd;dateTime">1945-01-01T00:00:00</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.w3.org/2006/time#inXSDDateTime"/>
+        <NamedIndividual IRI="#instant1955"/>
+        <Literal datatypeIRI="&xsd;dateTime">1955-01-01T00:00:00</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.w3.org/2006/time#inXSDDateTime"/>
+        <NamedIndividual IRI="#instant1993"/>
+        <Literal datatypeIRI="&xsd;dateTime">1993-01-01T00:00:00</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.w3.org/2006/time#inXSDDateTime"/>
+        <NamedIndividual IRI="#instant1997"/>
+        <Literal datatypeIRI="&xsd;dateTime">1997-01-01T00:00:00</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.w3.org/2006/time#inXSDDateTime"/>
+        <NamedIndividual IRI="#instant2000"/>
+        <Literal datatypeIRI="&xsd;dateTime">2000-01-01T00:00:00</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.w3.org/2006/time#inXSDDateTime"/>
+        <NamedIndividual IRI="#instant2001"/>
+        <Literal datatypeIRI="&xsd;dateTime">2001-01-01T00:00:00</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.w3.org/2006/time#inXSDDateTime"/>
+        <NamedIndividual IRI="#instant2003"/>
+        <Literal datatypeIRI="&xsd;dateTime">1513-01-01T00:00:00</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.w3.org/2006/time#inXSDDateTime"/>
+        <NamedIndividual IRI="#instant2004"/>
+        <Literal datatypeIRI="&xsd;dateTime">2004-01-01T00:00:00</Literal>
+    </DataPropertyAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 3.5.0) http://owlapi.sourceforge.net -->
+

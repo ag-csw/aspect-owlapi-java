@@ -1,0 +1,5472 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE Ontology [
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY xml "http://www.w3.org/XML/1998/namespace" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://spraakbanken.gu.se/rdf/owl/painting.owl"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://spraakbanken.gu.se/rdf/owl/painting.owl">
+    <Prefix name="" IRI="http://spraakbanken.gu.se/rdf/owl/painting.owl#"/>
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="SUMO" IRI="http://reliant.teknowledge.com/DAML/SUMO#"/>
+    <Prefix name="core" IRI="http://purl.org/NET/cidoc-crm/core#"/>
+    <Prefix name="foaf" IRI="http://xmlns.com/foaf/0.1/#"/>
+    <Prefix name="geoF" IRI="http://www.mindswap.org/2003/owl/geo/geoFeatures20040307.owl#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Prefix name="time" IRI="http://www.w3.org/2006/time#"/>
+    <Prefix name="skos2" IRI="http://www.w3.org/2008/05/skos#"/>
+    <Prefix name="LexOnto" IRI="http://spraakbanken.gu.se/LexOnto.owl#"/>
+    <Prefix name="hwnOnto" IRI="http://multiwordnet.fbk.eu/hwnOnto.owl#"/>
+    <Prefix name="pwnOnto" IRI="http://wordnetweb.princeton.edu/pwnOnto.owl#"/>
+    <Prefix name="painting" IRI="http://spraakbanken.gu.se/rdf/owl/painting.owl#"/>
+    <Prefix name="resurser" IRI="http://kulturarvsdata.se/ksamsok#"/>
+    <Prefix name="saldoOnto" IRI="http://spraakbanken.gu.se/saldo/saldoOnto.owl#"/>
+    <Prefix name="presentation" IRI="http://kulturarvsdata.se/presentation#"/>
+    <Prefix name="Mid-level-ontology" IRI="http://reliant.teknowledge.com/DAML/Mid-level-ontology.owl#"/>
+    <Annotation>
+        <AnnotationProperty IRI="#modified"/>
+        <Literal datatypeIRI="&xsd;date">2011-11-14</Literal>
+    </Annotation>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="rdfs:seeAlso"/>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">CIDOC Conceptual Reference Model</Literal>
+    </Annotation>
+    <Annotation>
+        <AnnotationProperty IRI="#created"/>
+        <Literal datatypeIRI="&xsd;date">2011-03-02</Literal>
+    </Annotation>
+    <Annotation>
+        <AnnotationProperty IRI="#preferredNamespaceUri"/>
+        <Literal datatypeIRI="&xsd;anyURI">http://spraakbanken.gu.se/rdf/owl/painting.owl#</Literal>
+    </Annotation>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="rdfs:seeAlso"/>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">The Suggested Upper Merged Ontology (SUMO)</Literal>
+    </Annotation>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">An ontology of paintings </Literal>
+    </Annotation>
+    <Declaration>
+        <Class abbreviatedIRI="resurser:collection"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="resurser:coordinates"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="resurser:eventName"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="resurser:item"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="resurser:itemClass"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="resurser:itemColor"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="resurser:itemDescription"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="resurser:itemMaterial"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="resurser:itemMeasurement"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="resurser:itemName"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="resurser:itemNumber"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="resurser:itemTechnique"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="resurser:itemTitle"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="resurser:nameAuth"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="resurser:place"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="resurser:placeName"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="resurser:type"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="presentation:OrganizationShort"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="hwnOnto:WordSense"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="core:E12_Production"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="core:E16_Measurement"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="core:E21_Person"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="core:E22_Man-Made_Object"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="core:E26_Physical_Feature"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="core:E31_Document"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="core:E35_Title"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="core:E38_Image"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="core:E3_Condition_State"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="core:E40_Legal_Body"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="core:E42_Identifier"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="core:E44_Place_Appellation"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="core:E45_Address"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="core:E47_Spatial_Coordinates"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="core:E52_Time-Span"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="core:E53_Place"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="core:E54_Dimension"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="core:E55_Type"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="core:E57_Material"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="core:E58_Measurement_Unit"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="core:E67_Birth"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="core:E74_Group"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="core:E78_Collection"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="core:E84_Information_Carrier"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="core:E89_Propositional_Object"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="core:E8_Acquisition"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="core:E9_Move"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="Mid-level-ontology:Museum"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="Mid-level-ontology:OilMedium"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="Mid-level-ontology:PaintedPicture"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="Mid-level-ontology:StationaryArtifact"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="Mid-level-ontology:University"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="SUMO:Birth"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="SUMO:Collection"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="SUMO:ContentBearingObject"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="SUMO:ContentDevelopment"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="SUMO:CurrencyMeasure"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="SUMO:Device"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="SUMO:GeographicArea"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="SUMO:Human"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="SUMO:Icon"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="SUMO:InternalChange"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="SUMO:LandArea"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="SUMO:Man"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="SUMO:Organization"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="SUMO:PrimaryColor"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="SUMO:Region"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="SUMO:UnitOfCurrency"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="SUMO:UnitOfMeasure"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="SUMO:WaterArea"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="SUMO:Woman"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="SUMO:Word"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="SUMO:YearDuration"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="LexOnto:OntologyElement"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#AbstractPainting"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#AbstractThing"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#AcquisitionActivity"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#AcquisitionType"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#AcrylicMedium"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#AcrylicPainting"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Address"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Agent"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#AgentAppellation"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#AnimateThing"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Artist"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#BarkPainting"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Birth"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#City"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ClassificationConcept"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Collection"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Collector"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Color"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ColorAttribute"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Country"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#CurrencyUnit"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#DesignPattern"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Device"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Dimension"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Document"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#E10_Transfer_of_Custody"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#E82_Actor_Appellation"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#EncausticPainting"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Event"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Exhibition"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#FrescoPainting"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Function"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Gallery"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#GroupPortrait"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Human"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#IdentifierType"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Image"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#InanimateThing"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#King"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#LandscapePainting"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Material"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#MaterialType"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Medieval"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Medium"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#MiniaturePainting"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Miniaturist"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Modern"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Move"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Museum"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#MuseumBuilding"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Nationality"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ObjectAttribute"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ObjectDescription"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ObjectName"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ObjectType"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ObjectValue"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#OilPainting"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Organization"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#OrganizationAbbreviation"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#PaintMaterial"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Painter"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Painting"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#PaintingDescriptor"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#PaintingStyle"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#PaintingTechnique"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#PastelPainting"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#PencilPainting"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Photographer"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Place"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#PlaceAppellation"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#PlaceCoordinates"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Point"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#PolymerPainting"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#PortraitPainting"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ProductionEvent"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Reference"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Region"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#RepresentedThing"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SelfPortrait"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Signature"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#State"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#StateOfObject"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#StillLifePainting"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SurfaceMaterial"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ThangkaPainting"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#TimePeriod"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Title"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#TransferOfCustody"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#UniqueIdentifier"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#UnitOfMeasure"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#University"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#WatercolorPainting"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#WaterscapePainting"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="saldoOnto:WordSense"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="saldoOnto:WordSenseId"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="pwnOnto:WordSense"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="geoF:country"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="geoF:municipality"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="time:Year"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="skos2:Concept"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="foaf:Person"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty abbreviatedIRI="hwnOnto:hasSense"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty abbreviatedIRI="core:P102_has_title"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty abbreviatedIRI="core:P103_was_intended_for"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty abbreviatedIRI="core:P107_has_current_or_former_member"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty abbreviatedIRI="core:P108_has_produced"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty abbreviatedIRI="core:P109_has_current_or_former_curator"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty abbreviatedIRI="core:P127_has_broader_term"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty abbreviatedIRI="core:P129_is_about"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty abbreviatedIRI="core:P131_is_identified_by"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty abbreviatedIRI="core:P138_represents"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty abbreviatedIRI="core:P14_carried_out_by"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty abbreviatedIRI="core:P15_was_influenced_by"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty abbreviatedIRI="core:P26_moved_to"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty abbreviatedIRI="core:P27_moved_from"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty abbreviatedIRI="core:P2_has_type"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty abbreviatedIRI="core:P30_transferred_custody_of"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty abbreviatedIRI="core:P43_has_dimension"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty abbreviatedIRI="core:P44_has_condition"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty abbreviatedIRI="core:P45_consists_of"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty abbreviatedIRI="core:P48_has_preferred_identifier"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty abbreviatedIRI="core:P52_has_current_owner"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty abbreviatedIRI="core:P53_has_former_or_current_location"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty abbreviatedIRI="core:P55_has_current_location"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty abbreviatedIRI="core:P70_documents"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty abbreviatedIRI="core:P87_is_identified_by"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty abbreviatedIRI="core:P88_consists_of"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty abbreviatedIRI="core:P91_has_unit"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty abbreviatedIRI="core:P98_brought_into_life"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#acquiredThrough"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#assignedAttributeBy"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#belongsTo"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#broughtIntoLife"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#carriedOutBy"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#comprises"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#createdBy"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#currentOwnerOf"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#depicts"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#displayedAt"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#documents"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#exhibitionOf"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#exhibits"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasAcquisitionDate"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasAcquisitionMethod"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasAcronym"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasAssignedAttribute"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasBroaderTerm"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasClassification"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasColor"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasColorAttribute"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasCondition"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasCreationDate"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasCreationLocation"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasCurrentCurator"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasCurrentLocation"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasCurrentOwner"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasDesignPattern"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasDimension"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasFormerLocation"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasGeoPos"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasGeographicLocation"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasHistoricalContext"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasIdentifierType"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasIntendedUse"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasLocalName"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasMaterial"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasMaterialCategory"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasMedium"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasMember"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasNarrowerTerm"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasNationality"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasObjectValue"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasPaintType"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasPaintingDescriptor"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasPaintingStyle"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasPaintingTechnique"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasPermanentLocation"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasPhotographyDate"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasPresentationDate"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasPresentationLocation"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasProduced"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasReference"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasRegistrationDate"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasRepresentation"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasTitle"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasUniqueIdentifier"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasUnitOfCurrency"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasUnitOfMeasure"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasValueType"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hascoordinates"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#influencedBy"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isAbout"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isCreatorOf"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isEvaluationStateOf"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isIdentifiedBy"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isIdentifiedByName"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isKnownFor"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isMediumOf"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isPaintedWith"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isStateOf"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#movedFrom"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#movedTo"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#occurredDuring"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#photographedBy"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#proclaims"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#represents"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#transferredCustodyOf"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty abbreviatedIRI="saldoOnto:hasSense"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty abbreviatedIRI="pwnOnto:hasSense"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty abbreviatedIRI="skos2:boader"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty abbreviatedIRI="skos2:narrower"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty abbreviatedIRI="core:P82_at_some_time_within"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty abbreviatedIRI="core:P90_has_value"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#currencyValue"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#descriptionString"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#fromTimePeriodValue"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasIdentifierValue"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasPopularityValue"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasStatus"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasValue"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#latValue"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#longValue"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#titleString"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#toTimePeriodValue"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty abbreviatedIRI="foaf:familyName"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty abbreviatedIRI="foaf:firstName"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty abbreviatedIRI="foaf:status"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual abbreviatedIRI="Mid-level-ontology:Studio"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual abbreviatedIRI="SUMO:Symbolization"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Abstraction"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#AcrylicGlazingLiquid"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#AcrylicPaint"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#AerosolPaint"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#AerosolSpray"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Africa"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Airbrush"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#AmericanPainting"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#AnnikaPersson"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Arabesque"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Aristotle"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Art"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Attention"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Aurochs"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#B19760"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Bark"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#BarkCloth"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Baroque"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#BelgianLinen"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#BiomorphicAbstraction"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Bison"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Black"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Bo-BUBilder-GBG-sMOTIVPICT-GSM940051"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#BreenberghCollection"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#BrownOchrePaint"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Brush"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#BrynolfWennerberg"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#CB"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Canvas"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#CatalogueNr"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Centimeter"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#CentralAmerica"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Century19th"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Century5th"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Charity"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#ClarissaPetersRussell"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#ClassificationNr"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#CollectionNr"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Collector"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#ColorFieldPainting"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Complex"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Composite"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#CompositionWithYellowBlueAndRed"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Copy"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#DagmarThelinSjukhem"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Decoration"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Deer"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Delicate"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Derivera"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#DispersantMedium"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Dollar"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Donation"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Drawings"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#DryBrush"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Drybrush"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Dutch"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#EarlyMiddleAges"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#EarlyMiddleAgesPeriod"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#EarlyModern"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#EarlyModernPeriod"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Earthquake"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#EastAsia"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#EastAsienPainting"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#EasternPainting"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Educational"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Element"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#EnamelPaint"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#EncausticPaint"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Enschede"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Euro"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Europe"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#EuropeanArt"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Exquisite"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Famous"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Foot"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Fresco"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Furu"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#GSM"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#GSM920051Value"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#GSM9226"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#GSM940051Acquisition"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#GSM940051AcquisitionDate"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#GSM940051CreationDate"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#GSM940051History"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#GSM940051ImageHeight"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#GSM940051ImageWidth"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#GSM940051Obj"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#GSM940051PhotoDate"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#GSM940051Registration"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#GeometricAbstraction"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Glaze"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Gold"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Good"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Gothenburg"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#GothenburgMotive"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#GothenburgPortrait"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#GouachePaint"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Gray"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Greek"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Grid"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#GuernicaCreationDate"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#GuernicaHeight"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#GuernicaJPG"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#GuernicaObj"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#GuernicaPresentationDate"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#GuernicaProduction"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#GuernicaTitle"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#GuernicaWidth"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#HallwylskaCatalogue"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#HeekCollectionPresentationDate"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#HuvudmagasinetGårda"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#IberianPeninsula"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#IdNr"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Illustration"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#ImpressionistStyle"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Impressive"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Inches"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#India"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Instruction"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#InternationalExposition"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#InventoryNr"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Kilogram"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Lace"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Lake"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Landscape"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Lattice"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Light"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Linen"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#LinseedOil"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Louisiana"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#MaarCatalogue"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Madrid"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Major"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#MandrianCompositionObj"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Marble"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Masonite"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Meter"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Milimeter"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#MiniaturePaintingDiameter"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#MiniaturePaintingHeight"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#MiniaturePaintingWidth"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#ModernEuropeanFineArt"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#ModernEuropeanStyle"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#MondrianComposition"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#MorsMossa"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Mountain"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#MuseoReinaSofiaLongLat"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#MuseoReinaSofiaPosition"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#MuseoReinaSofía"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#NOMU"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Nationalmuseum"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Nationalmuseum..1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#NegativeNr"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Netherlands"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#NewYork"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#NicoHvanHeek"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#NicoHvanHeekCollection"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#NineteenthCentury"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#NordicMuseum"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#NorthAmerica"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Oak"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#OilPaint"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#OilPastel"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#OlleSkagerfors"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Original"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Outstanding"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#PabloPicasso"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#PabloPicassoBirth"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#PaintOntoBrush"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#PaintOntoPalette"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Painting"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Paintings"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Paper"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Paris"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Parisian"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Pastel"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Pen"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Pencil"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#PermanentMuseumofModernArtCollection"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#PeterEcchers"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#PolychromeStyle"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#PolymerPaint"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#PoppyseedOil"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#PortraitOfFamily"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#PortraitPainting"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Post-PainterlyAbstraction"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Present"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Purchase"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#PureSilk"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Recreation"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#RedOcherPaint"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Rembrandt"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Reproduction"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#RetarderMedium"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Retouch"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Rich"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#RisePaper"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#SafflowerOil"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#SecondaryNr"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Sketch"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Sonorous"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Spain"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#SprayPaint"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#StandOil"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Strong"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Sumptuous"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Sun-thickenedLinseedOil"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Sweden"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Swedish"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#SwedishKrona"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#TerBorch"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Textile"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#TextureMedium"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#TheBritishMuseum"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#TheCrucifixionObj"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#TheGreek"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#TheKing"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#TheNightWatch"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#TheSecondAnnualExhibition"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#TheShootingCompanyofFransBanningCocq"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#TheWhiteDressObj"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#TheodoreDuret"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#TibetanSilk"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#TissuePaper"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#URL"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#UniversityOfArt"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Variegated"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Vision"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Vivid"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#WDPresentationDate"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#WalnutOil"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#WashTechnique"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#WatercolorPaint"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Waterscape"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Week"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#WestAsia"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#WesternPainting"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#White"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Wood"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Woollen"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#WorkOfArt"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#WorldWarI"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#WornOut"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Years400-499"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#YellowOcherPaint"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#ZanobiStrozzi"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#hasTitle"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#horse"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#konstsamlare..1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#spring-cleaned"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#795-361"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#940051"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual abbreviatedIRI="saldoOnto:betitla..1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual abbreviatedIRI="saldoOnto:en..1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual abbreviatedIRI="saldoOnto:ental..1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual abbreviatedIRI="saldoOnto:furu..1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual abbreviatedIRI="saldoOnto:målning..1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual abbreviatedIRI="saldoOnto:omfatta..1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual abbreviatedIRI="saldoOnto:väcka_uppmärksamhet..1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual abbreviatedIRI="saldoOnto:välgörande..1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual abbreviatedIRI="saldoOnto:återfinna..1"/>
+    </Declaration>
+    <Declaration>
+        <AnnotationProperty IRI="#broughtIntLife"/>
+    </Declaration>
+    <Declaration>
+        <AnnotationProperty IRI="#created"/>
+    </Declaration>
+    <Declaration>
+        <AnnotationProperty IRI="#inverseSingular"/>
+    </Declaration>
+    <Declaration>
+        <AnnotationProperty IRI="#modified"/>
+    </Declaration>
+    <Declaration>
+        <AnnotationProperty IRI="#preferredNamespaceUri"/>
+    </Declaration>
+    <Declaration>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+    </Declaration>
+    <Declaration>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+    </Declaration>
+    <Declaration>
+        <Datatype abbreviatedIRI="xsd:dateTime"/>
+    </Declaration>
+    <Declaration>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </Declaration>
+    <Declaration>
+        <Datatype abbreviatedIRI="xsd:integer"/>
+    </Declaration>
+    <EquivalentClasses>
+        <Class abbreviatedIRI="resurser:itemTechnique"/>
+        <Class IRI="#PaintingTechnique"/>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class abbreviatedIRI="core:E31_Document"/>
+        <Class IRI="#Document"/>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class abbreviatedIRI="Mid-level-ontology:OilMedium"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#Medium"/>
+            <ObjectHasValue>
+                <ObjectProperty IRI="#isMediumOf"/>
+                <NamedIndividual IRI="#OilPaint"/>
+            </ObjectHasValue>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class abbreviatedIRI="Mid-level-ontology:University"/>
+        <Class IRI="#University"/>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class abbreviatedIRI="SUMO:Region"/>
+        <Class IRI="#Region"/>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#AbstractPainting"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#Painting"/>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#depicts"/>
+                <Class IRI="#AbstractThing"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#AcrylicMedium"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#Medium"/>
+            <ObjectHasValue>
+                <ObjectProperty IRI="#isMediumOf"/>
+                <NamedIndividual IRI="#AcrylicPaint"/>
+            </ObjectHasValue>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#AcrylicPainting"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#Painting"/>
+            <ObjectHasValue>
+                <ObjectProperty IRI="#hasPaintType"/>
+                <NamedIndividual IRI="#AcrylicPaint"/>
+            </ObjectHasValue>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#Address"/>
+        <ObjectIntersectionOf>
+            <Class abbreviatedIRI="resurser:placeName"/>
+            <Class abbreviatedIRI="core:E45_Address"/>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#AgentAppellation"/>
+        <Class IRI="#E82_Actor_Appellation"/>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#BarkPainting"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#Painting"/>
+            <ObjectHasValue>
+                <ObjectProperty IRI="#hasMaterial"/>
+                <NamedIndividual IRI="#Bark"/>
+            </ObjectHasValue>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#Birth"/>
+        <ObjectIntersectionOf>
+            <Class abbreviatedIRI="core:E67_Birth"/>
+            <Class abbreviatedIRI="SUMO:Birth"/>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#City"/>
+        <Class abbreviatedIRI="geoF:municipality"/>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#ClassificationConcept"/>
+        <ObjectIntersectionOf>
+            <Class abbreviatedIRI="resurser:type"/>
+            <Class abbreviatedIRI="core:E55_Type"/>
+            <Class abbreviatedIRI="skos2:Concept"/>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#Collection"/>
+        <ObjectIntersectionOf>
+            <Class abbreviatedIRI="resurser:collection"/>
+            <Class abbreviatedIRI="core:E78_Collection"/>
+            <Class abbreviatedIRI="SUMO:Collection"/>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#Color"/>
+        <ObjectIntersectionOf>
+            <Class abbreviatedIRI="resurser:itemColor"/>
+            <Class abbreviatedIRI="SUMO:PrimaryColor"/>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#Country"/>
+        <Class abbreviatedIRI="geoF:country"/>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#CurrencyUnit"/>
+        <ObjectIntersectionOf>
+            <Class abbreviatedIRI="resurser:type"/>
+            <Class abbreviatedIRI="core:E55_Type"/>
+            <Class abbreviatedIRI="SUMO:UnitOfCurrency"/>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#Device"/>
+        <ObjectIntersectionOf>
+            <Class abbreviatedIRI="resurser:itemClass"/>
+            <Class abbreviatedIRI="SUMO:Device"/>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#Dimension"/>
+        <ObjectIntersectionOf>
+            <Class abbreviatedIRI="resurser:itemMeasurement"/>
+            <Class abbreviatedIRI="core:E54_Dimension"/>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#EncausticPainting"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#Painting"/>
+            <ObjectHasValue>
+                <ObjectProperty IRI="#hasPaintType"/>
+                <NamedIndividual IRI="#EncausticPaint"/>
+            </ObjectHasValue>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#Exhibition"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#Collection"/>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#displayedAt"/>
+                <Class abbreviatedIRI="Mid-level-ontology:StationaryArtifact"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#FrescoPainting"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#Painting"/>
+            <ObjectHasValue>
+                <ObjectProperty IRI="#hasPaintingTechnique"/>
+                <NamedIndividual IRI="#Fresco"/>
+            </ObjectHasValue>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#Function"/>
+        <ObjectIntersectionOf>
+            <Class abbreviatedIRI="resurser:type"/>
+            <Class abbreviatedIRI="core:E55_Type"/>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#GroupPortrait"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#PortraitPainting"/>
+            <ObjectMinCardinality cardinality="2">
+                <ObjectProperty IRI="#depicts"/>
+                <Class IRI="#Human"/>
+            </ObjectMinCardinality>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#Human"/>
+        <ObjectIntersectionOf>
+            <Class abbreviatedIRI="core:E21_Person"/>
+            <Class IRI="#Human"/>
+            <Class abbreviatedIRI="foaf:Person"/>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#IdentifierType"/>
+        <ObjectIntersectionOf>
+            <Class abbreviatedIRI="resurser:type"/>
+            <Class abbreviatedIRI="core:E55_Type"/>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#Image"/>
+        <ObjectIntersectionOf>
+            <Class abbreviatedIRI="core:E38_Image"/>
+            <Class abbreviatedIRI="SUMO:Icon"/>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#LandscapePainting"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#Painting"/>
+            <ObjectAllValuesFrom>
+                <ObjectProperty IRI="#depicts"/>
+                <Class abbreviatedIRI="SUMO:LandArea"/>
+            </ObjectAllValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#Material"/>
+        <ObjectIntersectionOf>
+            <Class abbreviatedIRI="resurser:itemMaterial"/>
+            <Class abbreviatedIRI="core:E57_Material"/>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#MaterialType"/>
+        <ObjectIntersectionOf>
+            <Class abbreviatedIRI="resurser:type"/>
+            <Class abbreviatedIRI="core:E55_Type"/>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#MiniaturePainting"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#Painting"/>
+            <ObjectUnionOf>
+                <ObjectHasValue>
+                    <ObjectProperty IRI="#hasDimension"/>
+                    <NamedIndividual IRI="#MiniaturePaintingDiameter"/>
+                </ObjectHasValue>
+                <ObjectHasValue>
+                    <ObjectProperty IRI="#hasDimension"/>
+                    <NamedIndividual IRI="#MiniaturePaintingWidth"/>
+                </ObjectHasValue>
+            </ObjectUnionOf>
+            <ObjectHasValue>
+                <ObjectProperty IRI="#hasDimension"/>
+                <NamedIndividual IRI="#MiniaturePaintingHeight"/>
+            </ObjectHasValue>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#Museum"/>
+        <ObjectIntersectionOf>
+            <Class abbreviatedIRI="core:E40_Legal_Body"/>
+            <Class abbreviatedIRI="Mid-level-ontology:Museum"/>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#ObjectDescription"/>
+        <ObjectIntersectionOf>
+            <Class abbreviatedIRI="resurser:itemDescription"/>
+            <Class abbreviatedIRI="core:E89_Propositional_Object"/>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#ObjectName"/>
+        <ObjectIntersectionOf>
+            <Class abbreviatedIRI="resurser:itemName"/>
+            <Class abbreviatedIRI="core:E55_Type"/>
+            <Class abbreviatedIRI="SUMO:ContentBearingObject"/>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#ObjectValue"/>
+        <ObjectIntersectionOf>
+            <Class abbreviatedIRI="core:E16_Measurement"/>
+            <Class abbreviatedIRI="SUMO:CurrencyMeasure"/>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#OilPainting"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#Painting"/>
+            <ObjectHasValue>
+                <ObjectProperty IRI="#hasPaintType"/>
+                <NamedIndividual IRI="#OilPaint"/>
+            </ObjectHasValue>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#Organization"/>
+        <ObjectIntersectionOf>
+            <Class abbreviatedIRI="core:E74_Group"/>
+            <Class abbreviatedIRI="SUMO:Organization"/>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#OrganizationAbbreviation"/>
+        <ObjectIntersectionOf>
+            <Class abbreviatedIRI="presentation:OrganizationShort"/>
+            <Class abbreviatedIRI="SUMO:Word"/>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#Painter"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#Artist"/>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#isCreatorOf"/>
+                <Class IRI="#Painting"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#Painting"/>
+        <ObjectIntersectionOf>
+            <Class abbreviatedIRI="resurser:item"/>
+            <Class abbreviatedIRI="Mid-level-ontology:PaintedPicture"/>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#PaintingStyle"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#proclaims"/>
+            <Class IRI="#TimePeriod"/>
+        </ObjectSomeValuesFrom>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#PastelPainting"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#Painting"/>
+            <ObjectHasValue>
+                <ObjectProperty IRI="#hasMaterial"/>
+                <NamedIndividual IRI="#Pastel"/>
+            </ObjectHasValue>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#PencilPainting"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#Painting"/>
+            <ObjectHasValue>
+                <ObjectProperty IRI="#isPaintedWith"/>
+                <NamedIndividual IRI="#Pencil"/>
+            </ObjectHasValue>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#Place"/>
+        <ObjectIntersectionOf>
+            <Class abbreviatedIRI="core:E53_Place"/>
+            <Class abbreviatedIRI="SUMO:GeographicArea"/>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#PlaceAppellation"/>
+        <ObjectIntersectionOf>
+            <Class abbreviatedIRI="resurser:place"/>
+            <Class abbreviatedIRI="core:E44_Place_Appellation"/>
+            <Class abbreviatedIRI="Mid-level-ontology:StationaryArtifact"/>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#PlaceCoordinates"/>
+        <ObjectIntersectionOf>
+            <Class abbreviatedIRI="resurser:coordinates"/>
+            <Class abbreviatedIRI="core:E47_Spatial_Coordinates"/>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#PolymerPainting"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#Painting"/>
+            <ObjectHasValue>
+                <ObjectProperty IRI="#hasPaintType"/>
+                <NamedIndividual IRI="#PolymerPaint"/>
+            </ObjectHasValue>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#PortraitPainting"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#Painting"/>
+            <ObjectUnionOf>
+                <ObjectAllValuesFrom>
+                    <ObjectProperty IRI="#depicts"/>
+                    <Class IRI="#AnimateThing"/>
+                </ObjectAllValuesFrom>
+                <ObjectAllValuesFrom>
+                    <ObjectProperty IRI="#depicts"/>
+                    <Class IRI="#Human"/>
+                </ObjectAllValuesFrom>
+            </ObjectUnionOf>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#ProductionEvent"/>
+        <ObjectIntersectionOf>
+            <Class abbreviatedIRI="resurser:eventName"/>
+            <Class abbreviatedIRI="core:E12_Production"/>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#SelfPortrait"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#PortraitPainting"/>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#createdBy"/>
+                <Class IRI="#Artist"/>
+            </ObjectSomeValuesFrom>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#depicts"/>
+                <Class IRI="#Artist"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#Signature"/>
+        <ObjectIntersectionOf>
+            <Class abbreviatedIRI="resurser:nameAuth"/>
+            <Class abbreviatedIRI="core:E26_Physical_Feature"/>
+            <Class abbreviatedIRI="SUMO:ContentBearingObject"/>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#StateOfObject"/>
+        <ObjectIntersectionOf>
+            <Class abbreviatedIRI="core:E3_Condition_State"/>
+            <Class abbreviatedIRI="SUMO:InternalChange"/>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#StillLifePainting"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#Painting"/>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#depicts"/>
+                <Class IRI="#InanimateThing"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#ThangkaPainting"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#Painting"/>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#depicts"/>
+                <Class IRI="#AnimateThing"/>
+            </ObjectSomeValuesFrom>
+            <ObjectHasValue>
+                <ObjectProperty IRI="#hasMaterial"/>
+                <NamedIndividual IRI="#TibetanSilk"/>
+            </ObjectHasValue>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#TimePeriod"/>
+        <ObjectIntersectionOf>
+            <Class abbreviatedIRI="core:E52_Time-Span"/>
+            <Class abbreviatedIRI="SUMO:YearDuration"/>
+            <Class abbreviatedIRI="time:Year"/>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#Title"/>
+        <ObjectIntersectionOf>
+            <Class abbreviatedIRI="resurser:itemTitle"/>
+            <Class abbreviatedIRI="core:E35_Title"/>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#UniqueIdentifier"/>
+        <ObjectIntersectionOf>
+            <Class abbreviatedIRI="resurser:itemNumber"/>
+            <Class abbreviatedIRI="core:E42_Identifier"/>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#UnitOfMeasure"/>
+        <ObjectIntersectionOf>
+            <Class abbreviatedIRI="core:E58_Measurement_Unit"/>
+            <Class abbreviatedIRI="SUMO:UnitOfMeasure"/>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#WatercolorPainting"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#Painting"/>
+            <ObjectHasValue>
+                <ObjectProperty IRI="#hasPaintType"/>
+                <NamedIndividual IRI="#WatercolorPaint"/>
+            </ObjectHasValue>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#WatercolorPainting"/>
+        <ObjectHasValue>
+            <ObjectProperty IRI="#hasPaintingTechnique"/>
+            <NamedIndividual IRI="#DryBrush"/>
+        </ObjectHasValue>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#WaterscapePainting"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#Painting"/>
+            <ObjectAllValuesFrom>
+                <ObjectProperty IRI="#depicts"/>
+                <Class abbreviatedIRI="SUMO:WaterArea"/>
+            </ObjectAllValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <SubClassOf>
+        <Class abbreviatedIRI="SUMO:Man"/>
+        <Class abbreviatedIRI="SUMO:Human"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="SUMO:Woman"/>
+        <Class abbreviatedIRI="SUMO:Human"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#AbstractThing"/>
+        <Class IRI="#InanimateThing"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#AcquisitionActivity"/>
+        <Class abbreviatedIRI="core:E8_Acquisition"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#AcquisitionType"/>
+        <Class abbreviatedIRI="core:E55_Type"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Address"/>
+        <Class IRI="#PlaceAppellation"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#AnimateThing"/>
+        <Class IRI="#RepresentedThing"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Artist"/>
+        <Class IRI="#Human"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#City"/>
+        <Class IRI="#PlaceAppellation"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Collector"/>
+        <Class IRI="#Human"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Color"/>
+        <Class IRI="#PaintingDescriptor"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ColorAttribute"/>
+        <Class IRI="#ObjectAttribute"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Country"/>
+        <Class IRI="#PlaceAppellation"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#DesignPattern"/>
+        <Class IRI="#PaintingDescriptor"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Event"/>
+        <Class IRI="#RepresentedThing"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Gallery"/>
+        <Class IRI="#PlaceAppellation"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Human"/>
+        <Class IRI="#Agent"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#InanimateThing"/>
+        <Class IRI="#RepresentedThing"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#King"/>
+        <Class IRI="#Human"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Medieval"/>
+        <Class IRI="#ClassificationConcept"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Miniaturist"/>
+        <Class IRI="#Human"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Modern"/>
+        <Class IRI="#ClassificationConcept"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Move"/>
+        <Class abbreviatedIRI="core:E9_Move"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Museum"/>
+        <Class IRI="#Organization"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#MuseumBuilding"/>
+        <Class IRI="#PlaceAppellation"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ObjectAttribute"/>
+        <Class IRI="#PaintingDescriptor"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ObjectType"/>
+        <Class abbreviatedIRI="core:E55_Type"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Organization"/>
+        <Class IRI="#Agent"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#PaintMaterial"/>
+        <Class IRI="#Material"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Painting"/>
+        <Class abbreviatedIRI="core:E22_Man-Made_Object"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#PaintingStyle"/>
+        <Class IRI="#PaintingDescriptor"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Photographer"/>
+        <Class IRI="#Human"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Reference"/>
+        <Class IRI="#PaintingDescriptor"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Region"/>
+        <Class IRI="#Place"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#State"/>
+        <Class IRI="#RepresentedThing"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SurfaceMaterial"/>
+        <Class IRI="#Material"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#TransferOfCustody"/>
+        <Class IRI="#E10_Transfer_of_Custody"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#University"/>
+        <Class IRI="#Organization"/>
+    </SubClassOf>
+    <DisjointClasses>
+        <Class IRI="#Medieval"/>
+        <Class IRI="#Modern"/>
+    </DisjointClasses>
+    <ClassAssertion>
+        <Class IRI="#State"/>
+        <NamedIndividual abbreviatedIRI="Mid-level-ontology:Studio"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Function"/>
+        <NamedIndividual abbreviatedIRI="SUMO:Symbolization"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ClassificationConcept"/>
+        <NamedIndividual IRI="#Abstraction"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#AcrylicMedium"/>
+        <NamedIndividual IRI="#AcrylicGlazingLiquid"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#PaintMaterial"/>
+        <NamedIndividual IRI="#AcrylicPaint"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#PaintMaterial"/>
+        <NamedIndividual IRI="#AerosolPaint"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#PaintingTechnique"/>
+        <NamedIndividual IRI="#AerosolSpray"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Region"/>
+        <NamedIndividual IRI="#Africa"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Device"/>
+        <NamedIndividual IRI="#Airbrush"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ClassificationConcept"/>
+        <NamedIndividual IRI="#AmericanPainting"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Photographer"/>
+        <NamedIndividual IRI="#AnnikaPersson"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ObjectAttribute"/>
+        <NamedIndividual IRI="#Arabesque"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="SUMO:Man"/>
+        <NamedIndividual IRI="#Aristotle"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ClassificationConcept"/>
+        <NamedIndividual IRI="#Art"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#AnimateThing"/>
+        <NamedIndividual IRI="#Aurochs"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#UniqueIdentifier"/>
+        <NamedIndividual IRI="#B19760"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#SurfaceMaterial"/>
+        <NamedIndividual IRI="#Bark"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#SurfaceMaterial"/>
+        <NamedIndividual IRI="#BarkCloth"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#PaintingStyle"/>
+        <NamedIndividual IRI="#Baroque"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#SurfaceMaterial"/>
+        <NamedIndividual IRI="#BelgianLinen"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ClassificationConcept"/>
+        <NamedIndividual IRI="#BiomorphicAbstraction"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#AnimateThing"/>
+        <NamedIndividual IRI="#Bison"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Color"/>
+        <NamedIndividual IRI="#Black"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Image"/>
+        <NamedIndividual IRI="#Bo-BUBilder-GBG-sMOTIVPICT-GSM940051"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Collection"/>
+        <NamedIndividual IRI="#BreenberghCollection"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#PaintMaterial"/>
+        <NamedIndividual IRI="#BrownOchrePaint"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Device"/>
+        <NamedIndividual IRI="#Brush"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Painter"/>
+        <NamedIndividual IRI="#BrynolfWennerberg"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Signature"/>
+        <NamedIndividual IRI="#CB"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#SurfaceMaterial"/>
+        <NamedIndividual IRI="#Canvas"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#IdentifierType"/>
+        <NamedIndividual IRI="#CatalogueNr"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#UnitOfMeasure"/>
+        <NamedIndividual IRI="#Centimeter"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Region"/>
+        <NamedIndividual IRI="#CentralAmerica"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Modern"/>
+        <NamedIndividual IRI="#Century19th"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#TimePeriod"/>
+        <NamedIndividual IRI="#Century5th"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Function"/>
+        <NamedIndividual IRI="#Charity"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="SUMO:Man"/>
+        <NamedIndividual IRI="#ClarissaPetersRussell"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Painter"/>
+        <NamedIndividual IRI="#ClarissaPetersRussell"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#IdentifierType"/>
+        <NamedIndividual IRI="#ClassificationNr"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#IdentifierType"/>
+        <NamedIndividual IRI="#CollectionNr"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="LexOnto:OntologyElement"/>
+        <NamedIndividual IRI="#Collector"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#AbstractPainting"/>
+        <NamedIndividual IRI="#ColorFieldPainting"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ObjectAttribute"/>
+        <NamedIndividual IRI="#Complex"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#MaterialType"/>
+        <NamedIndividual IRI="#Composite"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ObjectName"/>
+        <NamedIndividual IRI="#CompositionWithYellowBlueAndRed"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ObjectType"/>
+        <NamedIndividual IRI="#Copy"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Organization"/>
+        <NamedIndividual IRI="#DagmarThelinSjukhem"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Function"/>
+        <NamedIndividual IRI="#Decoration"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#AnimateThing"/>
+        <NamedIndividual IRI="#Deer"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ColorAttribute"/>
+        <NamedIndividual IRI="#Delicate"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Exhibition"/>
+        <NamedIndividual IRI="#Derivera"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#AcrylicMedium"/>
+        <NamedIndividual IRI="#DispersantMedium"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CurrencyUnit"/>
+        <NamedIndividual IRI="#Dollar"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#AcquisitionType"/>
+        <NamedIndividual IRI="#Donation"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ClassificationConcept"/>
+        <NamedIndividual IRI="#Drawings"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#PaintingTechnique"/>
+        <NamedIndividual IRI="#DryBrush"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Device"/>
+        <NamedIndividual IRI="#Drybrush"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Nationality"/>
+        <NamedIndividual IRI="#Dutch"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Medieval"/>
+        <NamedIndividual IRI="#EarlyMiddleAges"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#TimePeriod"/>
+        <NamedIndividual IRI="#EarlyMiddleAgesPeriod"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Modern"/>
+        <NamedIndividual IRI="#EarlyModern"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#TimePeriod"/>
+        <NamedIndividual IRI="#EarlyModernPeriod"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Event"/>
+        <NamedIndividual IRI="#Earthquake"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Region"/>
+        <NamedIndividual IRI="#EastAsia"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ClassificationConcept"/>
+        <NamedIndividual IRI="#EastAsienPainting"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ClassificationConcept"/>
+        <NamedIndividual IRI="#EasternPainting"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Function"/>
+        <NamedIndividual IRI="#Educational"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#AbstractThing"/>
+        <NamedIndividual IRI="#Element"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#PaintMaterial"/>
+        <NamedIndividual IRI="#EnamelPaint"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#PaintMaterial"/>
+        <NamedIndividual IRI="#EncausticPaint"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#City"/>
+        <NamedIndividual IRI="#Enschede"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CurrencyUnit"/>
+        <NamedIndividual IRI="#Euro"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Region"/>
+        <NamedIndividual IRI="#Europe"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ClassificationConcept"/>
+        <NamedIndividual IRI="#EuropeanArt"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ObjectAttribute"/>
+        <NamedIndividual IRI="#Exquisite"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ObjectAttribute"/>
+        <NamedIndividual IRI="#Famous"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#UnitOfMeasure"/>
+        <NamedIndividual IRI="#Foot"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#PaintingTechnique"/>
+        <NamedIndividual IRI="#Fresco"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Material"/>
+        <NamedIndividual IRI="#Furu"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Collection"/>
+        <NamedIndividual IRI="#GSM"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ObjectValue"/>
+        <NamedIndividual IRI="#GSM920051Value"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#UniqueIdentifier"/>
+        <NamedIndividual IRI="#GSM9226"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#AcquisitionActivity"/>
+        <NamedIndividual IRI="#GSM940051Acquisition"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#TimePeriod"/>
+        <NamedIndividual IRI="#GSM940051AcquisitionDate"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#TimePeriod"/>
+        <NamedIndividual IRI="#GSM940051CreationDate"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ObjectDescription"/>
+        <NamedIndividual IRI="#GSM940051History"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Dimension"/>
+        <NamedIndividual IRI="#GSM940051ImageHeight"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Dimension"/>
+        <NamedIndividual IRI="#GSM940051ImageWidth"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#OilPainting"/>
+        <NamedIndividual IRI="#GSM940051Obj"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#TimePeriod"/>
+        <NamedIndividual IRI="#GSM940051PhotoDate"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#TimePeriod"/>
+        <NamedIndividual IRI="#GSM940051Registration"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ClassificationConcept"/>
+        <NamedIndividual IRI="#GeometricAbstraction"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#PaintingTechnique"/>
+        <NamedIndividual IRI="#Glaze"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Color"/>
+        <NamedIndividual IRI="#Gold"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ObjectAttribute"/>
+        <NamedIndividual IRI="#Good"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#City"/>
+        <NamedIndividual IRI="#Gothenburg"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ClassificationConcept"/>
+        <NamedIndividual IRI="#GothenburgMotive"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ClassificationConcept"/>
+        <NamedIndividual IRI="#GothenburgPortrait"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#PaintMaterial"/>
+        <NamedIndividual IRI="#GouachePaint"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Color"/>
+        <NamedIndividual IRI="#Gray"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Nationality"/>
+        <NamedIndividual IRI="#Greek"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#AbstractThing"/>
+        <NamedIndividual IRI="#Grid"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#TimePeriod"/>
+        <NamedIndividual IRI="#GuernicaCreationDate"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Dimension"/>
+        <NamedIndividual IRI="#GuernicaHeight"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Image"/>
+        <NamedIndividual IRI="#GuernicaJPG"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Painting"/>
+        <NamedIndividual IRI="#GuernicaObj"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Reference"/>
+        <NamedIndividual IRI="#GuernicaObj"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#TimePeriod"/>
+        <NamedIndividual IRI="#GuernicaPresentationDate"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ProductionEvent"/>
+        <NamedIndividual IRI="#GuernicaProduction"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Title"/>
+        <NamedIndividual IRI="#GuernicaTitle"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Dimension"/>
+        <NamedIndividual IRI="#GuernicaWidth"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Document"/>
+        <NamedIndividual IRI="#HallwylskaCatalogue"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#TimePeriod"/>
+        <NamedIndividual IRI="#HeekCollectionPresentationDate"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Address"/>
+        <NamedIndividual IRI="#HuvudmagasinetGårda"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Place"/>
+        <NamedIndividual IRI="#IberianPeninsula"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#IdentifierType"/>
+        <NamedIndividual IRI="#IdNr"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Function"/>
+        <NamedIndividual IRI="#Illustration"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#PaintingStyle"/>
+        <NamedIndividual IRI="#ImpressionistStyle"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ObjectAttribute"/>
+        <NamedIndividual IRI="#Impressive"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#UnitOfMeasure"/>
+        <NamedIndividual IRI="#Inches"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Country"/>
+        <NamedIndividual IRI="#India"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Function"/>
+        <NamedIndividual IRI="#Instruction"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Exhibition"/>
+        <NamedIndividual IRI="#InternationalExposition"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#IdentifierType"/>
+        <NamedIndividual IRI="#InventoryNr"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#UnitOfMeasure"/>
+        <NamedIndividual IRI="#Kilogram"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#SurfaceMaterial"/>
+        <NamedIndividual IRI="#Lace"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#InanimateThing"/>
+        <NamedIndividual IRI="#Lake"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="SUMO:LandArea"/>
+        <NamedIndividual IRI="#Landscape"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#AbstractThing"/>
+        <NamedIndividual IRI="#Lattice"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ColorAttribute"/>
+        <NamedIndividual IRI="#Light"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#SurfaceMaterial"/>
+        <NamedIndividual IRI="#Linen"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="Mid-level-ontology:OilMedium"/>
+        <NamedIndividual IRI="#LinseedOil"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#MuseumBuilding"/>
+        <NamedIndividual IRI="#Louisiana"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Document"/>
+        <NamedIndividual IRI="#MaarCatalogue"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#City"/>
+        <NamedIndividual IRI="#Madrid"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ObjectAttribute"/>
+        <NamedIndividual IRI="#Major"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Painting"/>
+        <NamedIndividual IRI="#MandrianCompositionObj"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Color"/>
+        <NamedIndividual IRI="#Marble"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#SurfaceMaterial"/>
+        <NamedIndividual IRI="#Masonite"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#UnitOfMeasure"/>
+        <NamedIndividual IRI="#Meter"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#UnitOfMeasure"/>
+        <NamedIndividual IRI="#Milimeter"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Dimension"/>
+        <NamedIndividual IRI="#MiniaturePaintingDiameter"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Dimension"/>
+        <NamedIndividual IRI="#MiniaturePaintingHeight"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Dimension"/>
+        <NamedIndividual IRI="#MiniaturePaintingWidth"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ClassificationConcept"/>
+        <NamedIndividual IRI="#ModernEuropeanFineArt"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ClassificationConcept"/>
+        <NamedIndividual IRI="#ModernEuropeanStyle"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ObjectName"/>
+        <NamedIndividual IRI="#MondrianComposition"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Gallery"/>
+        <NamedIndividual IRI="#MorsMossa"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#InanimateThing"/>
+        <NamedIndividual IRI="#Mountain"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Point"/>
+        <NamedIndividual IRI="#MuseoReinaSofiaLongLat"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#PlaceCoordinates"/>
+        <NamedIndividual IRI="#MuseoReinaSofiaPosition"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#MuseumBuilding"/>
+        <NamedIndividual IRI="#MuseoReinaSofía"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#OrganizationAbbreviation"/>
+        <NamedIndividual IRI="#NOMU"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="LexOnto:OntologyElement"/>
+        <NamedIndividual IRI="#Nationalmuseum"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Museum"/>
+        <NamedIndividual IRI="#Nationalmuseum"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="saldoOnto:WordSenseId"/>
+        <NamedIndividual IRI="#Nationalmuseum..1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#IdentifierType"/>
+        <NamedIndividual IRI="#NegativeNr"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Country"/>
+        <NamedIndividual IRI="#Netherlands"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#City"/>
+        <NamedIndividual IRI="#NewYork"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="SUMO:Man"/>
+        <NamedIndividual IRI="#NicoHvanHeek"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Collection"/>
+        <NamedIndividual IRI="#NicoHvanHeekCollection"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Modern"/>
+        <NamedIndividual IRI="#NineteenthCentury"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Museum"/>
+        <NamedIndividual IRI="#NordicMuseum"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Region"/>
+        <NamedIndividual IRI="#NorthAmerica"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#SurfaceMaterial"/>
+        <NamedIndividual IRI="#Oak"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#PaintMaterial"/>
+        <NamedIndividual IRI="#OilPaint"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#PaintMaterial"/>
+        <NamedIndividual IRI="#OilPastel"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="SUMO:Man"/>
+        <NamedIndividual IRI="#OlleSkagerfors"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ObjectType"/>
+        <NamedIndividual IRI="#Original"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ObjectAttribute"/>
+        <NamedIndividual IRI="#Outstanding"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="SUMO:Man"/>
+        <NamedIndividual IRI="#PabloPicasso"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Painter"/>
+        <NamedIndividual IRI="#PabloPicasso"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Birth"/>
+        <NamedIndividual IRI="#PabloPicassoBirth"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#PaintingTechnique"/>
+        <NamedIndividual IRI="#PaintOntoBrush"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#PaintingTechnique"/>
+        <NamedIndividual IRI="#PaintOntoPalette"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ClassificationConcept"/>
+        <NamedIndividual IRI="#Paintings"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#MaterialType"/>
+        <NamedIndividual IRI="#Paper"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#SurfaceMaterial"/>
+        <NamedIndividual IRI="#Paper"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#City"/>
+        <NamedIndividual IRI="#Paris"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Nationality"/>
+        <NamedIndividual IRI="#Parisian"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Material"/>
+        <NamedIndividual IRI="#Pastel"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Device"/>
+        <NamedIndividual IRI="#Pen"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Device"/>
+        <NamedIndividual IRI="#Pencil"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Collection"/>
+        <NamedIndividual IRI="#PermanentMuseumofModernArtCollection"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="SUMO:Man"/>
+        <NamedIndividual IRI="#PeterEcchers"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Painter"/>
+        <NamedIndividual IRI="#PeterEcchers"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#PaintingStyle"/>
+        <NamedIndividual IRI="#PolychromeStyle"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#PaintMaterial"/>
+        <NamedIndividual IRI="#PolymerPaint"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="Mid-level-ontology:OilMedium"/>
+        <NamedIndividual IRI="#PoppyseedOil"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#PortraitPainting"/>
+        <NamedIndividual IRI="#PortraitOfFamily"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="LexOnto:OntologyElement"/>
+        <NamedIndividual IRI="#PortraitPainting"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#AbstractPainting"/>
+        <NamedIndividual IRI="#Post-PainterlyAbstraction"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#AcquisitionType"/>
+        <NamedIndividual IRI="#Present"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#AcquisitionType"/>
+        <NamedIndividual IRI="#Purchase"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#SurfaceMaterial"/>
+        <NamedIndividual IRI="#PureSilk"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Function"/>
+        <NamedIndividual IRI="#Recreation"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#PaintMaterial"/>
+        <NamedIndividual IRI="#RedOcherPaint"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="SUMO:Man"/>
+        <NamedIndividual IRI="#Rembrandt"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Painter"/>
+        <NamedIndividual IRI="#Rembrandt"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Function"/>
+        <NamedIndividual IRI="#Reproduction"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#AcrylicMedium"/>
+        <NamedIndividual IRI="#RetarderMedium"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#StateOfObject"/>
+        <NamedIndividual IRI="#Retouch"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ColorAttribute"/>
+        <NamedIndividual IRI="#Rich"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#SurfaceMaterial"/>
+        <NamedIndividual IRI="#RisePaper"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="Mid-level-ontology:OilMedium"/>
+        <NamedIndividual IRI="#SafflowerOil"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#IdentifierType"/>
+        <NamedIndividual IRI="#SecondaryNr"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#PaintingTechnique"/>
+        <NamedIndividual IRI="#Sketch"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ColorAttribute"/>
+        <NamedIndividual IRI="#Sonorous"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Country"/>
+        <NamedIndividual IRI="#Spain"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#PaintMaterial"/>
+        <NamedIndividual IRI="#SprayPaint"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="Mid-level-ontology:OilMedium"/>
+        <NamedIndividual IRI="#StandOil"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ColorAttribute"/>
+        <NamedIndividual IRI="#Strong"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ColorAttribute"/>
+        <NamedIndividual IRI="#Sumptuous"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="Mid-level-ontology:OilMedium"/>
+        <NamedIndividual IRI="#Sun-thickenedLinseedOil"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Country"/>
+        <NamedIndividual IRI="#Sweden"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Nationality"/>
+        <NamedIndividual IRI="#Swedish"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CurrencyUnit"/>
+        <NamedIndividual IRI="#SwedishKrona"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="SUMO:Man"/>
+        <NamedIndividual IRI="#TerBorch"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Painter"/>
+        <NamedIndividual IRI="#TerBorch"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#MaterialType"/>
+        <NamedIndividual IRI="#Textile"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#AcrylicMedium"/>
+        <NamedIndividual IRI="#TextureMedium"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#MuseumBuilding"/>
+        <NamedIndividual IRI="#TheBritishMuseum"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Painting"/>
+        <NamedIndividual IRI="#TheCrucifixionObj"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#AgentAppellation"/>
+        <NamedIndividual IRI="#TheGreek"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#AgentAppellation"/>
+        <NamedIndividual IRI="#TheKing"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Painting"/>
+        <NamedIndividual IRI="#TheNightWatch"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Exhibition"/>
+        <NamedIndividual IRI="#TheSecondAnnualExhibition"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Painting"/>
+        <NamedIndividual IRI="#TheShootingCompanyofFransBanningCocq"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Painting"/>
+        <NamedIndividual IRI="#TheWhiteDressObj"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="SUMO:Man"/>
+        <NamedIndividual IRI="#TheodoreDuret"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Collector"/>
+        <NamedIndividual IRI="#TheodoreDuret"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#SurfaceMaterial"/>
+        <NamedIndividual IRI="#TibetanSilk"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#SurfaceMaterial"/>
+        <NamedIndividual IRI="#TissuePaper"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#IdentifierType"/>
+        <NamedIndividual IRI="#URL"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#University"/>
+        <NamedIndividual IRI="#UniversityOfArt"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ColorAttribute"/>
+        <NamedIndividual IRI="#Variegated"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ClassificationConcept"/>
+        <NamedIndividual IRI="#Vision"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ColorAttribute"/>
+        <NamedIndividual IRI="#Vivid"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#TimePeriod"/>
+        <NamedIndividual IRI="#WDPresentationDate"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="Mid-level-ontology:OilMedium"/>
+        <NamedIndividual IRI="#WalnutOil"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#PaintingTechnique"/>
+        <NamedIndividual IRI="#WashTechnique"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#PaintMaterial"/>
+        <NamedIndividual IRI="#WatercolorPaint"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="SUMO:WaterArea"/>
+        <NamedIndividual IRI="#Waterscape"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ColorAttribute"/>
+        <NamedIndividual IRI="#Week"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Region"/>
+        <NamedIndividual IRI="#WestAsia"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ClassificationConcept"/>
+        <NamedIndividual IRI="#WesternPainting"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Color"/>
+        <NamedIndividual IRI="#White"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#MaterialType"/>
+        <NamedIndividual IRI="#Wood"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#SurfaceMaterial"/>
+        <NamedIndividual IRI="#Wood"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#SurfaceMaterial"/>
+        <NamedIndividual IRI="#Woollen"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ClassificationConcept"/>
+        <NamedIndividual IRI="#WorkOfArt"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Event"/>
+        <NamedIndividual IRI="#WorldWarI"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#StateOfObject"/>
+        <NamedIndividual IRI="#WornOut"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#TimePeriod"/>
+        <NamedIndividual IRI="#Years400-499"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#PaintMaterial"/>
+        <NamedIndividual IRI="#YellowOcherPaint"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="SUMO:Man"/>
+        <NamedIndividual IRI="#ZanobiStrozzi"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Painter"/>
+        <NamedIndividual IRI="#ZanobiStrozzi"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#AnimateThing"/>
+        <NamedIndividual IRI="#horse"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="saldoOnto:WordSenseId"/>
+        <NamedIndividual IRI="#konstsamlare..1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#State"/>
+        <NamedIndividual IRI="#spring-cleaned"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#UniqueIdentifier"/>
+        <NamedIndividual IRI="#795-361"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#UniqueIdentifier"/>
+        <NamedIndividual IRI="#940051"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="saldoOnto:WordSenseId"/>
+        <NamedIndividual abbreviatedIRI="saldoOnto:betitla..1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="saldoOnto:WordSenseId"/>
+        <NamedIndividual abbreviatedIRI="saldoOnto:en..1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="saldoOnto:WordSenseId"/>
+        <NamedIndividual abbreviatedIRI="saldoOnto:ental..1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="saldoOnto:WordSenseId"/>
+        <NamedIndividual abbreviatedIRI="saldoOnto:furu..1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="saldoOnto:WordSenseId"/>
+        <NamedIndividual abbreviatedIRI="saldoOnto:målning..1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="saldoOnto:WordSenseId"/>
+        <NamedIndividual abbreviatedIRI="saldoOnto:omfatta..1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="saldoOnto:WordSenseId"/>
+        <NamedIndividual abbreviatedIRI="saldoOnto:väcka_uppmärksamhet..1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="saldoOnto:WordSenseId"/>
+        <NamedIndividual abbreviatedIRI="saldoOnto:välgörande..1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="saldoOnto:WordSenseId"/>
+        <NamedIndividual abbreviatedIRI="saldoOnto:återfinna..1"/>
+    </ClassAssertion>
+    <SameIndividual>
+        <NamedIndividual IRI="#AerosolPaint"/>
+        <NamedIndividual IRI="#SprayPaint"/>
+    </SameIndividual>
+    <SameIndividual>
+        <NamedIndividual IRI="#Century19th"/>
+        <NamedIndividual IRI="#NineteenthCentury"/>
+    </SameIndividual>
+    <SameIndividual>
+        <NamedIndividual IRI="#Century5th"/>
+        <NamedIndividual IRI="#Years400-499"/>
+    </SameIndividual>
+    <SameIndividual>
+        <NamedIndividual IRI="#ColorFieldPainting"/>
+        <NamedIndividual IRI="#Post-PainterlyAbstraction"/>
+    </SameIndividual>
+    <SameIndividual>
+        <NamedIndividual IRI="#TheNightWatch"/>
+        <NamedIndividual IRI="#TheShootingCompanyofFransBanningCocq"/>
+    </SameIndividual>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasNationality"/>
+        <NamedIndividual IRI="#Aristotle"/>
+        <NamedIndividual IRI="#Greek"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="saldoOnto:hasSense"/>
+        <NamedIndividual IRI="#Attention"/>
+        <NamedIndividual abbreviatedIRI="saldoOnto:väcka_uppmärksamhet..1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasIdentifierType"/>
+        <NamedIndividual IRI="#B19760"/>
+        <NamedIndividual IRI="#NegativeNr"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasPhotographyDate"/>
+        <NamedIndividual IRI="#Bo-BUBilder-GBG-sMOTIVPICT-GSM940051"/>
+        <NamedIndividual IRI="#GSM940051PhotoDate"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#photographedBy"/>
+        <NamedIndividual IRI="#Bo-BUBilder-GBG-sMOTIVPICT-GSM940051"/>
+        <NamedIndividual IRI="#AnnikaPersson"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasNationality"/>
+        <NamedIndividual IRI="#BrynolfWennerberg"/>
+        <NamedIndividual IRI="#Swedish"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="saldoOnto:hasSense"/>
+        <NamedIndividual IRI="#Charity"/>
+        <NamedIndividual abbreviatedIRI="saldoOnto:välgörande..1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="saldoOnto:hasSense"/>
+        <NamedIndividual IRI="#Collector"/>
+        <NamedIndividual IRI="#konstsamlare..1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#displayedAt"/>
+        <NamedIndividual IRI="#Derivera"/>
+        <NamedIndividual IRI="#MorsMossa"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#exhibitionOf"/>
+        <NamedIndividual IRI="#Derivera"/>
+        <NamedIndividual IRI="#PeterEcchers"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="saldoOnto:hasSense"/>
+        <NamedIndividual IRI="#Furu"/>
+        <NamedIndividual abbreviatedIRI="saldoOnto:furu..1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasUnitOfCurrency"/>
+        <NamedIndividual IRI="#GSM920051Value"/>
+        <NamedIndividual IRI="#SwedishKrona"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasIdentifierType"/>
+        <NamedIndividual IRI="#GSM9226"/>
+        <NamedIndividual IRI="#InventoryNr"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasAcquisitionMethod"/>
+        <NamedIndividual IRI="#GSM940051Acquisition"/>
+        <NamedIndividual IRI="#Present"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasUnitOfMeasure"/>
+        <NamedIndividual IRI="#GSM940051ImageHeight"/>
+        <NamedIndividual IRI="#Centimeter"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasUnitOfMeasure"/>
+        <NamedIndividual IRI="#GSM940051ImageWidth"/>
+        <NamedIndividual IRI="#Centimeter"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#acquiredThrough"/>
+        <NamedIndividual IRI="#GSM940051Obj"/>
+        <NamedIndividual IRI="#GSM940051Acquisition"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#belongsTo"/>
+        <NamedIndividual IRI="#GSM940051Obj"/>
+        <NamedIndividual IRI="#GSM"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#createdBy"/>
+        <NamedIndividual IRI="#GSM940051Obj"/>
+        <NamedIndividual IRI="#BrynolfWennerberg"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasAcquisitionDate"/>
+        <NamedIndividual IRI="#GSM940051Obj"/>
+        <NamedIndividual IRI="#GSM940051AcquisitionDate"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasAssignedAttribute"/>
+        <NamedIndividual IRI="#GSM940051Obj"/>
+        <NamedIndividual IRI="#Good"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasClassification"/>
+        <NamedIndividual IRI="#GSM940051Obj"/>
+        <NamedIndividual IRI="#GothenburgMotive"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasClassification"/>
+        <NamedIndividual IRI="#GSM940051Obj"/>
+        <NamedIndividual IRI="#Paintings"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasCreationDate"/>
+        <NamedIndividual IRI="#GSM940051Obj"/>
+        <NamedIndividual IRI="#GSM940051CreationDate"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasCurrentLocation"/>
+        <NamedIndividual IRI="#GSM940051Obj"/>
+        <NamedIndividual IRI="#HuvudmagasinetGårda"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasDimension"/>
+        <NamedIndividual IRI="#GSM940051Obj"/>
+        <NamedIndividual IRI="#GSM940051ImageWidth"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasDimension"/>
+        <NamedIndividual IRI="#GSM940051Obj"/>
+        <NamedIndividual IRI="#GSM940051ImageHeight"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasHistoricalContext"/>
+        <NamedIndividual IRI="#GSM940051Obj"/>
+        <NamedIndividual IRI="#GSM940051History"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasMaterial"/>
+        <NamedIndividual IRI="#GSM940051Obj"/>
+        <NamedIndividual IRI="#Linen"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasMaterial"/>
+        <NamedIndividual IRI="#GSM940051Obj"/>
+        <NamedIndividual IRI="#Wood"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasObjectValue"/>
+        <NamedIndividual IRI="#GSM940051Obj"/>
+        <NamedIndividual IRI="#GSM920051Value"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasPaintingStyle"/>
+        <NamedIndividual IRI="#GSM940051Obj"/>
+        <NamedIndividual IRI="#PolychromeStyle"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasRegistrationDate"/>
+        <NamedIndividual IRI="#GSM940051Obj"/>
+        <NamedIndividual IRI="#GSM940051Registration"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasRepresentation"/>
+        <NamedIndividual IRI="#GSM940051Obj"/>
+        <NamedIndividual IRI="#Bo-BUBilder-GBG-sMOTIVPICT-GSM940051"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasUniqueIdentifier"/>
+        <NamedIndividual IRI="#GSM940051Obj"/>
+        <NamedIndividual IRI="#940051"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasUnitOfMeasure"/>
+        <NamedIndividual IRI="#GuernicaHeight"/>
+        <NamedIndividual IRI="#Centimeter"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#represents"/>
+        <NamedIndividual IRI="#GuernicaJPG"/>
+        <NamedIndividual IRI="#GuernicaObj"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#createdBy"/>
+        <NamedIndividual IRI="#GuernicaObj"/>
+        <NamedIndividual IRI="#PabloPicasso"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#displayedAt"/>
+        <NamedIndividual IRI="#GuernicaObj"/>
+        <NamedIndividual IRI="#InternationalExposition"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasColor"/>
+        <NamedIndividual IRI="#GuernicaObj"/>
+        <NamedIndividual IRI="#White"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasColor"/>
+        <NamedIndividual IRI="#GuernicaObj"/>
+        <NamedIndividual IRI="#Gray"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasColor"/>
+        <NamedIndividual IRI="#GuernicaObj"/>
+        <NamedIndividual IRI="#Black"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasCreationDate"/>
+        <NamedIndividual IRI="#GuernicaObj"/>
+        <NamedIndividual IRI="#GuernicaCreationDate"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasCurrentLocation"/>
+        <NamedIndividual IRI="#GuernicaObj"/>
+        <NamedIndividual IRI="#MuseoReinaSofía"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasDimension"/>
+        <NamedIndividual IRI="#GuernicaObj"/>
+        <NamedIndividual IRI="#GuernicaHeight"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasIntendedUse"/>
+        <NamedIndividual IRI="#GuernicaObj"/>
+        <NamedIndividual IRI="#Attention"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasPaintType"/>
+        <NamedIndividual IRI="#GuernicaObj"/>
+        <NamedIndividual IRI="#StandOil"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasRepresentation"/>
+        <NamedIndividual IRI="#GuernicaObj"/>
+        <NamedIndividual IRI="#GuernicaJPG"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasTitle"/>
+        <NamedIndividual IRI="#GuernicaObj"/>
+        <NamedIndividual IRI="#GuernicaTitle"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasUnitOfMeasure"/>
+        <NamedIndividual IRI="#GuernicaWidth"/>
+        <NamedIndividual IRI="#Centimeter"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#comprises"/>
+        <NamedIndividual IRI="#IberianPeninsula"/>
+        <NamedIndividual IRI="#Spain"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasPermanentLocation"/>
+        <NamedIndividual IRI="#InternationalExposition"/>
+        <NamedIndividual IRI="#Paris"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasPresentationDate"/>
+        <NamedIndividual IRI="#InternationalExposition"/>
+        <NamedIndividual IRI="#GuernicaPresentationDate"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasBroaderTerm"/>
+        <NamedIndividual IRI="#MandrianCompositionObj"/>
+        <NamedIndividual IRI="#ModernEuropeanFineArt"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasLocalName"/>
+        <NamedIndividual IRI="#MandrianCompositionObj"/>
+        <NamedIndividual IRI="#MondrianComposition"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasNarrowerTerm"/>
+        <NamedIndividual IRI="#MandrianCompositionObj"/>
+        <NamedIndividual IRI="#GeometricAbstraction"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasUnitOfMeasure"/>
+        <NamedIndividual IRI="#MiniaturePaintingDiameter"/>
+        <NamedIndividual IRI="#Centimeter"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasUnitOfMeasure"/>
+        <NamedIndividual IRI="#MiniaturePaintingHeight"/>
+        <NamedIndividual IRI="#Centimeter"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasUnitOfMeasure"/>
+        <NamedIndividual IRI="#MiniaturePaintingWidth"/>
+        <NamedIndividual IRI="#Centimeter"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasBroaderTerm"/>
+        <NamedIndividual IRI="#ModernEuropeanFineArt"/>
+        <NamedIndividual IRI="#ModernEuropeanStyle"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasBroaderTerm"/>
+        <NamedIndividual IRI="#ModernEuropeanStyle"/>
+        <NamedIndividual IRI="#EuropeanArt"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasGeoPos"/>
+        <NamedIndividual IRI="#MuseoReinaSofiaPosition"/>
+        <NamedIndividual IRI="#MuseoReinaSofiaLongLat"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasPermanentLocation"/>
+        <NamedIndividual IRI="#MuseoReinaSofía"/>
+        <NamedIndividual IRI="#Madrid"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hascoordinates"/>
+        <NamedIndividual IRI="#MuseoReinaSofía"/>
+        <NamedIndividual IRI="#MuseoReinaSofiaPosition"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasCurrentCurator"/>
+        <NamedIndividual IRI="#NicoHvanHeekCollection"/>
+        <NamedIndividual IRI="#NicoHvanHeek"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasPresentationDate"/>
+        <NamedIndividual IRI="#NicoHvanHeekCollection"/>
+        <NamedIndividual IRI="#HeekCollectionPresentationDate"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasPresentationLocation"/>
+        <NamedIndividual IRI="#NicoHvanHeekCollection"/>
+        <NamedIndividual IRI="#Enschede"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasAcronym"/>
+        <NamedIndividual IRI="#NordicMuseum"/>
+        <NamedIndividual IRI="#NOMU"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="saldoOnto:hasSense"/>
+        <NamedIndividual IRI="#Painting"/>
+        <NamedIndividual abbreviatedIRI="saldoOnto:målning..1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#belongsTo"/>
+        <NamedIndividual IRI="#PortraitOfFamily"/>
+        <NamedIndividual IRI="#NicoHvanHeekCollection"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#createdBy"/>
+        <NamedIndividual IRI="#PortraitOfFamily"/>
+        <NamedIndividual IRI="#TerBorch"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasCreationDate"/>
+        <NamedIndividual IRI="#PortraitOfFamily"/>
+        <NamedIndividual IRI="#HeekCollectionPresentationDate"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasIntendedUse"/>
+        <NamedIndividual IRI="#PortraitOfFamily"/>
+        <NamedIndividual IRI="#Copy"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasNationality"/>
+        <NamedIndividual IRI="#Rembrandt"/>
+        <NamedIndividual IRI="#Dutch"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasGeographicLocation"/>
+        <NamedIndividual IRI="#Spain"/>
+        <NamedIndividual IRI="#Europe"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#isIdentifiedBy"/>
+        <NamedIndividual IRI="#Sweden"/>
+        <NamedIndividual IRI="#IberianPeninsula"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasPresentationDate"/>
+        <NamedIndividual IRI="#TheWhiteDressObj"/>
+        <NamedIndividual IRI="#WDPresentationDate"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="saldoOnto:hasSense"/>
+        <NamedIndividual IRI="#hasTitle"/>
+        <NamedIndividual abbreviatedIRI="saldoOnto:betitla..1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasIdentifierType"/>
+        <NamedIndividual IRI="#795-361"/>
+        <NamedIndividual IRI="#ClassificationNr"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasIdentifierType"/>
+        <NamedIndividual IRI="#940051"/>
+        <NamedIndividual IRI="#IdNr"/>
+    </ObjectPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="foaf:familyName"/>
+        <NamedIndividual IRI="#AnnikaPersson"/>
+        <Literal datatypeIRI="&xsd;string">Persson</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="foaf:firstName"/>
+        <NamedIndividual IRI="#AnnikaPersson"/>
+        <Literal datatypeIRI="&xsd;string">Annika</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasIdentifierValue"/>
+        <NamedIndividual IRI="#B19760"/>
+        <Literal datatypeIRI="&rdfs;Literal">B 19760</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="foaf:familyName"/>
+        <NamedIndividual IRI="#BrynolfWennerberg"/>
+        <Literal datatypeIRI="&rdfs;Literal">Wennerberg</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="foaf:firstName"/>
+        <NamedIndividual IRI="#BrynolfWennerberg"/>
+        <Literal datatypeIRI="&rdfs;Literal">Brynolf</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasStatus"/>
+        <NamedIndividual IRI="#DagmarThelinSjukhem"/>
+        <Literal datatypeIRI="&rdfs;Literal">Institution</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#fromTimePeriodValue"/>
+        <NamedIndividual IRI="#EarlyMiddleAgesPeriod"/>
+        <Literal datatypeIRI="&rdfs;Literal">300</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#toTimePeriodValue"/>
+        <NamedIndividual IRI="#EarlyMiddleAgesPeriod"/>
+        <Literal datatypeIRI="&rdfs;Literal">1000</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#fromTimePeriodValue"/>
+        <NamedIndividual IRI="#EarlyModernPeriod"/>
+        <Literal datatypeIRI="&rdfs;Literal">1500</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#toTimePeriodValue"/>
+        <NamedIndividual IRI="#EarlyModernPeriod"/>
+        <Literal datatypeIRI="&rdfs;Literal">1800</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#currencyValue"/>
+        <NamedIndividual IRI="#GSM920051Value"/>
+        <Literal datatypeIRI="&rdfs;Literal">5,000</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasIdentifierValue"/>
+        <NamedIndividual IRI="#GSM9226"/>
+        <Literal datatypeIRI="&rdfs;Literal">GSM9226</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#fromTimePeriodValue"/>
+        <NamedIndividual IRI="#GSM940051CreationDate"/>
+        <Literal datatypeIRI="&rdfs;Literal">1889</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#toTimePeriodValue"/>
+        <NamedIndividual IRI="#GSM940051CreationDate"/>
+        <Literal datatypeIRI="&rdfs;Literal">1889</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#descriptionString"/>
+        <NamedIndividual IRI="#GSM940051History"/>
+        <Literal xml:lang="swe" datatypeIRI="&rdf;PlainLiteral">Har tillhört Dagmar Thelin, barnbarn till konstnären. Tuvängens Sjukhem, rum 12. Brynolf Wennerberg var god vän med Carl Larsson från Valand.  Brynolf Wennerberg litade inte på konstnärsskap, han över tog en mindre herrgård på Kållandsö. Där idkade han hästavel med god framgång.</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasValue"/>
+        <NamedIndividual IRI="#GSM940051ImageHeight"/>
+        <Literal datatypeIRI="&rdfs;Literal">59,4</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasValue"/>
+        <NamedIndividual IRI="#GSM940051ImageWidth"/>
+        <Literal datatypeIRI="&rdfs;Literal">75,2</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasPopularityValue"/>
+        <NamedIndividual IRI="#GSM940051Obj"/>
+        <Literal datatypeIRI="&xsd;string">3</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#fromTimePeriodValue"/>
+        <NamedIndividual IRI="#GSM940051PhotoDate"/>
+        <Literal datatypeIRI="&rdf;PlainLiteral">2002-10-29</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#fromTimePeriodValue"/>
+        <NamedIndividual IRI="#GSM940051Registration"/>
+        <Literal datatypeIRI="&rdfs;Literal">1994-12-08</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#fromTimePeriodValue"/>
+        <NamedIndividual IRI="#GuernicaCreationDate"/>
+        <Literal datatypeIRI="&rdfs;Literal">1937</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#toTimePeriodValue"/>
+        <NamedIndividual IRI="#GuernicaCreationDate"/>
+        <Literal datatypeIRI="&rdfs;Literal">1937</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasValue"/>
+        <NamedIndividual IRI="#GuernicaHeight"/>
+        <Literal datatypeIRI="&rdfs;Literal">349</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#fromTimePeriodValue"/>
+        <NamedIndividual IRI="#GuernicaPresentationDate"/>
+        <Literal datatypeIRI="&rdfs;Literal">1996</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#toTimePeriodValue"/>
+        <NamedIndividual IRI="#GuernicaPresentationDate"/>
+        <Literal datatypeIRI="&rdfs;Literal">1997</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#titleString"/>
+        <NamedIndividual IRI="#GuernicaTitle"/>
+        <Literal datatypeIRI="&xsd;string">Guernica</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasValue"/>
+        <NamedIndividual IRI="#GuernicaWidth"/>
+        <Literal datatypeIRI="&rdfs;Literal">776</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#fromTimePeriodValue"/>
+        <NamedIndividual IRI="#HeekCollectionPresentationDate"/>
+        <Literal datatypeIRI="&rdfs;Literal">1656</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#toTimePeriodValue"/>
+        <NamedIndividual IRI="#HeekCollectionPresentationDate"/>
+        <Literal datatypeIRI="&rdfs;Literal">1656</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasValue"/>
+        <NamedIndividual IRI="#MiniaturePaintingDiameter"/>
+        <Literal datatypeIRI="&rdfs;Literal">5</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasValue"/>
+        <NamedIndividual IRI="#MiniaturePaintingHeight"/>
+        <Literal datatypeIRI="&rdfs;Literal">5</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasValue"/>
+        <NamedIndividual IRI="#MiniaturePaintingWidth"/>
+        <Literal datatypeIRI="&rdfs;Literal">5</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#latValue"/>
+        <NamedIndividual IRI="#MuseoReinaSofiaLongLat"/>
+        <Literal datatypeIRI="&xsd;string">6°5’29</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#longValue"/>
+        <NamedIndividual IRI="#MuseoReinaSofiaLongLat"/>
+        <Literal datatypeIRI="&xsd;string">12’13”</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#fromTimePeriodValue"/>
+        <NamedIndividual IRI="#WDPresentationDate"/>
+        <Literal datatypeIRI="&rdfs;Literal">1899</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#fromTimePeriodValue"/>
+        <NamedIndividual IRI="#Years400-499"/>
+        <Literal datatypeIRI="&rdfs;Literal">400</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#toTimePeriodValue"/>
+        <NamedIndividual IRI="#Years400-499"/>
+        <Literal datatypeIRI="&rdfs;Literal">499</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasIdentifierValue"/>
+        <NamedIndividual IRI="#795-361"/>
+        <Literal datatypeIRI="&rdfs;Literal">795;361</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasIdentifierValue"/>
+        <NamedIndividual IRI="#940051"/>
+        <Literal datatypeIRI="&rdfs;Literal">940051</Literal>
+    </DataPropertyAssertion>
+    <EquivalentObjectProperties>
+        <ObjectProperty IRI="#hasBroaderTerm"/>
+        <ObjectProperty abbreviatedIRI="skos2:boader"/>
+    </EquivalentObjectProperties>
+    <EquivalentObjectProperties>
+        <ObjectProperty IRI="#hasNarrowerTerm"/>
+        <ObjectProperty abbreviatedIRI="skos2:narrower"/>
+    </EquivalentObjectProperties>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#broughtIntoLife"/>
+        <ObjectProperty abbreviatedIRI="core:P98_brought_into_life"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#carriedOutBy"/>
+        <ObjectProperty abbreviatedIRI="core:P14_carried_out_by"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#comprises"/>
+        <ObjectProperty abbreviatedIRI="core:P88_consists_of"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#documents"/>
+        <ObjectProperty abbreviatedIRI="core:P70_documents"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#exhibitionOf"/>
+        <ObjectProperty IRI="#exhibits"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasAcquisitionMethod"/>
+        <ObjectProperty abbreviatedIRI="core:P2_has_type"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasAssignedAttribute"/>
+        <ObjectProperty IRI="#hasPaintingDescriptor"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasBroaderTerm"/>
+        <ObjectProperty abbreviatedIRI="core:P127_has_broader_term"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasClassification"/>
+        <ObjectProperty abbreviatedIRI="core:P2_has_type"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasColor"/>
+        <ObjectProperty IRI="#hasPaintingDescriptor"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasColorAttribute"/>
+        <ObjectProperty IRI="#hasAssignedAttribute"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasCondition"/>
+        <ObjectProperty abbreviatedIRI="core:P44_has_condition"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasCurrentCurator"/>
+        <ObjectProperty abbreviatedIRI="core:P109_has_current_or_former_curator"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasCurrentLocation"/>
+        <ObjectProperty abbreviatedIRI="core:P55_has_current_location"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasCurrentOwner"/>
+        <ObjectProperty abbreviatedIRI="core:P52_has_current_owner"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasDesignPattern"/>
+        <ObjectProperty IRI="#hasPaintingDescriptor"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasDimension"/>
+        <ObjectProperty abbreviatedIRI="core:P43_has_dimension"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasFormerLocation"/>
+        <ObjectProperty abbreviatedIRI="core:P53_has_former_or_current_location"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasGeographicLocation"/>
+        <ObjectProperty IRI="#isIdentifiedBy"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasIdentifierType"/>
+        <ObjectProperty abbreviatedIRI="core:P2_has_type"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasIntendedUse"/>
+        <ObjectProperty abbreviatedIRI="core:P103_was_intended_for"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasLocalName"/>
+        <ObjectProperty abbreviatedIRI="core:P2_has_type"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasMaterial"/>
+        <ObjectProperty abbreviatedIRI="core:P45_consists_of"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasMaterialCategory"/>
+        <ObjectProperty abbreviatedIRI="core:P2_has_type"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasMember"/>
+        <ObjectProperty abbreviatedIRI="core:P107_has_current_or_former_member"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasPaintType"/>
+        <ObjectProperty IRI="#hasMaterial"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasPaintingStyle"/>
+        <ObjectProperty IRI="#hasPaintingDescriptor"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasProduced"/>
+        <ObjectProperty abbreviatedIRI="core:P108_has_produced"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasReference"/>
+        <ObjectProperty IRI="#hasPaintingDescriptor"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasTitle"/>
+        <ObjectProperty abbreviatedIRI="core:P102_has_title"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasUniqueIdentifier"/>
+        <ObjectProperty abbreviatedIRI="core:P48_has_preferred_identifier"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasUnitOfCurrency"/>
+        <ObjectProperty abbreviatedIRI="core:P2_has_type"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasUnitOfMeasure"/>
+        <ObjectProperty abbreviatedIRI="core:P91_has_unit"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasValueType"/>
+        <ObjectProperty abbreviatedIRI="core:P2_has_type"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#influencedBy"/>
+        <ObjectProperty abbreviatedIRI="core:P15_was_influenced_by"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#isAbout"/>
+        <ObjectProperty abbreviatedIRI="core:P129_is_about"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#isIdentifiedBy"/>
+        <ObjectProperty abbreviatedIRI="core:P87_is_identified_by"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#isIdentifiedByName"/>
+        <ObjectProperty abbreviatedIRI="core:P131_is_identified_by"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#movedFrom"/>
+        <ObjectProperty abbreviatedIRI="core:P27_moved_from"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#movedTo"/>
+        <ObjectProperty abbreviatedIRI="core:P26_moved_to"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#represents"/>
+        <ObjectProperty abbreviatedIRI="core:P138_represents"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#transferredCustodyOf"/>
+        <ObjectProperty abbreviatedIRI="core:P30_transferred_custody_of"/>
+    </SubObjectPropertyOf>
+    <TransitiveObjectProperty>
+        <ObjectProperty IRI="#hasPermanentLocation"/>
+    </TransitiveObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty abbreviatedIRI="hwnOnto:hasSense"/>
+        <Class abbreviatedIRI="LexOnto:OntologyElement"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#acquiredThrough"/>
+        <Class IRI="#Painting"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#assignedAttributeBy"/>
+        <Class IRI="#ObjectAttribute"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#belongsTo"/>
+        <Class IRI="#Painting"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#broughtIntoLife"/>
+        <Class IRI="#Birth"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#carriedOutBy"/>
+        <Class IRI="#AcquisitionActivity"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#comprises"/>
+        <Class IRI="#Place"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#createdBy"/>
+        <Class IRI="#Painting"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#currentOwnerOf"/>
+        <Class IRI="#Human"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#depicts"/>
+        <Class IRI="#Painting"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#displayedAt"/>
+        <Class IRI="#Painting"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#documents"/>
+        <Class IRI="#Document"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#exhibitionOf"/>
+        <Class IRI="#Exhibition"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#exhibits"/>
+        <Class IRI="#Exhibition"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasAcquisitionDate"/>
+        <Class IRI="#AcquisitionActivity"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasAcquisitionMethod"/>
+        <Class IRI="#AcquisitionActivity"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasAcronym"/>
+        <Class IRI="#Organization"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasAssignedAttribute"/>
+        <Class IRI="#Painting"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasBroaderTerm"/>
+        <Class IRI="#ClassificationConcept"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasClassification"/>
+        <Class IRI="#Painting"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasColor"/>
+        <Class IRI="#Painting"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasColorAttribute"/>
+        <Class IRI="#Color"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasCondition"/>
+        <Class IRI="#Painting"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasCreationDate"/>
+        <Class IRI="#Painting"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasCreationLocation"/>
+        <Class IRI="#Painting"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasCurrentCurator"/>
+        <Class IRI="#Collection"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasCurrentLocation"/>
+        <Class IRI="#Painting"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasCurrentOwner"/>
+        <Class IRI="#Painting"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasDesignPattern"/>
+        <Class IRI="#Painting"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasDimension"/>
+        <Class IRI="#Painting"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasFormerLocation"/>
+        <Class IRI="#Painting"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasGeoPos"/>
+        <Class IRI="#PlaceCoordinates"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasGeographicLocation"/>
+        <Class IRI="#Place"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasHistoricalContext"/>
+        <Class IRI="#Painting"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasIdentifierType"/>
+        <Class IRI="#UniqueIdentifier"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasIntendedUse"/>
+        <Class IRI="#Painting"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasLocalName"/>
+        <Class IRI="#Painting"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasMaterial"/>
+        <Class IRI="#Painting"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasMaterialCategory"/>
+        <Class IRI="#Material"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasMedium"/>
+        <Class IRI="#Material"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasMember"/>
+        <Class IRI="#Organization"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasNarrowerTerm"/>
+        <Class IRI="#ClassificationConcept"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasNationality"/>
+        <Class IRI="#Human"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasObjectValue"/>
+        <Class IRI="#Painting"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasPaintType"/>
+        <Class IRI="#Painting"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasPaintingDescriptor"/>
+        <Class IRI="#Painting"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasPaintingStyle"/>
+        <Class IRI="#Painting"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasPaintingTechnique"/>
+        <Class IRI="#Painting"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasPermanentLocation"/>
+        <Class IRI="#Region"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasPhotographyDate"/>
+        <Class IRI="#Image"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasPresentationDate"/>
+        <Class IRI="#Painting"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasPresentationLocation"/>
+        <Class IRI="#Painting"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasProduced"/>
+        <Class IRI="#ProductionEvent"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasReference"/>
+        <Class IRI="#Painting"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasRegistrationDate"/>
+        <Class IRI="#Painting"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasRepresentation"/>
+        <Class IRI="#Painting"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasTitle"/>
+        <Class IRI="#Painting"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasUniqueIdentifier"/>
+        <Class abbreviatedIRI="owl:Thing"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasUnitOfCurrency"/>
+        <Class IRI="#ObjectValue"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasUnitOfMeasure"/>
+        <Class IRI="#Dimension"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasValueType"/>
+        <Class IRI="#Painting"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hascoordinates"/>
+        <Class IRI="#Place"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#influencedBy"/>
+        <Class IRI="#ProductionEvent"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#isAbout"/>
+        <Class IRI="#ObjectDescription"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#isCreatorOf"/>
+        <Class IRI="#Human"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#isEvaluationStateOf"/>
+        <Class IRI="#StateOfObject"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#isIdentifiedBy"/>
+        <Class IRI="#Place"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#isIdentifiedByName"/>
+        <Class IRI="#Agent"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#isKnownFor"/>
+        <Class IRI="#Human"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#isMediumOf"/>
+        <Class IRI="#Medium"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#isPaintedWith"/>
+        <Class IRI="#Painting"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#isStateOf"/>
+        <Class IRI="#StateOfObject"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#movedFrom"/>
+        <Class IRI="#Move"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#movedTo"/>
+        <Class IRI="#Move"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#occurredDuring"/>
+        <Class IRI="#ProductionEvent"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#photographedBy"/>
+        <Class IRI="#Image"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#proclaims"/>
+        <Class IRI="#PaintingStyle"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#represents"/>
+        <Class IRI="#Image"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#transferredCustodyOf"/>
+        <Class IRI="#TransferOfCustody"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty abbreviatedIRI="saldoOnto:hasSense"/>
+        <Class abbreviatedIRI="LexOnto:OntologyElement"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty abbreviatedIRI="pwnOnto:hasSense"/>
+        <Class abbreviatedIRI="LexOnto:OntologyElement"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty abbreviatedIRI="hwnOnto:hasSense"/>
+        <Class abbreviatedIRI="hwnOnto:WordSense"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#acquiredThrough"/>
+        <Class IRI="#AcquisitionActivity"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#assignedAttributeBy"/>
+        <Class IRI="#Human"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#belongsTo"/>
+        <Class IRI="#Collection"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#broughtIntoLife"/>
+        <Class IRI="#Human"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#carriedOutBy"/>
+        <Class IRI="#Agent"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#comprises"/>
+        <Class IRI="#Place"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#createdBy"/>
+        <Class IRI="#Human"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#currentOwnerOf"/>
+        <Class IRI="#Painting"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#depicts"/>
+        <Class abbreviatedIRI="owl:Thing"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#displayedAt"/>
+        <Class IRI="#Exhibition"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#documents"/>
+        <Class IRI="#Painting"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#exhibitionOf"/>
+        <Class IRI="#Human"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#exhibits"/>
+        <Class IRI="#Painting"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasAcquisitionDate"/>
+        <Class IRI="#TimePeriod"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasAcquisitionMethod"/>
+        <Class IRI="#AcquisitionType"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasAcronym"/>
+        <Class IRI="#OrganizationAbbreviation"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasAssignedAttribute"/>
+        <Class IRI="#ObjectAttribute"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasBroaderTerm"/>
+        <Class IRI="#ClassificationConcept"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasClassification"/>
+        <Class IRI="#ClassificationConcept"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasColor"/>
+        <Class IRI="#Color"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasColorAttribute"/>
+        <Class IRI="#ColorAttribute"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasCondition"/>
+        <Class IRI="#StateOfObject"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasCreationDate"/>
+        <Class IRI="#TimePeriod"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasCreationLocation"/>
+        <Class IRI="#PlaceAppellation"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasCurrentCurator"/>
+        <Class IRI="#Agent"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasCurrentLocation"/>
+        <Class IRI="#PlaceAppellation"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasCurrentOwner"/>
+        <Class IRI="#Agent"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasDesignPattern"/>
+        <Class IRI="#DesignPattern"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasDimension"/>
+        <Class IRI="#Dimension"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasFormerLocation"/>
+        <Class IRI="#PlaceAppellation"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasGeoPos"/>
+        <Class IRI="#Point"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasGeographicLocation"/>
+        <Class IRI="#Region"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasHistoricalContext"/>
+        <Class IRI="#ObjectDescription"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasIdentifierType"/>
+        <Class IRI="#IdentifierType"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasIntendedUse"/>
+        <Class IRI="#Function"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasLocalName"/>
+        <Class IRI="#ObjectName"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasMaterial"/>
+        <Class IRI="#Material"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasMaterialCategory"/>
+        <Class IRI="#MaterialType"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasMedium"/>
+        <Class IRI="#Medium"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasMember"/>
+        <Class IRI="#Human"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasNarrowerTerm"/>
+        <Class IRI="#ClassificationConcept"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasNationality"/>
+        <Class IRI="#Nationality"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasObjectValue"/>
+        <Class IRI="#ObjectValue"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasPaintingDescriptor"/>
+        <Class IRI="#PaintingDescriptor"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasPaintingStyle"/>
+        <Class IRI="#PaintingStyle"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasPaintingTechnique"/>
+        <Class IRI="#PaintingTechnique"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasPermanentLocation"/>
+        <Class IRI="#Region"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasPhotographyDate"/>
+        <Class IRI="#TimePeriod"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasPresentationDate"/>
+        <Class IRI="#TimePeriod"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasPresentationLocation"/>
+        <Class IRI="#Place"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasProduced"/>
+        <Class IRI="#Painting"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasReference"/>
+        <Class IRI="#Reference"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasRegistrationDate"/>
+        <Class IRI="#TimePeriod"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasRepresentation"/>
+        <Class IRI="#Image"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasTitle"/>
+        <Class IRI="#Title"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasUniqueIdentifier"/>
+        <Class IRI="#UniqueIdentifier"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasUnitOfCurrency"/>
+        <Class IRI="#CurrencyUnit"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasUnitOfMeasure"/>
+        <Class abbreviatedIRI="SUMO:UnitOfMeasure"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasValueType"/>
+        <Class IRI="#ObjectType"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hascoordinates"/>
+        <Class IRI="#PlaceCoordinates"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#influencedBy"/>
+        <Class IRI="#ClassificationConcept"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#isAbout"/>
+        <Class IRI="#Painting"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#isCreatorOf"/>
+        <Class IRI="#Painting"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#isEvaluationStateOf"/>
+        <Class IRI="#Painting"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#isIdentifiedBy"/>
+        <Class IRI="#PlaceAppellation"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#isIdentifiedByName"/>
+        <Class IRI="#AgentAppellation"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#isKnownFor"/>
+        <Class IRI="#PaintingTechnique"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#isMediumOf"/>
+        <Class IRI="#Material"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#isPaintedWith"/>
+        <Class IRI="#Device"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#isStateOf"/>
+        <Class IRI="#RepresentedThing"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#movedFrom"/>
+        <Class IRI="#Place"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#movedTo"/>
+        <Class IRI="#Place"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#occurredDuring"/>
+        <Class IRI="#TimePeriod"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#photographedBy"/>
+        <Class IRI="#Human"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#proclaims"/>
+        <Class IRI="#TimePeriod"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#represents"/>
+        <Class IRI="#Painting"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#transferredCustodyOf"/>
+        <Class IRI="#Painting"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty abbreviatedIRI="saldoOnto:hasSense"/>
+        <Class abbreviatedIRI="saldoOnto:WordSense"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty abbreviatedIRI="pwnOnto:hasSense"/>
+        <Class abbreviatedIRI="pwnOnto:WordSense"/>
+    </ObjectPropertyRange>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#fromTimePeriodValue"/>
+        <DataProperty abbreviatedIRI="core:P82_at_some_time_within"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#hasStatus"/>
+        <DataProperty abbreviatedIRI="foaf:status"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#hasValue"/>
+        <DataProperty abbreviatedIRI="core:P90_has_value"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#toTimePeriodValue"/>
+        <DataProperty abbreviatedIRI="core:P82_at_some_time_within"/>
+    </SubDataPropertyOf>
+    <DataPropertyDomain>
+        <DataProperty IRI="#currencyValue"/>
+        <Class IRI="#ObjectValue"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#descriptionString"/>
+        <Class IRI="#ObjectDescription"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#fromTimePeriodValue"/>
+        <Class IRI="#TimePeriod"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasIdentifierValue"/>
+        <Class IRI="#UniqueIdentifier"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasPopularityValue"/>
+        <Class IRI="#Painting"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasStatus"/>
+        <Class IRI="#Agent"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasValue"/>
+        <Class IRI="#Dimension"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#latValue"/>
+        <Class IRI="#Point"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#longValue"/>
+        <Class IRI="#Point"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#titleString"/>
+        <Class IRI="#Title"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#toTimePeriodValue"/>
+        <Class IRI="#TimePeriod"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="#currencyValue"/>
+        <Datatype abbreviatedIRI="rdfs:Literal"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#fromTimePeriodValue"/>
+        <Datatype abbreviatedIRI="rdfs:Literal"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasIdentifierValue"/>
+        <Datatype abbreviatedIRI="rdfs:Literal"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasPopularityValue"/>
+        <Datatype abbreviatedIRI="rdfs:Literal"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasStatus"/>
+        <Datatype abbreviatedIRI="rdfs:Literal"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasValue"/>
+        <Datatype abbreviatedIRI="rdfs:Literal"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#latValue"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#longValue"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#titleString"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#toTimePeriodValue"/>
+        <Datatype abbreviatedIRI="rdfs:Literal"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <AbbreviatedIRI>resurser:itemMeasurement</AbbreviatedIRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">has type
+has value
+has unit</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <AbbreviatedIRI>core:E16_Measurement</AbbreviatedIRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">sub-class of activity</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <AbbreviatedIRI>core:E3_Condition_State</AbbreviatedIRI>
+        <Literal xml:lang="eng" datatypeIRI="&rdf;PlainLiteral">The painting&apos;s surface state when inspected by a curator, i.e. turn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <AbbreviatedIRI>core:P127_has_broader_term</AbbreviatedIRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">SingularInverse: crm:has_narrow_term</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <AbbreviatedIRI>core:P45_consists_of</AbbreviatedIRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">cidoc-crm definition: P45 consists of (is incorporated in) refers here to observed Material as opposed to the consumed raw material. A Material, such as a theoretical alloy, may not have any physical instances.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <AbbreviatedIRI>SUMO:ContentDevelopment</AbbreviatedIRI>
+        <Literal xml:lang="eng" datatypeIRI="&rdf;PlainLiteral">Duplication frame</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <AbbreviatedIRI>SUMO:YearDuration</AbbreviatedIRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">EWN:115203791</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#ColorAttribute</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">EngFN: Color_qualities</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#DagmarThelinSjukhem</IRI>
+        <Literal xml:lang="swe" datatypeIRI="&rdf;PlainLiteral">Dagmar Thelin Tuvängens sjukhem</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Device</IRI>
+        <Literal xml:lang="eng" datatypeIRI="&rdf;PlainLiteral">FrameNet uses the term Instrument</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Dimension</IRI>
+        <Literal xml:lang="eng" datatypeIRI="&rdf;PlainLiteral">Measurement of an object</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Function</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">The use for which the Artifact is intended</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#GSM940051Registration</IRI>
+        <Literal datatypeIRI="&rdfs;Literal">1994-12-08</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#HuvudmagasinetGårda</IRI>
+        <Literal xml:lang="swe" datatypeIRI="&rdf;PlainLiteral">Huvudmagasinet Gårda</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#InternationalExposition</IRI>
+        <Literal xml:lang="fre" datatypeIRI="&rdf;PlainLiteral">Exposition Internationale des Arts et Techniques dans la Vie Moderne</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="#preferredNamespaceUri"/>
+        <IRI>#MaarCatalogue</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">http://www.all-art.org/art_20th_century/maar1.html</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Medieval</IRI>
+        <Literal xml:lang="eng" datatypeIRI="&rdf;PlainLiteral">AD</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Medieval</IRI>
+        <Literal xml:lang="swe" datatypeIRI="&rdf;PlainLiteral">e.Kr.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Medium</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">A medium is used to change the consistency of the paint</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Medium</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Equivalent to the noun&quot;dispersing_medium&quot; in SUMO; an instance of PhysicalState</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#NOMU</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Acronym</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#NicoHvanHeek</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Nico H. van Heek</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#ObjectAttribute</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">EngFN: Stimulus_focus</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="#broughtIntLife"/>
+        <IRI>#PabloPicasso</IRI>
+        <IRI>#PabloPicassoBirth</IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#PaintOntoBrush</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Straight-from-the-Tube</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Painting</IRI>
+        <IRI>#03079051</IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Painting</IRI>
+        <IRI>#03876519</IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Painting</IRI>
+        <Literal xml:lang="heb" datatypeIRI="&rdf;PlainLiteral">צִיּוּר</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#PaintingDescriptor</IRI>
+        <Literal xml:lang="eng" datatypeIRI="&rdf;PlainLiteral">Identifies a characteristic, description, or evaluation of what the painting features</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#PaintingStyle</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Also called Genre in some contexts</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#PaintingStyle</IRI>
+        <Literal xml:lang="eng" datatypeIRI="&rdf;PlainLiteral">An indication of the subtype of the painting</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#PaintingTechnique</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">sameAs itemTechnique</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Paintings</IRI>
+        <Literal xml:lang="swe" datatypeIRI="&rdf;PlainLiteral">målning</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Paintings</IRI>
+        <Literal xml:lang="eng" datatypeIRI="&rdf;PlainLiteral">painting</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Place</IRI>
+        <Literal xml:lang="eng" datatypeIRI="&rdf;PlainLiteral">A point located with respect to surface features of some region</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#PortraitOfFamily</IRI>
+        <Literal xml:lang="swe" datatypeIRI="&rdf;PlainLiteral">Familjebild</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#PortraitOfFamily</IRI>
+        <Literal xml:lang="eng" datatypeIRI="&rdf;PlainLiteral">Portrait of a Family</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#PortraitPainting</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">07217051</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#RepresentedThing</IRI>
+        <Literal xml:lang="eng" datatypeIRI="&rdf;PlainLiteral">The entity which may be a thing, an action or a state that is represented by the painting</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Signature</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">EWN: 106404582</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#StateOfObject</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">FN: State_of_entity</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#StateOfObject</IRI>
+        <Literal xml:lang="eng" datatypeIRI="&rdf;PlainLiteral">condition</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#StateOfObject</IRI>
+        <Literal xml:lang="swe" datatypeIRI="&rdf;PlainLiteral">nn.tillstånd..1</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Sweden</IRI>
+        <Literal xml:lang="eng" datatypeIRI="&rdf;PlainLiteral">Sweden</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#TerBorch</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">ter Borch</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#TheShootingCompanyofFransBanningCocq</IRI>
+        <Literal xml:lang="dut" datatypeIRI="&rdf;PlainLiteral">De Nachtwacht</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#UniqueIdentifier</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Example: CategoryNr, CollectionNr, URI</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#assignedAttributeBy</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">consider P140_assigned_attribute_to</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#comprises</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Inverse: is located in; forms part of</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#comprises</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">This property identifies an E53 Place that forms part of another Place.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="#inverseSingular"/>
+        <IRI>#createdBy</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">isCreatorOf</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#createdBy</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">consider P14_carried_out_by with Domain Activity</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#createdBy</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">made by</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="#inverseSingular"/>
+        <IRI>#currentOwnerOf</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">hasCurrentOwner</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#depicts</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Change range</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#depicts</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">It is not a sub-property of P62_depicts because of the range of P62</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#depicts</IRI>
+        <Literal xml:lang="eng" datatypeIRI="&rdf;PlainLiteral">Synonyms: shows, symbolizes, represents</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#displayedAt</IRI>
+        <Literal xml:lang="eng" datatypeIRI="&rdf;PlainLiteral">be exhibited</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#displayedAt</IRI>
+        <Literal xml:lang="swe" datatypeIRI="&rdf;PlainLiteral">vara utställd</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#hasAcquisitionDate</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">sometimes is equivalent to registrationDate</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#hasBroaderTerm</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Inverse: painting: hasNarrowTerm</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="#inverseSingular"/>
+        <IRI>#hasCondition</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">isEvaluationStateOf</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#hasCreationDate</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">P4_has_time-span is not used here because of its domain</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#hasCreationLocation</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">made in</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#hasCurrentLocation</IRI>
+        <Literal xml:lang="eng" datatypeIRI="&rdf;PlainLiteral">EngWN
+store 02282506
+display 02144506</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#hasCurrentLocation</IRI>
+        <Literal xml:lang="heb" datatypeIRI="&rdf;PlainLiteral">HebWN 
+אִחְסֵן  01025171
+01464775 !הִפְגִּין, !הִצִּיג</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#hasCurrentLocation</IRI>
+        <Literal xml:lang="swe" datatypeIRI="&rdf;PlainLiteral">förvara..1
+återfinna..1</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#hasHistoricalContext</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">A description can be a sentence, phrase or a text</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#hasMaterial</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">made of</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="#inverseSingular"/>
+        <IRI>#hasMedium</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">isMediumOf</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#hasObjectValue</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Inverse of sub-property of P39_measured</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#hasPresentationLocation</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">presented in </Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#hasReference</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">consider subclass of: P15_was_influenced_by</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#hasRepresentation</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Inverse of crm:P.138 represents</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#hasValueType</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">consider data property with boolean value</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#isAbout</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Inverse hasDescription</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="#inverseSingular"/>
+        <IRI>#isStateOf</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">hasRepresentedState</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#represents</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Inverse of hasRepresentation</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 3.5.0) http://owlapi.sourceforge.net -->
+

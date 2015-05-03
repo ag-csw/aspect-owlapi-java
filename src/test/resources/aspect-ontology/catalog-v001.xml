@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog prefer="public" xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+    <uri id="Imports Wizard Entry" name="http://spraakbanken.gu.se/rdf/owl/painting.owl" uri="painting.owl"/>
+    <uri id="Imports Wizard Entry" name="http://painting.owl" uri="painting.owl"/>
+    <group id="Folder Repository, directory=, recursive=true, Auto-Update=true, version=2" prefer="public" xml:base="">
+        <uri id="Automatically generated entry, Timestamp=1430286589599" name="http://spraakbanken.gu.se/rdf/owl/painting.owl" uri="imports/painting.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1430286589599" name="http://www.corporate-semantic-web.de/ontologies/aspect/owl" uri="aspectOWL.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1430286589599" name="http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity" uri="modules/complexity/complexity-aspect.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1430286589599" name="http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example" uri="modules/complexity/complexity-example.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1430286589599" name="http://www.corporate-semantic-web.de/ontologies/aspect/owl/example" uri="several-aspects-example.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1430286589599" name="http://www.corporate-semantic-web.de/ontologies/aspect/owl/example/paintingAnnotated" uri="paintingAnnotated.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1430286589599" name="http://www.corporate-semantic-web.de/ontologies/aspect/owl/example/testpaintings" uri="testpaintings.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1430286589599" name="http://www.corporate-semantic-web.de/ontologies/aspect/owl/example/testpaintingsAspectless" uri="testpaintingsAspectless.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1430286589599" name="http://www.corporate-semantic-web.de/ontologies/aspect/owl/provenance" uri="modules/provenance/provenance-aspect.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1430286589599" name="http://www.corporate-semantic-web.de/ontologies/aspect/owl/provenance/example" uri="modules/provenance/provenance-example.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1430286589599" name="http://www.corporate-semantic-web.de/ontologies/aspect/owl/temporal" uri="modules/temporal/temporal-aspect.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1430286589599" name="http://www.corporate-semantic-web.de/ontologies/aspect/owl/temporal/example" uri="modules/temporal/temporal-example.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1430286589599" name="http://www.w3.org/2006/time" uri="modules/temporal/imports/time.owl"/>
+    </group>
+</catalog>

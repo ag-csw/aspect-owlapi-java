@@ -1,0 +1,1209 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.corporate-semantic-web.de/ontologies/aspect/owl/example/testpaintings"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl/example/testpaintings">
+    <Prefix name="" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Import>http://www.corporate-semantic-web.de/ontologies/aspect/owl/example/paintingAnnotated</Import>
+    <Declaration>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLELComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLQLComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLRLComplexity</IRI>
+        </Annotation>
+        <NamedIndividual IRI="#SistineMadonnaObj"/>
+    </Declaration>
+    <Declaration>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLELComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLQLComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLRLComplexity</IRI>
+        </Annotation>
+        <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+    </Declaration>
+    <Declaration>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLELComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLQLComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLRLComplexity</IRI>
+        </Annotation>
+        <NamedIndividual IRI="#Duerer"/>
+    </Declaration>
+    <Declaration>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLELComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLQLComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLRLComplexity</IRI>
+        </Annotation>
+        <ObjectProperty IRI="#hasLocationCountry"/>
+    </Declaration>
+    <Declaration>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLELComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLQLComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLRLComplexity</IRI>
+        </Annotation>
+        <NamedIndividual IRI="#Azerbaijan"/>
+    </Declaration>
+    <Declaration>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLELComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLQLComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLRLComplexity</IRI>
+        </Annotation>
+        <NamedIndividual IRI="#Italy"/>
+    </Declaration>
+    <Declaration>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLELComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLQLComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLRLComplexity</IRI>
+        </Annotation>
+        <NamedIndividual IRI="#FrauenbadTitle"/>
+    </Declaration>
+    <Declaration>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLELComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLQLComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLRLComplexity</IRI>
+        </Annotation>
+        <NamedIndividual IRI="#FelsenschlossObj"/>
+    </Declaration>
+    <Declaration>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLELComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLQLComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLRLComplexity</IRI>
+        </Annotation>
+        <NamedIndividual IRI="#JohannesDerTaeuferObj"/>
+    </Declaration>
+    <Declaration>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLELComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLQLComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLRLComplexity</IRI>
+        </Annotation>
+        <AnnotationProperty IRI="isAnnotationComment"/>
+    </Declaration>
+    <Declaration>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLELComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLQLComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLRLComplexity</IRI>
+        </Annotation>
+        <NamedIndividual IRI="#SistineMadonnaTitle"/>
+    </Declaration>
+    <Declaration>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLELComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLQLComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLRLComplexity</IRI>
+        </Annotation>
+        <NamedIndividual IRI="#Estonia"/>
+    </Declaration>
+    <Declaration>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLELComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLQLComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLRLComplexity</IRI>
+        </Annotation>
+        <NamedIndividual IRI="#JohannesDerTaeuferTitle"/>
+    </Declaration>
+    <Declaration>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLELComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLQLComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLRLComplexity</IRI>
+        </Annotation>
+        <NamedIndividual IRI="#Unknown"/>
+    </Declaration>
+    <Declaration>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLELComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLQLComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLRLComplexity</IRI>
+        </Annotation>
+        <NamedIndividual IRI="#Raphael"/>
+    </Declaration>
+    <Declaration>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLELComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLQLComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLRLComplexity</IRI>
+        </Annotation>
+        <NamedIndividual IRI="#FelsenschlossTitle"/>
+    </Declaration>
+    <Declaration>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLELComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLQLComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLRLComplexity</IRI>
+        </Annotation>
+        <NamedIndividual IRI="#Germany"/>
+    </Declaration>
+    <Declaration>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLELComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLQLComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLRLComplexity</IRI>
+        </Annotation>
+        <NamedIndividual IRI="#FrauenbadObj"/>
+    </Declaration>
+    <Declaration>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLELComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLQLComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLRLComplexity</IRI>
+        </Annotation>
+        <NamedIndividual IRI="#Russia"/>
+    </Declaration>
+    <Declaration>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLELComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLQLComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLRLComplexity</IRI>
+        </Annotation>
+        <NamedIndividual IRI="#USA"/>
+    </Declaration>
+    <ClassAssertion>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLELComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLQLComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLRLComplexity</IRI>
+        </Annotation>
+        <Class IRI="http://spraakbanken.gu.se/rdf/owl/painting.owl#Country"/>
+        <NamedIndividual IRI="#Azerbaijan"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLELComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLQLComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLRLComplexity</IRI>
+        </Annotation>
+        <Class IRI="http://spraakbanken.gu.se/rdf/owl/painting.owl#Painter"/>
+        <NamedIndividual IRI="#Duerer"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLELComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLQLComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLRLComplexity</IRI>
+        </Annotation>
+        <Class IRI="http://spraakbanken.gu.se/rdf/owl/painting.owl#Country"/>
+        <NamedIndividual IRI="#Estonia"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLELComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLQLComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLRLComplexity</IRI>
+        </Annotation>
+        <Class IRI="http://spraakbanken.gu.se/rdf/owl/painting.owl#Painting"/>
+        <NamedIndividual IRI="#FelsenschlossObj"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLELComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLQLComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLRLComplexity</IRI>
+        </Annotation>
+        <Class IRI="http://spraakbanken.gu.se/rdf/owl/painting.owl#Reference"/>
+        <NamedIndividual IRI="#FelsenschlossObj"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLELComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLQLComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLRLComplexity</IRI>
+        </Annotation>
+        <Class IRI="http://spraakbanken.gu.se/rdf/owl/painting.owl#Title"/>
+        <NamedIndividual IRI="#FelsenschlossTitle"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLELComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLQLComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLRLComplexity</IRI>
+        </Annotation>
+        <Class IRI="http://spraakbanken.gu.se/rdf/owl/painting.owl#Painting"/>
+        <NamedIndividual IRI="#FrauenbadObj"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLELComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLQLComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLRLComplexity</IRI>
+        </Annotation>
+        <Class IRI="http://spraakbanken.gu.se/rdf/owl/painting.owl#Reference"/>
+        <NamedIndividual IRI="#FrauenbadObj"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLELComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLQLComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLRLComplexity</IRI>
+        </Annotation>
+        <Class IRI="http://spraakbanken.gu.se/rdf/owl/painting.owl#Title"/>
+        <NamedIndividual IRI="#FrauenbadTitle"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLELComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLQLComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLRLComplexity</IRI>
+        </Annotation>
+        <Class IRI="http://spraakbanken.gu.se/rdf/owl/painting.owl#Country"/>
+        <NamedIndividual IRI="#Germany"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLELComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLQLComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLRLComplexity</IRI>
+        </Annotation>
+        <Class IRI="http://spraakbanken.gu.se/rdf/owl/painting.owl#Country"/>
+        <NamedIndividual IRI="#Italy"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLELComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLQLComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLRLComplexity</IRI>
+        </Annotation>
+        <Class IRI="http://spraakbanken.gu.se/rdf/owl/painting.owl#Painting"/>
+        <NamedIndividual IRI="#JohannesDerTaeuferObj"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLELComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLQLComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLRLComplexity</IRI>
+        </Annotation>
+        <Class IRI="http://spraakbanken.gu.se/rdf/owl/painting.owl#Reference"/>
+        <NamedIndividual IRI="#JohannesDerTaeuferObj"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLELComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLQLComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLRLComplexity</IRI>
+        </Annotation>
+        <Class IRI="http://spraakbanken.gu.se/rdf/owl/painting.owl#Title"/>
+        <NamedIndividual IRI="#JohannesDerTaeuferTitle"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLELComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLQLComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLRLComplexity</IRI>
+        </Annotation>
+        <Class IRI="http://spraakbanken.gu.se/rdf/owl/painting.owl#Painter"/>
+        <NamedIndividual IRI="#Raphael"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLELComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLQLComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLRLComplexity</IRI>
+        </Annotation>
+        <Class IRI="http://spraakbanken.gu.se/rdf/owl/painting.owl#Country"/>
+        <NamedIndividual IRI="#Russia"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLELComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLQLComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLRLComplexity</IRI>
+        </Annotation>
+        <Class IRI="http://spraakbanken.gu.se/rdf/owl/painting.owl#Painting"/>
+        <NamedIndividual IRI="#SistineMadonnaObj"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLELComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLQLComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLRLComplexity</IRI>
+        </Annotation>
+        <Class IRI="http://spraakbanken.gu.se/rdf/owl/painting.owl#Reference"/>
+        <NamedIndividual IRI="#SistineMadonnaObj"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLELComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLQLComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLRLComplexity</IRI>
+        </Annotation>
+        <Class IRI="http://spraakbanken.gu.se/rdf/owl/painting.owl#Title"/>
+        <NamedIndividual IRI="#SistineMadonnaTitle"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLELComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLQLComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLRLComplexity</IRI>
+        </Annotation>
+        <Class IRI="http://spraakbanken.gu.se/rdf/owl/painting.owl#Country"/>
+        <NamedIndividual IRI="#USA"/>
+    </ClassAssertion>
+    <ObjectPropertyAssertion>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLELComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLQLComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLRLComplexity</IRI>
+        </Annotation>
+        <ObjectProperty IRI="http://spraakbanken.gu.se/rdf/owl/painting.owl#createdBy"/>
+        <NamedIndividual IRI="#FelsenschlossObj"/>
+        <NamedIndividual IRI="#Duerer"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLELComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLQLComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLRLComplexity</IRI>
+        </Annotation>
+        <ObjectProperty IRI="http://spraakbanken.gu.se/rdf/owl/painting.owl#hasTitle"/>
+        <NamedIndividual IRI="#FelsenschlossObj"/>
+        <NamedIndividual IRI="#FelsenschlossTitle"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLELComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLQLComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLRLComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/provenance/example#BerlinerZeitung</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/temporal/example#Years1494-1945</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/temporal/example#YearsSince2000</IRI>
+        </Annotation>
+        <ObjectProperty IRI="#hasLocationCountry"/>
+        <NamedIndividual IRI="#FelsenschlossObj"/>
+        <NamedIndividual IRI="#Germany"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLQLComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLELComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLRLComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/provenance/example#BerlinerZeitung</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/temporal/example#Years1945-2000</IRI>
+        </Annotation>
+        <ObjectProperty IRI="#hasLocationCountry"/>
+        <NamedIndividual IRI="#FelsenschlossObj"/>
+        <NamedIndividual IRI="#Russia"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLELComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLQLComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLRLComplexity</IRI>
+        </Annotation>
+        <ObjectProperty IRI="http://spraakbanken.gu.se/rdf/owl/painting.owl#createdBy"/>
+        <NamedIndividual IRI="#FrauenbadObj"/>
+        <NamedIndividual IRI="#Duerer"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLELComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLQLComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLRLComplexity</IRI>
+        </Annotation>
+        <ObjectProperty IRI="http://spraakbanken.gu.se/rdf/owl/painting.owl#hasTitle"/>
+        <NamedIndividual IRI="#FrauenbadObj"/>
+        <NamedIndividual IRI="#FrauenbadTitle"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLRLComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLQLComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLELComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/provenance/example#NYTimes</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/temporal/example#Years1993-1993</IRI>
+        </Annotation>
+        <ObjectProperty IRI="#hasLocationCountry"/>
+        <NamedIndividual IRI="#FrauenbadObj"/>
+        <NamedIndividual IRI="#Azerbaijan"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLELComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLQLComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLRLComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/provenance/example#NYTimes</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/provenance/example#Spiegel</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/temporal/example#Years1496-1945</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/temporal/example#YearsSince2001</IRI>
+        </Annotation>
+        <ObjectProperty IRI="#hasLocationCountry"/>
+        <NamedIndividual IRI="#FrauenbadObj"/>
+        <NamedIndividual IRI="#Germany"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLQLComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLELComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLRLComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/provenance/example#NYTimes</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/provenance/example#Spiegel</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/temporal/example#Years1997-2001</IRI>
+        </Annotation>
+        <ObjectProperty IRI="#hasLocationCountry"/>
+        <NamedIndividual IRI="#FrauenbadObj"/>
+        <NamedIndividual IRI="#USA"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLELComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLQLComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLRLComplexity</IRI>
+        </Annotation>
+        <ObjectProperty IRI="http://spraakbanken.gu.se/rdf/owl/painting.owl#createdBy"/>
+        <NamedIndividual IRI="#JohannesDerTaeuferObj"/>
+        <NamedIndividual IRI="#Duerer"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLELComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLQLComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLRLComplexity</IRI>
+        </Annotation>
+        <ObjectProperty IRI="http://spraakbanken.gu.se/rdf/owl/painting.owl#hasTitle"/>
+        <NamedIndividual IRI="#JohannesDerTaeuferObj"/>
+        <NamedIndividual IRI="#JohannesDerTaeuferTitle"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLQLComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLELComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLRLComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/provenance/example#DieWelt</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/temporal/example#Years2003-2004</IRI>
+        </Annotation>
+        <ObjectProperty IRI="#hasLocationCountry"/>
+        <NamedIndividual IRI="#JohannesDerTaeuferObj"/>
+        <NamedIndividual IRI="#Estonia"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLQLComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLRLComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLELComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/provenance/example#DieWelt</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/temporal/example#Years1503-1945</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/temporal/example#YearsSince2004</IRI>
+        </Annotation>
+        <ObjectProperty IRI="#hasLocationCountry"/>
+        <NamedIndividual IRI="#JohannesDerTaeuferObj"/>
+        <NamedIndividual IRI="#Germany"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLRLComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLQLComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLELComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/provenance/example#DieWelt</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/temporal/example#Years1945-2003</IRI>
+        </Annotation>
+        <ObjectProperty IRI="#hasLocationCountry"/>
+        <NamedIndividual IRI="#JohannesDerTaeuferObj"/>
+        <NamedIndividual IRI="#Unknown"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLELComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLQLComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLRLComplexity</IRI>
+        </Annotation>
+        <ObjectProperty IRI="http://spraakbanken.gu.se/rdf/owl/painting.owl#createdBy"/>
+        <NamedIndividual IRI="#SistineMadonnaObj"/>
+        <NamedIndividual IRI="#Raphael"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLELComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLQLComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLRLComplexity</IRI>
+        </Annotation>
+        <ObjectProperty IRI="http://spraakbanken.gu.se/rdf/owl/painting.owl#hasTitle"/>
+        <NamedIndividual IRI="#SistineMadonnaObj"/>
+        <NamedIndividual IRI="#SistineMadonnaTitle"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLQLComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLRLComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLELComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/provenance/example#Wikipedia</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/temporal/example#Years1754-1945</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/temporal/example#YearsSince1955</IRI>
+        </Annotation>
+        <ObjectProperty IRI="#hasLocationCountry"/>
+        <NamedIndividual IRI="#SistineMadonnaObj"/>
+        <NamedIndividual IRI="#Germany"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLRLComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLQLComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLELComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/provenance/example#Wikipedia</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/temporal/example#Years1513-1754</IRI>
+        </Annotation>
+        <ObjectProperty IRI="#hasLocationCountry"/>
+        <NamedIndividual IRI="#SistineMadonnaObj"/>
+        <NamedIndividual IRI="#Italy"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLELComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLRLComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLQLComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/provenance/example#Wikipedia</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/temporal/example#Years1945-1955</IRI>
+        </Annotation>
+        <ObjectProperty IRI="#hasLocationCountry"/>
+        <NamedIndividual IRI="#SistineMadonnaObj"/>
+        <NamedIndividual IRI="#Russia"/>
+    </ObjectPropertyAssertion>
+    <DataPropertyAssertion>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLELComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLQLComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLRLComplexity</IRI>
+        </Annotation>
+        <DataProperty IRI="http://spraakbanken.gu.se/rdf/owl/painting.owl#titleString"/>
+        <NamedIndividual IRI="#FelsenschlossTitle"/>
+        <Literal xml:lang="de" datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">Felsenschloss</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLELComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLQLComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLRLComplexity</IRI>
+        </Annotation>
+        <DataProperty IRI="http://spraakbanken.gu.se/rdf/owl/painting.owl#titleString"/>
+        <NamedIndividual IRI="#FrauenbadTitle"/>
+        <Literal xml:lang="de" datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">Frauenbad</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLELComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLQLComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLRLComplexity</IRI>
+        </Annotation>
+        <DataProperty IRI="http://spraakbanken.gu.se/rdf/owl/painting.owl#titleString"/>
+        <NamedIndividual IRI="#JohannesDerTaeuferTitle"/>
+        <Literal xml:lang="de" datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">Johannes der Täufer</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLELComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLQLComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLRLComplexity</IRI>
+        </Annotation>
+        <DataProperty IRI="http://spraakbanken.gu.se/rdf/owl/painting.owl#titleString"/>
+        <NamedIndividual IRI="#SistineMadonnaTitle"/>
+        <Literal xml:lang="en" datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">Sistine Madonna</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLELComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLQLComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLRLComplexity</IRI>
+        </Annotation>
+        <DataProperty IRI="http://spraakbanken.gu.se/rdf/owl/painting.owl#titleString"/>
+        <NamedIndividual IRI="#SistineMadonnaTitle"/>
+        <Literal xml:lang="de" datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">Sixtinische Madonna</Literal>
+    </DataPropertyAssertion>
+    <SubObjectPropertyOf>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLELComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLQLComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLRLComplexity</IRI>
+        </Annotation>
+        <ObjectProperty IRI="#hasLocationCountry"/>
+        <ObjectProperty IRI="http://purl.org/NET/cidoc-crm/core#P53_has_former_or_current_location"/>
+    </SubObjectPropertyOf>
+    <ObjectPropertyDomain>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLELComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLQLComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLRLComplexity</IRI>
+        </Annotation>
+        <ObjectProperty IRI="#hasLocationCountry"/>
+        <Class IRI="http://spraakbanken.gu.se/rdf/owl/painting.owl#Painting"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLELComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLQLComplexity</IRI>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty IRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl#isPointcutOf"/>
+            <IRI>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example#OWLRLComplexity</IRI>
+        </Annotation>
+        <ObjectProperty IRI="#hasLocationCountry"/>
+        <Class IRI="http://spraakbanken.gu.se/rdf/owl/painting.owl#Country"/>
+    </ObjectPropertyRange>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 4.0.1) http://owlapi.sourceforge.net -->
+

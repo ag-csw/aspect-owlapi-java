@@ -1,0 +1,670 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE Ontology [
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY xml "http://www.w3.org/XML/1998/namespace" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.corporate-semantic-web.de/ontologies/aspect/owl"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl">
+    <Prefix name="" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfg" IRI="http://www.w3.org/2004/03/trix/rdfg-1/"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="#AccessRestriction"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Advice"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Aspect"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#BuiltInAspect"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Compatibility"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ExternalAspect"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#FunctionalAspect"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#NonfunctionalAspect"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Pointcut"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Provenance"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ProvenanceBasedTrust"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ReasoningComplexity"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#TemporalAspect"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Trust"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#advises"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#associatedObject"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#equallyComplex"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasAdvice"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasPointcut"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isPointcutOf"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#lessComplexThan"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#moreComplexThan"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#BaseModule"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#OwlELComplexity"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#OwlQLComplexity"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#OwlRLComplexity"/>
+    </Declaration>
+    <Declaration>
+        <AnnotationProperty IRI="#advises"/>
+    </Declaration>
+    <Declaration>
+        <AnnotationProperty IRI="#hasAdvice"/>
+    </Declaration>
+    <Declaration>
+        <AnnotationProperty IRI="#hasAspect"/>
+    </Declaration>
+    <Declaration>
+        <AnnotationProperty IRI="#hasPointcut"/>
+    </Declaration>
+    <Declaration>
+        <AnnotationProperty IRI="#isPointcutOf"/>
+    </Declaration>
+    <EquivalentClasses>
+        <Class IRI="#Aspect"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasAdvice"/>
+            <Class IRI="#Advice"/>
+        </ObjectSomeValuesFrom>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#Aspect"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasPointcut"/>
+            <Class IRI="#Pointcut"/>
+        </ObjectSomeValuesFrom>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#ProvenanceBasedTrust"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#Provenance"/>
+            <Class IRI="#Trust"/>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <SubClassOf>
+        <Class IRI="#AccessRestriction"/>
+        <Class IRI="#ExternalAspect"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#AccessRestriction"/>
+        <Class IRI="#NonfunctionalAspect"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#BuiltInAspect"/>
+        <Class IRI="#Aspect"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Compatibility"/>
+        <Class IRI="#ExternalAspect"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Compatibility"/>
+        <Class IRI="#NonfunctionalAspect"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ExternalAspect"/>
+        <Class IRI="#Aspect"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#FunctionalAspect"/>
+        <Class IRI="#Aspect"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#NonfunctionalAspect"/>
+        <Class IRI="#Aspect"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Provenance"/>
+        <Class IRI="#ExternalAspect"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Provenance"/>
+        <Class IRI="#NonfunctionalAspect"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ReasoningComplexity"/>
+        <Class IRI="#BuiltInAspect"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ReasoningComplexity"/>
+        <Class IRI="#NonfunctionalAspect"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#TemporalAspect"/>
+        <Class IRI="#ExternalAspect"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#TemporalAspect"/>
+        <Class IRI="#FunctionalAspect"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Trust"/>
+        <Class IRI="#ExternalAspect"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Trust"/>
+        <Class IRI="#NonfunctionalAspect"/>
+    </SubClassOf>
+    <DisjointClasses>
+        <Class IRI="#BuiltInAspect"/>
+        <Class IRI="#ExternalAspect"/>
+    </DisjointClasses>
+    <ClassAssertion>
+        <Class IRI="#Aspect"/>
+        <NamedIndividual IRI="#BaseModule"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ReasoningComplexity"/>
+        <NamedIndividual IRI="#OwlELComplexity"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ReasoningComplexity"/>
+        <NamedIndividual IRI="#OwlQLComplexity"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ReasoningComplexity"/>
+        <NamedIndividual IRI="#OwlRLComplexity"/>
+    </ClassAssertion>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#hasPointcut"/>
+        <ObjectProperty IRI="#isPointcutOf"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#lessComplexThan"/>
+        <ObjectProperty IRI="#moreComplexThan"/>
+    </InverseObjectProperties>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#associatedObject"/>
+    </FunctionalObjectProperty>
+    <InverseFunctionalObjectProperty>
+        <ObjectProperty IRI="#associatedObject"/>
+    </InverseFunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#associatedObject"/>
+        <Class IRI="#Aspect"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#equallyComplex"/>
+        <Class IRI="#ReasoningComplexity"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasAdvice"/>
+        <Class IRI="#Aspect"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasPointcut"/>
+        <Class IRI="#Aspect"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#lessComplexThan"/>
+        <Class IRI="#ReasoningComplexity"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#moreComplexThan"/>
+        <Class IRI="#ReasoningComplexity"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#equallyComplex"/>
+        <Class IRI="#ReasoningComplexity"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasAdvice"/>
+        <Class IRI="#Advice"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasPointcut"/>
+        <Class IRI="#Pointcut"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#lessComplexThan"/>
+        <Class IRI="#ReasoningComplexity"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#moreComplexThan"/>
+        <Class IRI="#ReasoningComplexity"/>
+    </ObjectPropertyRange>
+    <DisjointObjectProperties>
+        <ObjectProperty IRI="#equallyComplex"/>
+        <ObjectProperty IRI="#lessComplexThan"/>
+    </DisjointObjectProperties>
+    <DisjointObjectProperties>
+        <ObjectProperty IRI="#equallyComplex"/>
+        <ObjectProperty IRI="#moreComplexThan"/>
+    </DisjointObjectProperties>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://attempto.ifi.uzh.ch/ace_lexicon#CN_pl"/>
+        <IRI>#AccessRestriction</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">AccessRestrictions</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://attempto.ifi.uzh.ch/ace_lexicon#CN_sg"/>
+        <IRI>#AccessRestriction</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">AccessRestriction</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#AccessRestriction</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">AccessRestriction</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://attempto.ifi.uzh.ch/ace_lexicon#CN_pl"/>
+        <IRI>#Advice</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Advices</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://attempto.ifi.uzh.ch/ace_lexicon#CN_sg"/>
+        <IRI>#Advice</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Advice</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Advice</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Advice</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://attempto.ifi.uzh.ch/ace_lexicon#CN_pl"/>
+        <IRI>#Aspect</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Aspects</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://attempto.ifi.uzh.ch/ace_lexicon#CN_sg"/>
+        <IRI>#Aspect</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Aspect</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Aspect</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Aspect</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://attempto.ifi.uzh.ch/ace_lexicon#PN_sg"/>
+        <IRI>#BaseModule</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">BaseModule</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#BaseModule</IRI>
+        <Literal datatypeIRI="&rdfs;Literal">This is the default aspect. All expressions which are not covered by an explicit aspect definition are automatically part of the base module. </Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://attempto.ifi.uzh.ch/ace_lexicon#CN_pl"/>
+        <IRI>#BuiltInAspect</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">BuiltInAspects</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://attempto.ifi.uzh.ch/ace_lexicon#CN_sg"/>
+        <IRI>#BuiltInAspect</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">BuiltInAspect</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#BuiltInAspect</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">BuiltInAspect</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://attempto.ifi.uzh.ch/ace_lexicon#CN_pl"/>
+        <IRI>#Compatibility</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Compatibilities</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://attempto.ifi.uzh.ch/ace_lexicon#CN_sg"/>
+        <IRI>#Compatibility</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Compatibility</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Compatibility</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Compatibility</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://attempto.ifi.uzh.ch/ace_lexicon#CN_pl"/>
+        <IRI>#ExternalAspect</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">ExternalAspects</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://attempto.ifi.uzh.ch/ace_lexicon#CN_sg"/>
+        <IRI>#ExternalAspect</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">ExternalAspect</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#ExternalAspect</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">ExternalAspect</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://attempto.ifi.uzh.ch/ace_lexicon#CN_pl"/>
+        <IRI>#FunctionalAspect</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">FunctionalAspects</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://attempto.ifi.uzh.ch/ace_lexicon#CN_sg"/>
+        <IRI>#FunctionalAspect</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">FunctionalAspect</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#FunctionalAspect</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">FunctionalAspect</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://attempto.ifi.uzh.ch/ace_lexicon#CN_pl"/>
+        <IRI>#NonfunctionalAspect</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">NonfunctionalAspects</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://attempto.ifi.uzh.ch/ace_lexicon#CN_sg"/>
+        <IRI>#NonfunctionalAspect</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">NonfunctionalAspect</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#NonfunctionalAspect</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">NonfunctionalAspect</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://attempto.ifi.uzh.ch/ace_lexicon#PN_sg"/>
+        <IRI>#OwlELComplexity</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">OwlELComplexity</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://purl.org/dc/elements/1.1/description"/>
+        <IRI>#OwlELComplexity</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Represents the reasoning complexity of the OWL-EL fragment of OWL 2 (which is PTIME-complete measured with respect to the total size of the assertions and the total size of the axioms in the ontology).</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#OwlELComplexity</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">OwlELComplexity</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://attempto.ifi.uzh.ch/ace_lexicon#PN_sg"/>
+        <IRI>#OwlQLComplexity</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">OwlQLComplexity</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#OwlQLComplexity</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">OwlQLComplexity</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://attempto.ifi.uzh.ch/ace_lexicon#PN_sg"/>
+        <IRI>#OwlRLComplexity</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">OwlRLComplexity</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#OwlRLComplexity</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">OwlRLComplexity</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://attempto.ifi.uzh.ch/ace_lexicon#CN_pl"/>
+        <IRI>#PointCut</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">PointCuts</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://attempto.ifi.uzh.ch/ace_lexicon#CN_sg"/>
+        <IRI>#PointCut</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">PointCut</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#PointCut</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">PointCut</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://attempto.ifi.uzh.ch/ace_lexicon#CN_pl"/>
+        <IRI>#Provenance</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Provenances</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://attempto.ifi.uzh.ch/ace_lexicon#CN_sg"/>
+        <IRI>#Provenance</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Provenance</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Provenance</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Provenance</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://attempto.ifi.uzh.ch/ace_lexicon#CN_pl"/>
+        <IRI>#ProvenanceBasedTrust</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">ProvenanceBasedTrusts</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://attempto.ifi.uzh.ch/ace_lexicon#CN_sg"/>
+        <IRI>#ProvenanceBasedTrust</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">ProvenanceBasedTrust</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#ProvenanceBasedTrust</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">ProvenanceBasedTrust</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://attempto.ifi.uzh.ch/ace_lexicon#CN_pl"/>
+        <IRI>#ReasoningComplexity</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">ReasoningComplexities</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://attempto.ifi.uzh.ch/ace_lexicon#CN_sg"/>
+        <IRI>#ReasoningComplexity</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">ReasoningComplexity</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#ReasoningComplexity</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">ReasoningComplexity</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://attempto.ifi.uzh.ch/ace_lexicon#CN_pl"/>
+        <IRI>#Trust</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Trusts</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://attempto.ifi.uzh.ch/ace_lexicon#CN_sg"/>
+        <IRI>#Trust</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Trust</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Trust</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Trust</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://attempto.ifi.uzh.ch/ace_lexicon#TV_pl"/>
+        <IRI>#associatedObject</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">associatedObject</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://attempto.ifi.uzh.ch/ace_lexicon#TV_sg"/>
+        <IRI>#associatedObject</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">associatedObjects</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://attempto.ifi.uzh.ch/ace_lexicon#TV_vbg"/>
+        <IRI>#associatedObject</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">associatedObjected</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#associatedObject</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">associatedObject</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://attempto.ifi.uzh.ch/ace_lexicon#TV_pl"/>
+        <IRI>#equallyComplex</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">equallyComplex</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://attempto.ifi.uzh.ch/ace_lexicon#TV_sg"/>
+        <IRI>#equallyComplex</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">equallyComplexes</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://attempto.ifi.uzh.ch/ace_lexicon#TV_vbg"/>
+        <IRI>#equallyComplex</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">equallyComplexed</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#equallyComplex</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">equallyComplex</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://attempto.ifi.uzh.ch/ace_lexicon#TV_pl"/>
+        <IRI>#hasAdvice</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">hasAdvice</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://attempto.ifi.uzh.ch/ace_lexicon#TV_sg"/>
+        <IRI>#hasAdvice</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">hasAdvices</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://attempto.ifi.uzh.ch/ace_lexicon#TV_vbg"/>
+        <IRI>#hasAdvice</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">hasAdviced</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#hasAdvice</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">hasAdvice</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://attempto.ifi.uzh.ch/ace_lexicon#TV_pl"/>
+        <IRI>#hasPointcut</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">hasPointcut</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://attempto.ifi.uzh.ch/ace_lexicon#TV_sg"/>
+        <IRI>#hasPointcut</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">hasPointcuts</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://attempto.ifi.uzh.ch/ace_lexicon#TV_vbg"/>
+        <IRI>#hasPointcut</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">hasPointcuted</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#hasPointcut</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">hasPointcut</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://attempto.ifi.uzh.ch/ace_lexicon#TV_pl"/>
+        <IRI>#lessComplexThan</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">lessComplexThan</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://attempto.ifi.uzh.ch/ace_lexicon#TV_sg"/>
+        <IRI>#lessComplexThan</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">lessComplexThans</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://attempto.ifi.uzh.ch/ace_lexicon#TV_vbg"/>
+        <IRI>#lessComplexThan</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">lessComplexThaned</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#lessComplexThan</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">lessComplexThan</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://attempto.ifi.uzh.ch/ace_lexicon#TV_pl"/>
+        <IRI>#moreComplexThan</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">moreComplexThan</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://attempto.ifi.uzh.ch/ace_lexicon#TV_sg"/>
+        <IRI>#moreComplexThan</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">moreComplexThans</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://attempto.ifi.uzh.ch/ace_lexicon#TV_vbg"/>
+        <IRI>#moreComplexThan</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">moreComplexThaned</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#moreComplexThan</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">moreComplexThan</Literal>
+    </AnnotationAssertion>
+    <AnnotationPropertyRange>
+        <AnnotationProperty IRI="#hasAdvice"/>
+        <IRI>#Advice</IRI>
+    </AnnotationPropertyRange>
+    <AnnotationPropertyRange>
+        <AnnotationProperty IRI="#hasPointcut"/>
+        <IRI>#Pointcut</IRI>
+    </AnnotationPropertyRange>
+    <AnnotationPropertyDomain>
+        <AnnotationProperty IRI="#hasAdvice"/>
+        <IRI>#Aspect</IRI>
+    </AnnotationPropertyDomain>
+    <AnnotationPropertyDomain>
+        <AnnotationProperty IRI="#hasPointcut"/>
+        <IRI>#Aspect</IRI>
+    </AnnotationPropertyDomain>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 3.5.0) http://owlapi.sourceforge.net -->
+

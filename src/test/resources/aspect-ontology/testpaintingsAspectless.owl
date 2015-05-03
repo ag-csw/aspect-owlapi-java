@@ -1,0 +1,245 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE Ontology [
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY xml "http://www.w3.org/XML/1998/namespace" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.corporate-semantic-web.de/ontologies/aspect/owl/example/testpaintingsAspectless"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.corporate-semantic-web.de/ontologies/aspect/owl/example/testpaintingsAspectless">
+    <Prefix name="" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Import>http://www.corporate-semantic-web.de/ontologies/aspect/owl/example/paintingAnnotated</Import>
+    <Declaration>
+        <ObjectProperty IRI="#hasLocationCountry"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Azerbaijan"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Duerer"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Estonia"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#FelsenschlossObj"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#FelsenschlossTitle"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#FrauenbadObj"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#FrauenbadTitle"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Germany"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Italy"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#JohannesDerTaeuferObj"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#JohannesDerTaeuferTitle"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Raphael"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Russia"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#SistineMadonnaObj"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#SistineMadonnaTitle"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#USA"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Unknown"/>
+    </Declaration>
+    <Declaration>
+        <AnnotationProperty IRI="isAnnotationComment"/>
+    </Declaration>
+    <ClassAssertion>
+        <Class IRI="http://spraakbanken.gu.se/rdf/owl/painting.owl#Country"/>
+        <NamedIndividual IRI="#Azerbaijan"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://spraakbanken.gu.se/rdf/owl/painting.owl#Painter"/>
+        <NamedIndividual IRI="#Duerer"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://spraakbanken.gu.se/rdf/owl/painting.owl#Country"/>
+        <NamedIndividual IRI="#Estonia"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://spraakbanken.gu.se/rdf/owl/painting.owl#Painting"/>
+        <NamedIndividual IRI="#FelsenschlossObj"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://spraakbanken.gu.se/rdf/owl/painting.owl#Reference"/>
+        <NamedIndividual IRI="#FelsenschlossObj"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://spraakbanken.gu.se/rdf/owl/painting.owl#Title"/>
+        <NamedIndividual IRI="#FelsenschlossTitle"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://spraakbanken.gu.se/rdf/owl/painting.owl#Painting"/>
+        <NamedIndividual IRI="#FrauenbadObj"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://spraakbanken.gu.se/rdf/owl/painting.owl#Reference"/>
+        <NamedIndividual IRI="#FrauenbadObj"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://spraakbanken.gu.se/rdf/owl/painting.owl#Title"/>
+        <NamedIndividual IRI="#FrauenbadTitle"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://spraakbanken.gu.se/rdf/owl/painting.owl#Country"/>
+        <NamedIndividual IRI="#Germany"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://spraakbanken.gu.se/rdf/owl/painting.owl#Country"/>
+        <NamedIndividual IRI="#Italy"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://spraakbanken.gu.se/rdf/owl/painting.owl#Painting"/>
+        <NamedIndividual IRI="#JohannesDerTaeuferObj"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://spraakbanken.gu.se/rdf/owl/painting.owl#Reference"/>
+        <NamedIndividual IRI="#JohannesDerTaeuferObj"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://spraakbanken.gu.se/rdf/owl/painting.owl#Title"/>
+        <NamedIndividual IRI="#JohannesDerTaeuferTitle"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://spraakbanken.gu.se/rdf/owl/painting.owl#Painter"/>
+        <NamedIndividual IRI="#Raphael"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://spraakbanken.gu.se/rdf/owl/painting.owl#Country"/>
+        <NamedIndividual IRI="#Russia"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://spraakbanken.gu.se/rdf/owl/painting.owl#Painting"/>
+        <NamedIndividual IRI="#SistineMadonnaObj"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://spraakbanken.gu.se/rdf/owl/painting.owl#Reference"/>
+        <NamedIndividual IRI="#SistineMadonnaObj"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://spraakbanken.gu.se/rdf/owl/painting.owl#Title"/>
+        <NamedIndividual IRI="#SistineMadonnaTitle"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://spraakbanken.gu.se/rdf/owl/painting.owl#Country"/>
+        <NamedIndividual IRI="#USA"/>
+    </ClassAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://spraakbanken.gu.se/rdf/owl/painting.owl#createdBy"/>
+        <NamedIndividual IRI="#FelsenschlossObj"/>
+        <NamedIndividual IRI="#Duerer"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://spraakbanken.gu.se/rdf/owl/painting.owl#hasTitle"/>
+        <NamedIndividual IRI="#FelsenschlossObj"/>
+        <NamedIndividual IRI="#FelsenschlossTitle"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://spraakbanken.gu.se/rdf/owl/painting.owl#createdBy"/>
+        <NamedIndividual IRI="#FrauenbadObj"/>
+        <NamedIndividual IRI="#Duerer"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://spraakbanken.gu.se/rdf/owl/painting.owl#hasTitle"/>
+        <NamedIndividual IRI="#FrauenbadObj"/>
+        <NamedIndividual IRI="#FrauenbadTitle"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://spraakbanken.gu.se/rdf/owl/painting.owl#createdBy"/>
+        <NamedIndividual IRI="#JohannesDerTaeuferObj"/>
+        <NamedIndividual IRI="#Duerer"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://spraakbanken.gu.se/rdf/owl/painting.owl#hasTitle"/>
+        <NamedIndividual IRI="#JohannesDerTaeuferObj"/>
+        <NamedIndividual IRI="#JohannesDerTaeuferTitle"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://spraakbanken.gu.se/rdf/owl/painting.owl#createdBy"/>
+        <NamedIndividual IRI="#SistineMadonnaObj"/>
+        <NamedIndividual IRI="#Raphael"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://spraakbanken.gu.se/rdf/owl/painting.owl#hasTitle"/>
+        <NamedIndividual IRI="#SistineMadonnaObj"/>
+        <NamedIndividual IRI="#SistineMadonnaTitle"/>
+    </ObjectPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://spraakbanken.gu.se/rdf/owl/painting.owl#titleString"/>
+        <NamedIndividual IRI="#FelsenschlossTitle"/>
+        <Literal xml:lang="de" datatypeIRI="&rdf;PlainLiteral">Felsenschloss</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://spraakbanken.gu.se/rdf/owl/painting.owl#titleString"/>
+        <NamedIndividual IRI="#FrauenbadTitle"/>
+        <Literal xml:lang="de" datatypeIRI="&rdf;PlainLiteral">Frauenbad</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://spraakbanken.gu.se/rdf/owl/painting.owl#titleString"/>
+        <NamedIndividual IRI="#JohannesDerTaeuferTitle"/>
+        <Literal xml:lang="de" datatypeIRI="&rdf;PlainLiteral">Johannes der Täufer</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://spraakbanken.gu.se/rdf/owl/painting.owl#titleString"/>
+        <NamedIndividual IRI="#SistineMadonnaTitle"/>
+        <Literal xml:lang="de" datatypeIRI="&rdf;PlainLiteral">Sixtinische Madonna</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://spraakbanken.gu.se/rdf/owl/painting.owl#titleString"/>
+        <NamedIndividual IRI="#SistineMadonnaTitle"/>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Sistine Madonna</Literal>
+    </DataPropertyAssertion>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasLocationCountry"/>
+        <ObjectProperty IRI="http://purl.org/NET/cidoc-crm/core#P53_has_former_or_current_location"/>
+    </SubObjectPropertyOf>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasLocationCountry"/>
+        <Class IRI="http://spraakbanken.gu.se/rdf/owl/painting.owl#Painting"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasLocationCountry"/>
+        <Class IRI="http://spraakbanken.gu.se/rdf/owl/painting.owl#Country"/>
+    </ObjectPropertyRange>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 3.5.0) http://owlapi.sourceforge.net -->
+
