@@ -26,7 +26,6 @@ import org.semanticweb.owlapi.model.OWLAxiom;
 import org.semanticweb.owlapi.model.OWLDeclarationAxiom;
 import org.semanticweb.owlapi.model.OWLEntity;
 import org.semanticweb.owlapi.model.OWLOntology;
-import org.semanticweb.owlapi.search.EntitySearcher;
 
 import de.fuberlin.csw.aood.owlapi.OWLAspectAnd;
 import de.fuberlin.csw.aood.owlapi.OWLAspectOr;
@@ -83,7 +82,7 @@ public class FilteringHelperEntities extends FilteringHelper {
 			// if (EntitySearcher.getAnnotations(entity, onto).containsAll(createSetOfRelevantAnnotations(onto, currentAspects))) { }
 			// but changed it to checking annotations on referencing declaration axioms. 
 			// maybe we should also check for other referencing axioms or declaration axs in imports...
-			Collection<OWLAxiom> referencingAxioms = EntitySearcher.getReferencingAxioms(entity, onto);
+			Collection<OWLAxiom> referencingAxioms = entity.getReferencingAxioms(onto);
 			for (OWLAxiom refAx : referencingAxioms) {
 				if ((refAx instanceof OWLDeclarationAxiom) 
 						&& passAspectsTest(refAx, onto, aspects)) {

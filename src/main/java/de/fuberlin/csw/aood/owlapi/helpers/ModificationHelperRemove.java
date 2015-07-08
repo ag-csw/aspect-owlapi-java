@@ -29,7 +29,6 @@ import org.semanticweb.owlapi.model.OWLOntology;
 import org.semanticweb.owlapi.model.OWLOntologyChange;
 import org.semanticweb.owlapi.model.OWLOntologyManager;
 import org.semanticweb.owlapi.model.RemoveAxiom;
-import org.semanticweb.owlapi.model.parameters.ChangeApplied;
 
 import de.fuberlin.csw.aood.owlapi.OWLAspectAnd;
 import de.fuberlin.csw.aood.owlapi.OWLAspectOr;
@@ -40,38 +39,8 @@ import de.fuberlin.csw.aood.owlapi.OWLAspectOr;
 public class ModificationHelperRemove extends ModificationHelper {
 	
 	// used by Modif.Helper
-	/**
-	 * handles change of type RemoveAxiom which was asked to be applied under current aspects
-	 * 
-	 * @param change
-	 * 			change of type RemoveAxiom
-	 * @param annotation
-	 * 			Annotation of type {@link OWLAspectAnd} or {@link OWLAspectOr} specifying current aspects
-	 * @return List of changes (this change) if aspect annotations were updated
-	 */
-	public static List<OWLOntologyChange> handleChangeRemoveAxiomReturnListOfChanges(OWLOntologyChange change, Annotation annotation) {
-		ChangeApplied chgApplied = handleChangeRemoveAxiom(change, annotation);
-		return produceListOfChangesFromChangeApplied(change.getOntology(), change.getAxiom(), chgApplied);
-	}
-	
-	// used by HelperFacade
-	/**
-	 * handles axiom which user asked to remove under current aspects
-	 * 
-	 * @param axiom
-	 * 			axiom to be removed (aspect annotations to be updated)
-	 * @param ontology
-	 * 			current ontology
-	 * @param annotation
-	 * 			Annotation of type {@link OWLAspectAnd} or {@link OWLAspectOr} specifying current aspects
-	 * @return List of changes (RemoveAxiom this axiom) if aspect annotations were updated
-	 */
-	public static List<OWLOntologyChange> handleRemoveAxiomReturnChanges(
-			OWLAxiom axiom, OWLOntology ontology, Annotation annotation) {	
-		ChangeApplied chgApplied = handleChangeRemoveAxiom(new RemoveAxiom(ontology, axiom), annotation);
-		return produceListOfChangesFromChangeApplied(ontology, axiom, chgApplied);
-	}
-	
+
+
 	/**
 	 * handle axiom asked to be removed under current aspects
 	 * 
@@ -81,8 +50,8 @@ public class ModificationHelperRemove extends ModificationHelper {
 	 * 			Annotation of type {@link OWLAspectAnd} or {@link OWLAspectOr} specifying current aspects
 	 * @return ChangeApplied: status if aspects updated successfully
 	 */
-	public static ChangeApplied handleChangeRemoveAxiom(OWLOntologyChange change, Annotation annotation) {
-		ChangeApplied result = ChangeApplied.UNSUCCESSFULLY;
+	public static List<OWLOntologyChange> handleChangeRemoveAxiom(OWLOntologyChange change, Annotation annotation) {
+        List<OWLOntologyChange> result = null;
 		OWLOntology onto = change.getOntology();
 		OWLAxiom userAx = change.getAxiom();
 		if (annotation instanceof OWLAspectAnd) { // OWLAspectAnd
@@ -116,7 +85,7 @@ public class ModificationHelperRemove extends ModificationHelper {
 	 * check if an axiom similar to this axiom exists in this ontology (which differ only in aspect annotations)
 	 * and if yes, removes current aspect annotations from this axiom 
 	 * 
-	 * @param axiom
+	 * @param userAx
 	 * 			axiom which user asked to remove
 	 * @param onto
 	 * 			current ontology
@@ -126,17 +95,17 @@ public class ModificationHelperRemove extends ModificationHelper {
 	 * 			successfully, if aspect annotations were removed,
 	 * 			unsuccessfully otherwise
 	 */
-	private static ChangeApplied handleRemoveAxiom(OWLAxiom userAx, OWLOntology onto, String[] currentAspects) {
+	private static List<OWLOntologyChange> handleRemoveAxiom(OWLAxiom userAx, OWLOntology onto, String[] currentAspects) {
 		// search for similar axioms (differing only in aspect annotations)
 		// and delete aspects from such axioms
 		// otherwise let it be. (return unsuccessfully)
-		ChangeApplied chgApplied = ChangeApplied.UNSUCCESSFULLY;	
+        List<OWLOntologyChange> changlesList = null;
 		for (OWLAxiom similarAxiom : getSimilarAxioms(userAx, onto)) {
 			if (hasAllAspects(similarAxiom, onto, currentAspects)) {
-				chgApplied = disassociateAxiomFromCurrentAspects(similarAxiom, onto, currentAspects);
+                changlesList = disassociateAxiomFromCurrentAspects(similarAxiom, onto, currentAspects);
 			}
 		}			
-		return chgApplied;
+		return changlesList;
 	}
 	
 	/**
@@ -153,8 +122,8 @@ public class ModificationHelperRemove extends ModificationHelper {
 	 * 			successfully, if aspect annotations have been updated,
 	 * 			unsuccessfully otherwise
 	 */
-	private static ChangeApplied disassociateAxiomFromCurrentAspects(OWLAxiom axiom, OWLOntology onto, String[] currentAspects) {
-		ChangeApplied chgApplied;
+	private static List<OWLOntologyChange> disassociateAxiomFromCurrentAspects(OWLAxiom axiom, OWLOntology onto, String[] currentAspects) {
+        List<OWLOntologyChange> changesList;
 		OWLOntologyManager om = onto.getOWLOntologyManager();
 		Set<OWLAnnotation> relevantAspectAnnotations = createSetOfRelevantAnnotations(onto, currentAspects);
 		OWLAxiom axBase = axiom.getAxiomWithoutAnnotations();
@@ -169,31 +138,11 @@ public class ModificationHelperRemove extends ModificationHelper {
 		// 2. add those annotations which are not current aspects to axToStay
 		OWLAxiom axiomToStay = axBase.getAnnotatedAxiom(annosToStay);
 		// 3. replace axiom with axiomToStay
-		chgApplied = om.applyChange(new RemoveAxiom(onto, axiom));
+        changesList = om.applyChange(new RemoveAxiom(onto, axiom));
 		om.addAxiom(onto, axiomToStay);
-		return chgApplied;
+		return changesList;
 	}
 	
-	/**
-	 * checks if argument chgApplied equals SUCCESSFULLY, 
-	 * and if yes create list of changes of type RemoveAxiom from this axiom
-	 * 
-	 * @param ontology
-	 * 			ontology
-	 * @param axiom 
-	 * 			axiom to be transformed to RemoveAxiom change (maybe)
-	 * @param chgApplied 
-	 * 			Status whether a change has been applied successfully
-	 * @return list of changes according to chgApplied
-	 */
-	private static List<OWLOntologyChange> produceListOfChangesFromChangeApplied(
-			OWLOntology ontology, OWLAxiom axiom, ChangeApplied chgApplied) {
-		// needed to match signature of removeAxiom()
-		List<OWLOntologyChange> changesApplied = new ArrayList<OWLOntologyChange>();
-		if(chgApplied.equals(ChangeApplied.SUCCESSFULLY)) {
-			changesApplied.add(new RemoveAxiom(ontology, axiom));
-		}
-		return changesApplied;
-	}
+
 
 }

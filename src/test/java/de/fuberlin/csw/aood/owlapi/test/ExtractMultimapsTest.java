@@ -21,6 +21,8 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 import java.util.Collections;
+import java.util.Map;
+import java.util.Set;
 
 import org.junit.Test;
 import org.semanticweb.owlapi.model.IRI;
@@ -31,7 +33,6 @@ import org.semanticweb.owlapi.model.OWLObjectPropertyExpression;
 import org.semanticweb.owlapi.model.OWLOntology;
 import org.semanticweb.owlapi.model.OWLOntologyCreationException;
 import org.semanticweb.owlapi.model.OWLOntologyManager;
-import org.semanticweb.owlapi.search.EntitySearcher;
 
 import com.google.common.collect.Multimap;
 
@@ -60,10 +61,10 @@ public class ExtractMultimapsTest extends BaseTest {
 	})
 	private void testMultimapExtractionAnd() {
 		OWLIndividual ind = df.getOWLNamedIndividual(IRI.create(base + "#FrauenbadTitle"));
-		Multimap<OWLDataPropertyExpression, OWLLiteral> multimap = 
-				EntitySearcher.getDataPropertyValues(ind, Collections.singleton(onto));
+		Map<OWLDataPropertyExpression, Set<OWLLiteral>> map =
+                ind.getDataPropertyValues(onto);
 		// and without aspects this multimap has size 1 ( titleString, Frauenbad )
-		assertEquals(0, multimap.size());
+		assertEquals(0, map.size());
 		
 	}
 
@@ -77,10 +78,10 @@ public class ExtractMultimapsTest extends BaseTest {
 	})
 	private void testMultimapExtractionOr() {
 		OWLIndividual ind = df.getOWLNamedIndividual(IRI.create(base + "#FrauenbadObj"));
-		Multimap<OWLObjectPropertyExpression, OWLIndividual> multimap = 
-				EntitySearcher.getObjectPropertyValues(ind, onto);
+		Map<OWLObjectPropertyExpression, Set<OWLIndividual>> map =
+                ind.getObjectPropertyValues(onto);
 		// and without aspects this multimap has size 5
-		assertEquals(3, multimap.size());	
+		assertEquals(3, map.size());
 	}
 
 }

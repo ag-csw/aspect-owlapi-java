@@ -21,6 +21,7 @@ import java.io.File;
 
 import javax.annotation.Nonnull;
 
+
 import org.junit.Rule;
 import org.junit.rules.TemporaryFolder;
 import org.semanticweb.owlapi.apibinding.OWLManager;
@@ -31,7 +32,6 @@ import org.semanticweb.owlapi.model.OWLOntologyCreationException;
 import org.semanticweb.owlapi.model.OWLOntologyIRIMapper;
 import org.semanticweb.owlapi.model.OWLOntologyManager;
 import org.semanticweb.owlapi.util.AutoIRIMapper;
-import org.semanticweb.owlapi.util.PriorityCollection;
 import org.semanticweb.owlapi.util.SimpleIRIMapper;
 
 public abstract class BaseTest {
@@ -111,20 +111,19 @@ public abstract class BaseTest {
     public OWLOntologyManager create() {
     	// get hold of ontology manager
         OWLOntologyManager om = OWLManager.createOWLOntologyManager();
-        PriorityCollection<OWLOntologyIRIMapper> iriMappers = om.getIRIMappers();
-        iriMappers.add(new AutoIRIMapper(new File("materializedOntologies"), true));
-        iriMappers.add(new SimpleIRIMapper(paintingIRI, IRI.create(paintingFile)));
-        iriMappers.add(new SimpleIRIMapper(paintingAnnotatedIRI, IRI.create(paintingAnnotatedFile)));
-        iriMappers.add(new SimpleIRIMapper(aspectOntologyIRI, IRI.create(aspectOntologyFile)));
+        om.addIRIMapper(new AutoIRIMapper(new File("materializedOntologies"), true));
+        om.addIRIMapper(new SimpleIRIMapper(paintingIRI, IRI.create(paintingFile)));
+        om.addIRIMapper(new SimpleIRIMapper(paintingAnnotatedIRI, IRI.create(paintingAnnotatedFile)));
+        om.addIRIMapper(new SimpleIRIMapper(aspectOntologyIRI, IRI.create(aspectOntologyFile)));
 //        iriMappers.add(new SimpleIRIMapper(severalAspectsExampleIRI, IRI.create(severalAspectsExampleFile)));
-        iriMappers.add(new SimpleIRIMapper(complexityAspectIRI, IRI.create(complexityAspectFile)));
-        iriMappers.add(new SimpleIRIMapper(complexityExampleIRI, IRI.create(complexityExampleFile)));
-        iriMappers.add(new SimpleIRIMapper(provenanceAspectIRI, IRI.create(provenanceAspectFile)));
-        iriMappers.add(new SimpleIRIMapper(provenanceExampleIRI, IRI.create(provenanceExampleFile)));
-        iriMappers.add(new SimpleIRIMapper(temporalAspectIRI, IRI.create(temporalAspectFile)));
-        iriMappers.add(new SimpleIRIMapper(temporalExampleIRI, IRI.create(temporalExampleFile)));
-        iriMappers.add(new SimpleIRIMapper(timeIRI, IRI.create(timeFile)));
-        iriMappers.add(new SimpleIRIMapper(provoIRI, IRI.create(provoFile)));
+        om.addIRIMapper(new SimpleIRIMapper(complexityAspectIRI, IRI.create(complexityAspectFile)));
+        om.addIRIMapper(new SimpleIRIMapper(complexityExampleIRI, IRI.create(complexityExampleFile)));
+        om.addIRIMapper(new SimpleIRIMapper(provenanceAspectIRI, IRI.create(provenanceAspectFile)));
+        om.addIRIMapper(new SimpleIRIMapper(provenanceExampleIRI, IRI.create(provenanceExampleFile)));
+        om.addIRIMapper(new SimpleIRIMapper(temporalAspectIRI, IRI.create(temporalAspectFile)));
+        om.addIRIMapper(new SimpleIRIMapper(temporalExampleIRI, IRI.create(temporalExampleFile)));
+        om.addIRIMapper(new SimpleIRIMapper(timeIRI, IRI.create(timeFile)));
+        om.addIRIMapper(new SimpleIRIMapper(provoIRI, IRI.create(provoFile)));
         return om;
     }
     
@@ -135,7 +134,7 @@ public abstract class BaseTest {
 //    	ClassLoader classLoader = getClass().getClassLoader();
 //		File advisedOntologyFile = new File(classLoader.getResource(ADVISED_ONTO_WITHASPECTS_LOCAL_PATH).getFile());
     	// Map the ontology IRI to a physical IRI (a file)
-    	om.getIRIMappers().add(new SimpleIRIMapper(ADVISED_ONTO_IRI, IRI.create(ADVISED_ONTO_WITHASPECTS_FILE)));
+    	om.addIRIMapper(new SimpleIRIMapper(ADVISED_ONTO_IRI, IRI.create(ADVISED_ONTO_WITHASPECTS_FILE)));
     	// Load ontology - using ontology IRI. IRI Mapper knows file location.
     	return om.loadOntology(ADVISED_ONTO_IRI);
     }
@@ -144,7 +143,7 @@ public abstract class BaseTest {
     public OWLOntology loadAdvisedOntologyNoAspects(@Nonnull OWLOntologyManager om)
             throws OWLOntologyCreationException {
     	// Map the ontology IRI to a physical IRI (a file)
-    	om.getIRIMappers().add(new SimpleIRIMapper(ADVISED_ONTO_IRI, IRI.create(ADVISED_ONTO_NOASPECTS_FILE)));
+    	om.addIRIMapper(new SimpleIRIMapper(ADVISED_ONTO_IRI, IRI.create(ADVISED_ONTO_NOASPECTS_FILE)));
     	// Load ontology - using ontology IRI. IRI Mapper knows file location.
     	return om.loadOntology(ADVISED_ONTO_IRI);
     }

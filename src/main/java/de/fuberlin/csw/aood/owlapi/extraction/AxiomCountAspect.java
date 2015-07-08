@@ -26,7 +26,6 @@ import org.aspectj.lang.annotation.Pointcut;
 import org.semanticweb.owlapi.model.AxiomType;
 import org.semanticweb.owlapi.model.OWLAxiom;
 import org.semanticweb.owlapi.model.OWLOntology;
-import org.semanticweb.owlapi.model.parameters.Imports;
 
 import de.fuberlin.csw.aood.owlapi.OWLAspectAnd;
 import de.fuberlin.csw.aood.owlapi.OWLAspectOr;
@@ -57,13 +56,6 @@ public class AxiomCountAspect {
 	 */
 	@Pointcut("call(public int org.semanticweb.owlapi.model.*.getAxiomCount(org.semanticweb.owlapi.model.AxiomType<*>))")
 	void getAxCountAxiomType() {}
-	/**
-	 * quantifies over calls to methods of type getAxiomCount(imports) 
-	 * provided by types from org.semanticweb.owlapi.model package and 
-	 * having one argument of type Imports
-	 */
-	@Pointcut("call(public int org.semanticweb.owlapi.model.*.getAxiomCount(org.semanticweb.owlapi.model.parameters.Imports))")
-	void getAxCountImports() {}
 	
 	// with 2 args (AxiomType, Imports)
 	/**
@@ -81,16 +73,8 @@ public class AxiomCountAspect {
 	 */
 	@Pointcut("call(public int org.semanticweb.owlapi.model.*.getLogicalAxiomCount())")
 	void getLogicalAxCount() {}
-	
-	// logical axs with Imports arg
-	/**
-	 * quantifies over calls to methods of type getLogicalAxiomCount(imports) 
-	 * provided by types from org.semanticweb.owlapi.model package and 
-	 * with one argument of type Imports
-	 */
-	@Pointcut("call(public int org.semanticweb.owlapi.model.*.getLogicalAxiomCount(org.semanticweb.owlapi.model.parameters.Imports))")
-	void getLogicalAxCountImports() {}
-	
+
+
 	// USED POINTCUTS and ADVICES ============================================================
 	
 	// for getAxiomCount() without args --------------------------------------------------
@@ -197,7 +181,7 @@ public class AxiomCountAspect {
 	 * @throws Throwable
 	 * 			in case something goes wrong
 	 */
-	@Around("(getAxCountAxiomType() || getAxCountImports()) && target(ontology) && @within(annotation)") 
+	@Around("getAxCountAxiomType() && target(ontology) && @within(annotation)")
 	public Object aroundGetAxCountWithinClassMarkedWithAnd1(ProceedingJoinPoint pjp, OWLOntology ontology, OWLAspectAnd annotation) throws Throwable {
 		return handleAxiomCount1(pjp, ontology, annotation);
 	}
@@ -218,7 +202,7 @@ public class AxiomCountAspect {
 	 * @throws Throwable
 	 * 			in case something goes wrong
 	 */
-	@Around("(getAxCountAxiomType() || getAxCountImports()) && target(ontology) && @within(annotation)") 
+	@Around("getAxCountAxiomType() && target(ontology) && @within(annotation)")
 	public Object aroundGetAxCountWithinClassMarkedWithOr1(ProceedingJoinPoint pjp, OWLOntology ontology, OWLAspectOr annotation) throws Throwable {
 		return handleAxiomCount1(pjp, ontology, annotation);
 	}
@@ -239,7 +223,7 @@ public class AxiomCountAspect {
 	 * @throws Throwable
 	 * 			in case something goes wrong
 	 */
-	@Around("(getAxCountAxiomType() || getAxCountImports()) && target(ontology) && @withincode(annotation)") 
+	@Around("getAxCountAxiomType() && target(ontology) && @withincode(annotation)")
 	public Object aroundGetAxCountWithinCodeMarkedWithAnd1(ProceedingJoinPoint pjp, OWLOntology ontology, OWLAspectAnd annotation) throws Throwable {
 		return handleAxiomCount1(pjp, ontology, annotation);
 	}
@@ -260,7 +244,7 @@ public class AxiomCountAspect {
 	 * @throws Throwable
 	 * 			in case something goes wrong
 	 */
-	@Around("(getAxCountAxiomType() || getAxCountImports()) && target(ontology) && @withincode(annotation)") 
+	@Around("getAxCountAxiomType() && target(ontology) && @withincode(annotation)")
 	public Object aroundGetAxCountWithinCodeMarkedWithOr1(ProceedingJoinPoint pjp, OWLOntology ontology, OWLAspectOr annotation) throws Throwable {
 		return handleAxiomCount1(pjp, ontology, annotation);
 	}
@@ -278,16 +262,16 @@ public class AxiomCountAspect {
 	 * 			Ontology
 	 * @param annotation
 	 * 			Annotation of type {@link OWLAspectAnd} specifying current aspects
-	 * @param imports
-	 * 			Imports
+	 * @param includeImports
+	 * 			boolean
 	 * @return
 	 * 			Number of axioms related to current aspects
 	 * @throws Throwable
 	 * 			in case something goes wrong
 	 */
-	@Around("getAxCount2() && target(ontology) && args(*, imports) && @within(annotation)") 
-	public Object aroundGetAxCountWithinClassMarkedWithAnd2(ProceedingJoinPoint pjp, OWLOntology ontology, OWLAspectAnd annotation, Imports imports) throws Throwable {
-		return handleAxiomCount2(pjp, ontology, annotation, imports);
+	@Around("getAxCount2() && target(ontology) && args(*, includeImports) && @within(annotation)")
+	public Object aroundGetAxCountWithinClassMarkedWithAnd2(ProceedingJoinPoint pjp, OWLOntology ontology, OWLAspectAnd annotation, boolean includeImports) throws Throwable {
+		return handleAxiomCount2(pjp, ontology, annotation, includeImports);
 	}
 	
 	/**
@@ -301,16 +285,16 @@ public class AxiomCountAspect {
 	 * 			Ontology
 	 * @param annotation
 	 * 			Annotation of type {@link OWLAspectOr} specifying current aspects
-	 * @param imports
-	 * 			Imports
+	 * @param includeImports
+	 * 			boolean
 	 * @return
 	 * 			Number of axioms related to current aspects
 	 * @throws Throwable
 	 * 			in case something goes wrong
 	 */
-	@Around("getAxCount2() && target(ontology) && args(*, imports) && @within(annotation)") 
-	public Object aroundGetAxCountWithinClassMarkedWithOr2(ProceedingJoinPoint pjp, OWLOntology ontology, OWLAspectOr annotation, Imports imports) throws Throwable {
-		return handleAxiomCount2(pjp, ontology, annotation, imports);
+	@Around("getAxCount2() && target(ontology) && args(*, includeImports) && @within(annotation)")
+	public Object aroundGetAxCountWithinClassMarkedWithOr2(ProceedingJoinPoint pjp, OWLOntology ontology, OWLAspectOr annotation, boolean includeImports) throws Throwable {
+		return handleAxiomCount2(pjp, ontology, annotation, includeImports);
 	}
 
 	/**
@@ -324,16 +308,16 @@ public class AxiomCountAspect {
 	 * 			Ontology
 	 * @param annotation
 	 * 			Annotation of type {@link OWLAspectAnd} specifying current aspects
-	 * @param imports
-	 * 			Imports
+	 * @param includeImports
+	 * 			boolean
 	 * @return
 	 * 			Number of axioms related to current aspects
 	 * @throws Throwable
 	 * 			in case something goes wrong
 	 */
-	@Around("getAxCount2() && target(ontology) && args(*, imports) && @withincode(annotation)") 
-	public Object aroundGetAxCountWithinCodeMarkedWithAnd2(ProceedingJoinPoint pjp, OWLOntology ontology, OWLAspectAnd annotation, Imports imports) throws Throwable {
-		return handleAxiomCount2(pjp, ontology, annotation, imports);
+	@Around("getAxCount2() && target(ontology) && args(*, includeImports) && @withincode(annotation)")
+	public Object aroundGetAxCountWithinCodeMarkedWithAnd2(ProceedingJoinPoint pjp, OWLOntology ontology, OWLAspectAnd annotation, boolean includeImports) throws Throwable {
+		return handleAxiomCount2(pjp, ontology, annotation, includeImports);
 	}
 	
 	/**
@@ -347,16 +331,16 @@ public class AxiomCountAspect {
 	 * 			Ontology
 	 * @param annotation
 	 * 			Annotation of type {@link OWLAspectOr} specifying current aspects
-	 * @param imports
-	 * 			Imports
+	 * @param includeImports
+	 * 			inlcudeImports
 	 * @return
 	 * 			Number of axioms related to current aspects
 	 * @throws Throwable
 	 * 			in case something goes wrong
 	 */
-	@Around("getAxCount2() && target(ontology) && args(*, imports) && @withincode(annotation)") 
-	public Object aroundGetAxCountWithinCodeMarkedWithOr2(ProceedingJoinPoint pjp, OWLOntology ontology, OWLAspectOr annotation, Imports imports) throws Throwable {
-		return handleAxiomCount2(pjp, ontology, annotation, imports);
+	@Around("getAxCount2() && target(ontology) && args(*, includeImports) && @withincode(annotation)")
+	public Object aroundGetAxCountWithinCodeMarkedWithOr2(ProceedingJoinPoint pjp, OWLOntology ontology, OWLAspectOr annotation, boolean includeImports) throws Throwable {
+		return handleAxiomCount2(pjp, ontology, annotation, includeImports);
 	}
 	
 	// for getLogicalAxiomCount() ----------------------------------------------------
@@ -449,104 +433,7 @@ public class AxiomCountAspect {
 		return handleLogicalAxiomCount(ontology, annotation);
 	}
 	
-	// for getLogicalAxiomCount() with Imports arg -----------------------------------
 
-
-	/**
-	 * advice responsible for handling result of the call to a method of type getLogicalAxiomCount(imports)
-	 * if this method has one argument of type Imports and
-	 * if this method was called from a class annotated with {@link OWLAspectAnd}
-	 * 
-	 * @param pjp
-	 * 			Proceeding Join Point
-	 * @param imports
-	 * 			Imports
-	 * @param ontology
-	 * 			Ontology
-	 * @param annotation
-	 * 			Annotation of type {@link OWLAspectAnd} specifying current aspects
-	 * @return
-	 * 			Number of logical axioms related to current aspects
-	 * @throws Throwable
-	 * 			in case something goes wrong
-	 */
-	@Around("getLogicalAxCountImports() && args(imports) && target(ontology) && @within(annotation)") 
-	public Object aroundLogicalAxCountImportsWithinAnd(ProceedingJoinPoint pjp, 
-			Imports imports, OWLOntology ontology, OWLAspectAnd annotation) throws Throwable {
-		return handleLogicalAxiomCountImports(imports, ontology, annotation);
-	}
-	
-	/**
-	 * advice responsible for handling result of the call to a method of type getLogicalAxiomCount(imports)
-	 * if this method has one argument of type Imports and
-	 * if this method was called from a class annotated with {@link OWLAspectOr}
-	 * 
-	 * @param pjp
-	 * 			Proceeding Join Point
-	 * @param imports
-	 * 			Imports
-	 * @param ontology
-	 * 			Ontology
-	 * @param annotation
-	 * 			Annotation of type {@link OWLAspectOr} specifying current aspects
-	 * @return
-	 * 			Number of logical axioms related to current aspects
-	 * @throws Throwable
-	 * 			in case something goes wrong
-	 */
-	@Around("getLogicalAxCountImports() && args(imports) && target(ontology) && @within(annotation)") 
-	public Object aroundLogicalAxCountImportsWithinOr(ProceedingJoinPoint pjp, 
-			Imports imports, OWLOntology ontology, OWLAspectOr annotation) throws Throwable {
-		return handleLogicalAxiomCountImports(imports, ontology, annotation);
-	}
-	
-	/**
-	 * advice responsible for handling result of the call to a method of type getLogicalAxiomCount(imports)
-	 * if this method has one argument of type Imports and
-	 * if this method was called from a method or constructor annotated with {@link OWLAspectAnd}
-	 * 
-	 * @param pjp
-	 * 			Proceeding Join Point
-	 * @param imports
-	 * 			Imports
-	 * @param ontology
-	 * 			Ontology
-	 * @param annotation
-	 * 			Annotation of type {@link OWLAspectAnd} specifying current aspects
-	 * @return
-	 * 			Number of logical axioms related to current aspects
-	 * @throws Throwable
-	 * 			in case something goes wrong
-	 */
-	@Around("getLogicalAxCountImports() && args(imports) && target(ontology) && @withincode(annotation)") 
-	public Object aroundLogicalAxCountImportsWithinCodeAnd(ProceedingJoinPoint pjp, 
-			Imports imports, OWLOntology ontology, OWLAspectAnd annotation) throws Throwable {
-		return handleLogicalAxiomCountImports(imports, ontology, annotation);
-	}
-	
-	/**
-	 * advice responsible for handling result of the call to a method of type getLogicalAxiomCount(imports)
-	 * if this method has one argument of type Imports and
-	 * if this method was called from a method or constructor annotated with {@link OWLAspectOr}
-	 * 
-	 * @param pjp
-	 * 			Proceeding Join Point
-	 * @param imports
-	 * 			Imports
-	 * @param ontology
-	 * 			Ontology
-	 * @param annotation
-	 * 			Annotation of type {@link OWLAspectOr} specifying current aspects
-	 * @return
-	 * 			Number of logical axioms related to current aspects
-	 * @throws Throwable
-	 * 			in case something goes wrong
-	 */
-	@Around("getLogicalAxCountImports() && args(imports) && target(ontology) && @withincode(annotation)") 
-	public Object aroundLogicalAxCountImportsWithinCodeOr(ProceedingJoinPoint pjp, 
-			Imports imports, OWLOntology ontology, OWLAspectOr annotation) throws Throwable {
-		return handleLogicalAxiomCountImports(imports, ontology, annotation);
-	}
 	
 	// ------------------------------- HELPER  --------------------------------
 	
@@ -585,14 +472,10 @@ public class AxiomCountAspect {
 	private Object handleAxiomCount1(ProceedingJoinPoint pjp,
 			OWLOntology ontology, Annotation annotation) {
 		Object arg = (pjp.getArgs())[0];
-		if (arg instanceof AxiomType) {
-			@SuppressWarnings("unchecked")
-			AxiomType<? extends OWLAxiom> axType = (AxiomType<? extends OWLAxiom>) arg;
-			return HelperFacade.handleAxiomCount1(axType, ontology, annotation);
-		} else { // otherwise it can be only of Imports type
-			Imports imports = (Imports) arg;
-			return HelperFacade.handleAxiomCount1(imports, ontology, annotation);
-		} 
+		@SuppressWarnings("unchecked")
+        AxiomType<? extends OWLAxiom> axType = (AxiomType<? extends OWLAxiom>) arg;
+		return HelperFacade.handleAxiomCount1(axType, ontology, annotation);
+
 	}
 	
 	/**
@@ -607,16 +490,16 @@ public class AxiomCountAspect {
 	 * 			Ontology
 	 * @param annotation
 	 * 			Annotation of type {@link OWLAspectAnd} or {@link OWLAspectOr} specifying current aspects
-	 * @param imports
-	 * 			Imports
+	 * @param includeImports
+	 * 			boolean
 	 * @return
 	 * 			Number of axioms related to current aspects
 	 */
 	private Object handleAxiomCount2(ProceedingJoinPoint pjp,
-			OWLOntology ontology, Annotation annotation, Imports imports) {
+			OWLOntology ontology, Annotation annotation, boolean includeImports) {
 		@SuppressWarnings("unchecked")
 		AxiomType<? extends OWLAxiom> axType = (AxiomType<? extends OWLAxiom>) (pjp.getArgs())[0];	
-		return HelperFacade.handleAxiomCount2(axType, imports, ontology, annotation);
+		return HelperFacade.handleAxiomCount2(axType, includeImports, ontology, annotation);
 	}
 	
 	/**
@@ -635,24 +518,6 @@ public class AxiomCountAspect {
 	private Object handleLogicalAxiomCount(OWLOntology ontology, Annotation annotation) {
 		return HelperFacade.handleLogicalAxiomCount(ontology, annotation);
 	}
-	
-	/**
-	 * Responsible for handling result of the call to a method of type getLogicalAxiomCount(imports)
-	 * if this method has one argument of type Imports
-	 * if this method was called from a context annotated with either {@link OWLAspectAnd} or {@link OWLAspectOr}
-	 * The context may be a class, a method or a constructor.
-	 * 
-	 * @param imports
-	 * 			Imports
-	 * @param ontology
-	 * 			Ontology
-	 * @param annotation
-	 * 			Annotation of type {@link OWLAspectAnd} or {@link OWLAspectOr} specifying current aspects
-	 * @return
-	 * 			Number of logical axioms related to current aspects
-	 */
-	private Object handleLogicalAxiomCountImports(Imports imports, OWLOntology ontology, Annotation annotation) {
-		return HelperFacade.handleLogicalAxiomCountImports(imports, ontology, annotation);
-	}
+
 
 }

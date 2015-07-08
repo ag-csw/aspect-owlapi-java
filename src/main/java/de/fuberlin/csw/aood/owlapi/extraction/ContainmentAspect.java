@@ -18,6 +18,8 @@
 package de.fuberlin.csw.aood.owlapi.extraction;
 
 import java.lang.annotation.Annotation;
+import java.util.Set;
+
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -25,8 +27,6 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.semanticweb.owlapi.model.OWLAxiom;
 import org.semanticweb.owlapi.model.OWLOntology;
-import org.semanticweb.owlapi.model.parameters.AxiomAnnotations;
-import org.semanticweb.owlapi.model.parameters.Imports;
 
 import de.fuberlin.csw.aood.owlapi.OWLAspectAnd;
 import de.fuberlin.csw.aood.owlapi.OWLAspectOr;
@@ -42,40 +42,46 @@ public class ContainmentAspect {
 	
 	// arguments: (OWLAxiom)
 	/**
-	 * quantifies over calls to methods of type containsAxiom(axiom) 
+	 * quantifies over calls to methods of type containsAxiom(axiom) and containsAxiomIgnoreAnnotations(axiom)
 	 * provided by types from org.semanticweb.owlapi.model package
 	 * and having one argument of type OWLAxiom
 	 */
 	@Pointcut("call(public boolean org.semanticweb.owlapi.model.*.containsAxiom(org.semanticweb.owlapi.model.OWLAxiom))")
 	void containsAx1() {}
 	
-	// arguments: (OWLAxiom, Imports, AxiomAnnotations)
+	// arguments: (OWLAxiom, includeImports)
 	/**
-	 * quantifies over calls to methods of type containsAxiom(arg1, arg2, arg3) 
+	 * quantifies over calls to methods of type containsAxiom(arg1, arg2) and containsAxiomIgnoreAnnotations(arg1, arg2)
 	 * provided by types from org.semanticweb.owlapi.model package and 
-	 * having three arguments where first argument is of type OWLAxiom
+	 * having two arguments where first argument is of type OWLAxiom and the second argument is of type boolean
 	 */
-	@Pointcut("call(public boolean org.semanticweb.owlapi.model.*.containsAxiom(org.semanticweb.owlapi.model.OWLAxiom, *, *))")
-	void containsAx3() {}
-	
-	// arguments: (OWLAxiom, Imports, AxiomAnnotations)
-	/**
-	 * quantifies over calls to methods of type containsAxiom(arg1, arg2, arg3)
-	 * provided by org.semanticweb.owlapi.search.EntitySearcher and 
-	 * having three arguments where arg1 is of type OWLAxiom and arg2 is of type OWLOntology
-	 */
-	@Pointcut("call(public boolean org.semanticweb.owlapi.search.EntitySearcher.containsAxiom(org.semanticweb.owlapi.model.OWLAxiom, org.semanticweb.owlapi.model.OWLOntology, *))")
-	void containsAx3ES() {}
-	
-	// EntitySearcher method, arguments: (OWLAxiom, Iterable<OWLOntology>, any type)
-	/**
-	 * quantifies over calls to methods of type containsAxiom(OWLAxiom, Iterable, any type)
-	 * provided by org.semanticweb.owlapi.search.EntitySearcher and 
-	 * having three arguments specifying the axiom whose containment in which ontologies is to be checked
-	 */
-	@Pointcut("call(public boolean org.semanticweb.owlapi.search.EntitySearcher.containsAxiom(org.semanticweb.owlapi.model.OWLAxiom, java.lang.Iterable<org.semanticweb.owlapi.model.OWLOntology>, *))")
-	void containsAx3ESIterable() {}
-	
+	@Pointcut("call(public boolean org.semanticweb.owlapi.model.*.containsAxiom(org.semanticweb.owlapi.model.OWLAxiom, boolean))")
+	void containsAxWithImportFlag() {}
+
+
+
+    // arguments: (OWLAxiom)
+    /**
+     * quantifies over calls to methods of type containsAxiom(axiom) and containsAxiomIgnoreAnnotations(axiom)
+     * provided by types from org.semanticweb.owlapi.model package
+     * and having one argument of type OWLAxiom
+     */
+    @Pointcut("call(public boolean org.semanticweb.owlapi.model.*.containsAxiomIgnoreAnnotations(org.semanticweb.owlapi.model.OWLAxiom))")
+    void containsAx1IgnoreAnnotations() {}
+
+    // arguments: (OWLAxiom, OWLAxiom, includeImports)
+    /**
+     * quantifies over calls to methods of type containsAxiom(arg1, arg2) and containsAxiomIgnoreAnnotations(arg1, arg2)
+     * provided by types from org.semanticweb.owlapi.model package and
+     * having two arguments where first argument is of type OWLAxiom and the second argument is of type boolean
+     */
+    @Pointcut("call(public boolean org.semanticweb.owlapi.model.*.containsAxiomIgnoreAnnotations(org.semanticweb.owlapi.model.OWLAxiom, *))")
+    void containsAxWithImportFlagIgnoreAnnotations() {}
+
+
+
+
+
 	// USED POINTCUTS and ADVICES ============================================================
 	
 	/**
@@ -170,7 +176,7 @@ public class ContainmentAspect {
 		return handleContainsAxiom1Arg(ontology, annotation, axiom);
 	}
 
-	// 3 args
+	// 2 args
 	
 	/**
 	 * advice responsible for handling result of the call 
@@ -183,10 +189,8 @@ public class ContainmentAspect {
 	 * 			Proceeding Join Point
 	 * @param axiom
 				OWLAxiom
-	 * @param imports
-	 * 			Imports (specifies whether to consider imports closure)
-	 * @param axiomAnnotations
-	 * 			AxiomAnnotations (specifies whether to consider axiom annotations)
+	 * @param includeImports
+	 * 			boolean (specifies whether to consider imports closure)
 	 * @param ontology
 	 * 			Ontology
 	 * @param annotation
@@ -198,9 +202,9 @@ public class ContainmentAspect {
 	 * @throws Throwable
 	 * 			in case something goes wrong
 	 */
-	@Around("containsAx3() && args(axiom, imports, axiomAnnotations) && target(ontology) && @within(annotation)") 
-	public Object aroundContainsAx3WithinClassMarkedWithAnd(ProceedingJoinPoint pjp, OWLAxiom axiom, Imports imports, AxiomAnnotations axiomAnnotations, OWLOntology ontology, OWLAspectAnd annotation) throws Throwable {
-		return handleContainsAxiom3Args(axiom, imports, axiomAnnotations, ontology, annotation);
+	@Around("containsAxWithImportFlag() && args(axiom, includeImports) && target(ontology) && @within(annotation)")
+	public Object aroundContainsAxWithImportFlagWithinClassMarkedWithAnd(ProceedingJoinPoint pjp, OWLAxiom axiom, boolean includeImports, OWLOntology ontology, OWLAspectAnd annotation) throws Throwable {
+		return handleContainsAxiom2Args(axiom, includeImports, ontology, annotation);     // Todo :: handler method is responsable to call method with or without Annotations (pjp)
 	}
 	
 	/**
@@ -214,10 +218,8 @@ public class ContainmentAspect {
 	 * 			Proceeding Join Point
 	 * @param axiom
 				OWLAxiom
-	 * @param imports
-	 * 			Imports (specifies whether to consider imports closure)
-	 * @param axiomAnnotations
-	 * 			AxiomAnnotations (specifies whether to consider axiom annotations)
+	 * @param includeImports
+	 * 			boolean (specifies whether to consider imports closure)
 	 * @param ontology
 	 * 			Ontology
 	 * @param annotation
@@ -229,9 +231,9 @@ public class ContainmentAspect {
 	 * @throws Throwable
 	 * 			in case something goes wrong
 	 */
-	@Around("containsAx3() && args(axiom, imports, axiomAnnotations) && target(ontology) && @within(annotation)") 
-	public Object aroundContainsAx3WithinClassMarkedWithOr(ProceedingJoinPoint pjp, OWLAxiom axiom, Imports imports, AxiomAnnotations axiomAnnotations, OWLOntology ontology, OWLAspectOr annotation) throws Throwable {
-		return handleContainsAxiom3Args(axiom, imports, axiomAnnotations, ontology, annotation);
+	@Around("containsAxWithImportFlag() && args(axiom, includeImports) && target(ontology) && @within(annotation)")
+	public Object aroundContainsAxWithImportFlagWithinClassMarkedWithOr(ProceedingJoinPoint pjp, OWLAxiom axiom, boolean includeImports, OWLOntology ontology, OWLAspectOr annotation) throws Throwable {
+		return handleContainsAxiom2Args(axiom, includeImports, ontology, annotation);
 	}
 	
 	/**
@@ -245,10 +247,8 @@ public class ContainmentAspect {
 	 * 			Proceeding Join Point
 	 * @param axiom
 				OWLAxiom
-	 * @param imports
-	 * 			Imports (specifies whether to consider imports closure)
-	 * @param axiomAnnotations
-	 * 			AxiomAnnotations (specifies whether to consider axiom annotations)
+	 * @param includeImports
+	 * 			boolean (specifies whether to consider imports closure)
 	 * @param ontology
 	 * 			Ontology
 	 * @param annotation
@@ -260,9 +260,9 @@ public class ContainmentAspect {
 	 * @throws Throwable
 	 * 			in case something goes wrong
 	 */
-	@Around("containsAx3() && args(axiom, imports, axiomAnnotations) && target(ontology) && @withincode(annotation)") 
-	public Object aroundContainsAx3WithinCodeMarkedWithAnd(ProceedingJoinPoint pjp, OWLAxiom axiom, Imports imports, AxiomAnnotations axiomAnnotations, OWLOntology ontology, OWLAspectAnd annotation) throws Throwable {
-		return handleContainsAxiom3Args(axiom, imports, axiomAnnotations, ontology, annotation);
+	@Around("containsAxWithImportFlag() && args(axiom, includeImports) && target(ontology) && @withincode(annotation)")
+	public Object aroundContainsAxWithImportFlagWithinCodeMarkedWithAnd(ProceedingJoinPoint pjp, OWLAxiom axiom, boolean includeImports, OWLOntology ontology, OWLAspectAnd annotation) throws Throwable {
+		return handleContainsAxiom2Args(axiom, includeImports, ontology, annotation);
 	}
 	
 	/**
@@ -276,10 +276,8 @@ public class ContainmentAspect {
 	 * 			Proceeding Join Point
 	 * @param axiom
 				OWLAxiom
-	 * @param imports
-	 * 			Imports (specifies whether to consider imports closure)
-	 * @param axiomAnnotations
-	 * 			AxiomAnnotations (specifies whether to consider axiom annotations)
+	 * @param includeImports
+	 * 			boolean (specifies whether to consider imports closure)
 	 * @param ontology
 	 * 			Ontology
 	 * @param annotation
@@ -291,239 +289,233 @@ public class ContainmentAspect {
 	 * @throws Throwable
 	 * 			in case something goes wrong
 	 */
-	@Around("containsAx3() && args(axiom, imports, axiomAnnotations) && target(ontology) && @withincode(annotation)") 
-	public Object aroundContainsAx3WithinCodeMarkedWithOr(ProceedingJoinPoint pjp, OWLAxiom axiom, Imports imports, AxiomAnnotations axiomAnnotations, OWLOntology ontology, OWLAspectOr annotation) throws Throwable {
-		return handleContainsAxiom3Args(axiom, imports, axiomAnnotations, ontology, annotation);
+	@Around("containsAxWithImportFlag() && args(axiom, includeImports) && target(ontology) && @withincode(annotation)")
+	public Object aroundContainsAxWithImportFlagWithinCodeMarkedWithOr(ProceedingJoinPoint pjp, OWLAxiom axiom, boolean includeImports, OWLOntology ontology, OWLAspectOr annotation) throws Throwable {
+		return handleContainsAxiom2Args(axiom, includeImports, ontology, annotation);
 	}
 
-	// method provided by EntitySearcher, having arguments (OWLAxiom, OWLOntology, boolean)
-	
-	/**
-	 * advice responsible for handling result of the call 
-	 * to a method of type containsAxiom(OWLAxiom, OWLOntology, boolean), 
-	 * if this method is provided by org.semanticweb.owlapi.search.EntitySearcher and 
-	 * if this method was called from a class annotated with {@link OWLAspectAnd}
-	 * 
-	 * @param pjp
-	 * 			Proceeding Join Point
-	 * @param axiom
-	 *		OWLAxiom
-	 * @param ontology
-	 * 			Ontology			
-	 * @param imports
-	 * 			specifies whether to consider imports
-	 * @param annotation
-	 * 			Annotation of type {@link OWLAspectAnd} specifying current aspects
-	 * @param axiom
-	 * 			OWLAxiom whose containment is to be checked
-	 * @return
-	 * 			true, if this axiom is contained and has current aspects, otherwise false.
-	 * @throws Throwable
-	 * 			in case something goes wrong
-	 */
-	@Around("containsAx3ES() && args(axiom, ontology, imports) && @within(annotation)") 
-	public Object aroundContainsAx3ESWithinClassMarkedWithAnd(ProceedingJoinPoint pjp, 
-			OWLAxiom axiom, OWLOntology ontology, boolean imports, OWLAspectAnd annotation) throws Throwable {
-		return handleContainsAxiomES3Args(axiom, ontology, imports, annotation);
-	}
-	
-	/**
-	 * advice responsible for handling result of the call 
-	 * to a method of type containsAxiom(OWLAxiom, OWLOntology, boolean), 
-	 * if this method is provided by org.semanticweb.owlapi.search.EntitySearcher and 
-	 * if this method was called from a class annotated with {@link OWLAspectOr}
-	 * 
-	 * @param pjp
-	 * 			Proceeding Join Point
-	 * @param axiom
-	 *		OWLAxiom
-	 * @param ontology
-	 * 			Ontology			
-	 * @param imports
-	 * 			specifies whether to consider imports
-	 * @param annotation
-	 * 			Annotation of type {@link OWLAspectOr} specifying current aspects
-	 * @param axiom
-	 * 			OWLAxiom whose containment is to be checked
-	 * @return
-	 * 			true, if this axiom is contained and has current aspects, otherwise false.
-	 * @throws Throwable
-	 * 			in case something goes wrong
-	 */
-	@Around("containsAx3ES() && args(axiom, ontology, imports) && @within(annotation)") 
-	public Object aroundContainsAx3ESWithinClassMarkedWithOr(ProceedingJoinPoint pjp, 
-			OWLAxiom axiom, OWLOntology ontology, boolean imports, OWLAspectOr annotation) throws Throwable {
-		return handleContainsAxiomES3Args(axiom, ontology, imports, annotation);
-	}
-	
-	/**
-	 * advice responsible for handling result of the call 
-	 * to a method of type containsAxiom(OWLAxiom, OWLOntology, boolean), 
-	 * if this method is provided by org.semanticweb.owlapi.search.EntitySearcher and 
-	 * if this method was called from a method or constructor annotated with {@link OWLAspectAnd}
-	 * 
-	 * @param pjp
-	 * 			Proceeding Join Point
-	 * @param axiom
-	 *		OWLAxiom
-	 * @param ontology
-	 * 			Ontology			
-	 * @param imports
-	 * 			specifies whether to consider imports
-	 * @param annotation
-	 * 			Annotation of type {@link OWLAspectAnd} specifying current aspects
-	 * @param axiom
-	 * 			OWLAxiom whose containment is to be checked
-	 * @return
-	 * 			true, if this axiom is contained and has current aspects, otherwise false.
-	 * @throws Throwable
-	 * 			in case something goes wrong
-	 */
-	@Around("containsAx3ES() && args(axiom, ontology, imports) && @withincode(annotation)") 
-	public Object aroundContainsAx3ESWithinCodeMarkedWithAnd(ProceedingJoinPoint pjp, 
-			OWLAxiom axiom, OWLOntology ontology, boolean imports, OWLAspectAnd annotation) throws Throwable {
-		return handleContainsAxiomES3Args(axiom, ontology, imports, annotation);
-	}
-	
-	/**
-	 * advice responsible for handling result of the call 
-	 * to a method of type containsAxiom(OWLAxiom, OWLOntology, boolean), 
-	 * if this method is provided by org.semanticweb.owlapi.search.EntitySearcher and 
-	 * if this method was called from a method or constructor annotated with {@link OWLAspectOr}
-	 * 
-	 * @param pjp
-	 * 			Proceeding Join Point
-	 * @param axiom
-	 *		OWLAxiom
-	 * @param ontology
-	 * 			Ontology			
-	 * @param imports
-	 * 			specifies whether to consider imports
-	 * @param annotation
-	 * 			Annotation of type {@link OWLAspectOr} specifying current aspects
-	 * @param axiom
-	 * 			OWLAxiom whose containment is to be checked
-	 * @return
-	 * 			true, if this axiom is contained and has current aspects, otherwise false.
-	 * @throws Throwable
-	 * 			in case something goes wrong
-	 */
-	@Around("containsAx3ES() && args(axiom, ontology, imports) && @withincode(annotation)") 
-	public Object aroundContainsAx3ESWithinCodeMarkedWithOr(ProceedingJoinPoint pjp, 
-			OWLAxiom axiom, OWLOntology ontology, boolean imports, OWLAspectOr annotation) throws Throwable {
-		return handleContainsAxiomES3Args(axiom, ontology, imports, annotation);
-	}
-	
 
-	// EntitySearcher method, arguments: (OWLAxiom, Iterable<OWLOntology>, boolean)
-	
-	/**
-	 * advice responsible for handling result of the call 
-	 * to a method of type containsAxiom(OWLAxiom, Iterable, boolean), 
-	 * if this method is provided by org.semanticweb.owlapi.search.EntitySearcher and 
-	 * if this method was called from a class annotated with {@link OWLAspectAnd}
-	 * 
-	 * @param pjp
-	 * 			Proceeding Join Point
-	 * @param axiom
-	 *			OWLAxiom
-	 * @param ontologies
-	 * 			ontologies to be considered (Iterable)			
-	 * @param imports
-	 * 			specifies whether to consider imports (boolean)
-	 * @param annotation
-	 * 			Annotation of type {@link OWLAspectAnd} specifying current aspects
-	 * @return
-	 * 			true, if this axiom is contained and has current aspects, otherwise false.
-	 * @throws Throwable
-	 * 			in case something goes wrong
-	 */
-	@Around("containsAx3ESIterable() && args(axiom, ontologies, imports) && @within(annotation)") 
-	public Object aroundContainsAx3ESIterableWithinClassMarkedWithAnd(ProceedingJoinPoint pjp, 
-			OWLAxiom axiom, Iterable<OWLOntology> ontologies, boolean imports, OWLAspectAnd annotation) throws Throwable {
-		return handleContainsAxiomESIterable3Args(axiom, ontologies, imports, annotation);
-	}
-	
-	/**
-	 * advice responsible for handling result of the call 
-	 * to a method of type containsAxiom(OWLAxiom, Iterable, boolean), 
-	 * if this method is provided by org.semanticweb.owlapi.search.EntitySearcher and 
-	 * if this method was called from a class annotated with {@link OWLAspectOr}
-	 * 
-	 * @param pjp
-	 * 			Proceeding Join Point
-	 * @param axiom
-	 *			OWLAxiom
-	 * @param ontologies
-	 * 			ontologies to be considered (Iterable)			
-	 * @param imports
-	 * 			specifies whether to consider imports (boolean)
-	 * @param annotation
-	 * 			Annotation of type {@link OWLAspectOr} specifying current aspects
-	 * @return
-	 * 			true, if this axiom is contained and has current aspects, otherwise false.
-	 * @throws Throwable
-	 * 			in case something goes wrong
-	 */
-	@Around("containsAx3ESIterable() && args(axiom, ontologies, imports) && @within(annotation)") 
-	public Object aroundContainsAx3ESIterableWithinClassMarkedWithOr(ProceedingJoinPoint pjp, 
-			OWLAxiom axiom, Iterable<OWLOntology> ontologies, boolean imports, OWLAspectOr annotation) throws Throwable {
-		return handleContainsAxiomESIterable3Args(axiom, ontologies, imports, annotation);
-	}
-	
-	/**
-	 * advice responsible for handling result of the call 
-	 * to a method of type containsAxiom(OWLAxiom, Iterable, boolean), 
-	 * if this method is provided by org.semanticweb.owlapi.search.EntitySearcher and 
-	 * if this method was called from a method or constructor annotated with {@link OWLAspectAnd}
-	 * 
-	 * @param pjp
-	 * 			Proceeding Join Point
-	 * @param axiom
-	 *			OWLAxiom
-	 * @param ontologies
-	 * 			ontologies to be considered (Iterable)			
-	 * @param imports
-	 * 			specifies whether to consider imports (boolean)
-	 * @param annotation
-	 * 			Annotation of type {@link OWLAspectAnd} specifying current aspects
-	 * @return
-	 * 			true, if this axiom is contained and has current aspects, otherwise false.
-	 * @throws Throwable
-	 * 			in case something goes wrong
-	 */
-	@Around("containsAx3ESIterable() && args(axiom, ontologies, imports) && @withincode(annotation)") 
-	public Object aroundContainsAx3ESIterableWithinCodeMarkedWithAnd(ProceedingJoinPoint pjp, 
-			OWLAxiom axiom, Iterable<OWLOntology> ontologies, boolean imports, OWLAspectAnd annotation) throws Throwable {
-		return handleContainsAxiomESIterable3Args(axiom, ontologies, imports, annotation);
-	}
-	
-	/**
-	 * advice responsible for handling result of the call 
-	 * to a method of type containsAxiom(OWLAxiom, Iterable, boolean), 
-	 * if this method is provided by org.semanticweb.owlapi.search.EntitySearcher and 
-	 * if this method was called from a method or constructor annotated with {@link OWLAspectOr}
-	 * 
-	 * @param pjp
-	 * 			Proceeding Join Point
-	 * @param axiom
-	 *			OWLAxiom
-	 * @param ontologies
-	 * 			ontologies to be considered (Iterable)			
-	 * @param imports
-	 * 			specifies whether to consider imports (boolean)
-	 * @param annotation
-	 * 			Annotation of type {@link OWLAspectOr} specifying current aspects
-	 * @return
-	 * 			true, if this axiom is contained and has current aspects, otherwise false.
-	 * @throws Throwable
-	 * 			in case something goes wrong
-	 */
-	@Around("containsAx3ESIterable() && args(axiom, ontologies, imports) && @withincode(annotation)") 
-	public Object aroundContainsAx3ESIterableWithinCodeMarkedWithOr(ProceedingJoinPoint pjp, 
-			OWLAxiom axiom, Iterable<OWLOntology> ontologies, boolean imports, OWLAspectOr annotation) throws Throwable {
-		return handleContainsAxiomESIterable3Args(axiom, ontologies, imports, annotation);
-	}
+
+    // 1 arg and ignore Annotations
+
+    /**
+     * advice responsible for handling result of the call to a method of type containsAxiom(axiom)
+     * if this method is provided by a type from org.semanticweb.owlapi.model package and
+     * if this method was called from a class annotated with {@link OWLAspectAnd}
+     *
+     * @param pjp
+     * 			Proceeding Join Point
+     * @param ontology
+     * 			Ontology
+     * @param annotation
+     * 			Annotation of type {@link OWLAspectAnd} specifying current aspects
+     * @param axiom
+     * 			OWLAxiom whose containment is to be checked
+     * @return
+     * 			true, if this axiom is contained and has current aspects, otherwise false.
+     * @throws Throwable
+     * 			in case something goes wrong
+     */
+    @Around("containsAx1IgnoreAnnotations() && target(ontology) && args(axiom) && @within(annotation)")
+    public Object aroundContainsAx1IgnoreAnnotationsWithinClassMarkedWithAnd(ProceedingJoinPoint pjp, OWLOntology ontology, OWLAspectAnd annotation, OWLAxiom axiom) throws Throwable {
+        return handleContainsAxiom1ArgIgnoreAnnotations(ontology, annotation, axiom);
+    }
+
+    /**
+     * advice responsible for handling result of the call to a method of type containsAxiom(axiom)
+     * if this method is provided by a type from org.semanticweb.owlapi.model package and
+     * if this method was called from a class annotated with {@link OWLAspectOr}
+     *
+     * @param pjp
+     * 			Proceeding Join Point
+     * @param ontology
+     * 			Ontology
+     * @param annotation
+     * 			Annotation of type {@link OWLAspectOr} specifying current aspects
+     * @param axiom
+     * 			OWLAxiom whose containment is to be checked
+     * @return
+     * 			true, if this axiom is contained and has current aspects, otherwise false.
+     * @throws Throwable
+     * 			in case something goes wrong
+     */
+    @Around("containsAx1IgnoreAnnotations() && target(ontology) && args(axiom) && @within(annotation)")
+    public Object aroundContainsAx1IgnoreAnnotationsWithinClassMarkedWithOr(ProceedingJoinPoint pjp, OWLOntology ontology, OWLAspectOr annotation, OWLAxiom axiom) throws Throwable {
+        return handleContainsAxiom1ArgIgnoreAnnotations(ontology, annotation, axiom);
+    }
+
+    /**
+     * advice responsible for handling result of the call to a method of type containsAxiom(axiom)
+     * if this method is provided by a type from org.semanticweb.owlapi.model package and
+     * if this method was called from a method or constructor annotated with {@link OWLAspectAnd}
+     *
+     * @param pjp
+     * 			Proceeding Join Point
+     * @param ontology
+     * 			Ontology
+     * @param annotation
+     * 			Annotation of type {@link OWLAspectAnd} specifying current aspects
+     * @param axiom
+     * 			OWLAxiom whose containment is to be checked
+     * @return
+     * 			true, if this axiom is contained and has current aspects, otherwise false.
+     * @throws Throwable
+     * 			in case something goes wrong
+     */
+    @Around("containsAx1IgnoreAnnotations() && target(ontology) && args(axiom) && @withincode(annotation)")
+    public Object aroundContainsAx1IgnoreAnnotationsWithinCodeMarkedWithAnd(ProceedingJoinPoint pjp, OWLOntology ontology, OWLAspectAnd annotation, OWLAxiom axiom) throws Throwable {
+        return handleContainsAxiom1ArgIgnoreAnnotations(ontology, annotation, axiom);
+    }
+
+    /**
+     * advice responsible for handling result of the call to a method of type containsAxiom(axiom)
+     * if this method is provided by a type from org.semanticweb.owlapi.model package and
+     * if this method was called from a method or constructor annotated with {@link OWLAspectOr}
+     *
+     * @param pjp
+     * 			Proceeding Join Point
+     * @param ontology
+     * 			Ontology
+     * @param annotation
+     * 			Annotation of type {@link OWLAspectOr} specifying current aspects
+     * @param axiom
+     * 			OWLAxiom whose containment is to be checked
+     * @return
+     * 			true, if this axiom is contained and has current aspects, otherwise false.
+     * @throws Throwable
+     * 			in case something goes wrong
+     */
+    @Around("containsAx1IgnoreAnnotations() && target(ontology) && args(axiom) && @withincode(annotation)")
+    public Object aroundContainsAx1IgnoreAnnotationsWithinCodeMarkedWithOr(ProceedingJoinPoint pjp, OWLOntology ontology, OWLAspectOr annotation, OWLAxiom axiom) throws Throwable {
+        return handleContainsAxiom1ArgIgnoreAnnotations(ontology, annotation, axiom);
+    }
+
+
+
+
+    // 2 args  +  ignore Annotations
+
+    /**
+     * advice responsible for handling result of the call
+     * to a method of type containsAxiom(axiom, imports, axiomAnnotations)
+     * with three arguments having types (OWLAxiom, Imports, AxiomAnnotations),
+     * if this method is provided by a type from org.semanticweb.owlapi.model package and
+     * if this method was called from a class annotated with {@link OWLAspectAnd}
+     *
+     * @param pjp
+     * 			Proceeding Join Point
+     * @param axiom
+    OWLAxiom
+     * @param includeImports
+     * 			boolean (specifies whether to consider imports closure)
+     * @param ontology
+     * 			Ontology
+     * @param annotation
+     * 			Annotation of type {@link OWLAspectAnd} specifying current aspects
+     * @param axiom
+     * 			OWLAxiom whose containment is to be checked
+     * @return
+     * 			true, if this axiom is contained and has current aspects, otherwise false.
+     * @throws Throwable
+     * 			in case something goes wrong
+     */
+    @Around("containsAxWithImportFlagIgnoreAnnotations() && args(axiom, includeImports) && target(ontology) && @within(annotation)")
+    public Object aroundContainsAxWithImportFlagIgnoreAnnotationsWithinClassMarkedWithAnd(ProceedingJoinPoint pjp, OWLAxiom axiom, boolean includeImports, OWLOntology ontology, OWLAspectAnd annotation) throws Throwable {
+        return handleContainsAxiom2ArgsIgnoreAnnotations(axiom, includeImports, ontology, annotation);     // Todo :: handler method is responsable to call method with or without Annotations (pjp)
+    }
+
+    /**
+     * advice responsible for handling result of the call
+     * to a method of type containsAxiom(axiom, imports, axiomAnnotations)
+     * with three arguments having types (OWLAxiom, Imports, AxiomAnnotations),
+     * if this method is provided by a type from org.semanticweb.owlapi.model package and
+     * if this method was called from a class annotated with {@link OWLAspectOr}
+     *
+     * @param pjp
+     * 			Proceeding Join Point
+     * @param axiom
+    OWLAxiom
+     * @param includeImports
+     * 			boolean (specifies whether to consider imports closure)
+     * @param ontology
+     * 			Ontology
+     * @param annotation
+     * 			Annotation of type {@link OWLAspectOr} specifying current aspects
+     * @param axiom
+     * 			OWLAxiom whose containment is to be checked
+     * @return
+     * 			true, if this axiom is contained and has current aspects, otherwise false.
+     * @throws Throwable
+     * 			in case something goes wrong
+     */
+    @Around("containsAxWithImportFlagIgnoreAnnotations() && args(axiom, includeImports) && target(ontology) && @within(annotation)")
+    public Object aroundContainsAxWithImportFlagIgnoreAnnotationsWithinClassMarkedWithOr(ProceedingJoinPoint pjp, OWLAxiom axiom, boolean includeImports, OWLOntology ontology, OWLAspectOr annotation) throws Throwable {
+        return handleContainsAxiom2ArgsIgnoreAnnotations(axiom, includeImports, ontology, annotation); // Todo :: handler method is responsable to call method with or without Annotations (pjp)
+    }
+
+    /**
+     * advice responsible for handling result of the call
+     * to a method of type containsAxiom(axiom, imports, axiomAnnotations)
+     * with three arguments having types (OWLAxiom, Imports, AxiomAnnotations),
+     * if this method is provided by a type from org.semanticweb.owlapi.model package and
+     * if this method was called from a method or constructor annotated with {@link OWLAspectAnd}
+     *
+     * @param pjp
+     * 			Proceeding Join Point
+     * @param axiom
+    OWLAxiom
+     * @param includeImports
+     * 			boolean (specifies whether to consider imports closure)
+     * @param ontology
+     * 			Ontology
+     * @param annotation
+     * 			Annotation of type {@link OWLAspectAnd} specifying current aspects
+     * @param axiom
+     * 			OWLAxiom whose containment is to be checked
+     * @return
+     * 			true, if this axiom is contained and has current aspects, otherwise false.
+     * @throws Throwable
+     * 			in case something goes wrong
+     */
+    @Around("containsAxWithImportFlagIgnoreAnnotations() && args(axiom, includeImports) && target(ontology) && @withincode(annotation)")
+    public Object aroundContainsAxWithImportFlagsIgnoreAnnotationsWithinCodeMarkedWithAnd(ProceedingJoinPoint pjp, OWLAxiom axiom, boolean includeImports, OWLOntology ontology, OWLAspectAnd annotation) throws Throwable {
+        return handleContainsAxiom2ArgsIgnoreAnnotations(axiom, includeImports, ontology, annotation);
+    }
+
+    /**
+     * advice responsible for handling result of the call
+     * to a method of type containsAxiom(axiom, imports, axiomAnnotations)
+     * with three arguments having types (OWLAxiom, Imports, AxiomAnnotations),
+     * if this method is provided by a type from org.semanticweb.owlapi.model package and
+     * if this method was called from a method or constructor annotated with {@link OWLAspectOr}
+     *
+     * @param pjp
+     * 			Proceeding Join Point
+     * @param axiom
+     *          OWLAxiom
+     * @param includeImports
+     * 			boolean (specifies whether to consider imports closure)
+     * @param ontology
+     * 			Ontology
+     * @param annotation
+     * 			Annotation of type {@link OWLAspectOr} specifying current aspects
+     * @param axiom
+     * 			OWLAxiom whose containment is to be checked
+     * @return
+     * 			true, if this axiom is contained and has current aspects, otherwise false.
+     * @throws Throwable
+     * 			in case something goes wrong
+     */
+    @Around("containsAxWithImportFlagIgnoreAnnotations() && args(axiom, includeImports) && target(ontology) && @withincode(annotation)")
+    public Object aroundContainsAxWithImportFlagIgnoreAnnotationsWithinCodeMarkedWithOr(ProceedingJoinPoint pjp, OWLAxiom axiom, boolean includeImports, OWLOntology ontology, OWLAspectOr annotation) throws Throwable {
+        return handleContainsAxiom2ArgsIgnoreAnnotations(axiom, includeImports, ontology, annotation);
+    }
+
+
+
+
+
+
 	
 	// ------------------------------- HELPER  --------------------------------
 	
@@ -545,23 +537,21 @@ public class ContainmentAspect {
 	 * @throws Throwable
 	 * 			in case something goes wrong
 	 */
-	private Object handleContainsAxiom1Arg(OWLOntology ontology, Annotation annotation, OWLAxiom axiom) {	
+	private Object handleContainsAxiom1Arg(OWLOntology ontology, Annotation annotation, OWLAxiom axiom) {
 		return HelperFacade.containsAxiom1(ontology, axiom, annotation);
 	}
 	
 	/**
 	 * Responsible for handling result of the call to a method returning info about containment of this axiom 
 	 * if this method is provided by types from org.semanticweb.owlapi.model package, and 
-	 * if this method has three arguments, and 
+	 * if this method has two arguments, and
 	 * if this method was called from a context annotated with either {@link OWLAspectAnd} or {@link OWLAspectOr}
 	 * The context may be a class, a method or a constructor.
 	 * 
 	 * @param axiom
 	 * 			OWLAxiom
-	 * @param imports
-	 * 			Imports (whether to consider)
-	 * @param axiomAnnotations
-	 * 			AxiomAnnotations (whether to consider)
+	 * @param includeImports
+	 * 			boolean (whether to consider)
 	 * @param ontology
 	 * 			Ontology
 	 * @param annotation
@@ -572,62 +562,76 @@ public class ContainmentAspect {
 	 * @throws Throwable
 	 * 			in case something goes wrong
 	 */
-	private Object handleContainsAxiom3Args(OWLAxiom axiom, Imports imports,
-			AxiomAnnotations axiomAnnotations, OWLOntology ontology,
-			Annotation annotation) {
-		return HelperFacade.containsAxiom3(axiom, imports, axiomAnnotations, ontology, annotation);
-	}
-	
-	/**
-	 * Responsible for handling result of the call to a method returning info 
-	 * about containment of this axiom in this one ontology
-	 * if this method is provided by org.semanticweb.owlapi.search.EntitySearcher, and 
-	 * if this method was called from a context annotated with either {@link OWLAspectAnd} or {@link OWLAspectOr}
-	 * The context may be a class, a method or a constructor.
-	 * 
-	 * @param axiom
-	 * 			OWLAxiom
-	 * @param ontology
-	 * 			Ontology
-	 * @param imports
-	 * 			boolean (whether to consider imports)
-	 * @param annotation
-	 * 			Annotation of type {@link OWLAspectAnd} or {@link OWLAspectOr} specifying current aspects
-	 * @return
-	 * 			true, if this axiom is contained and has current aspects, 
-	 * 			otherwise false.
-	 * @throws Throwable
-	 * 			in case something goes wrong
-	 */
-	private Object handleContainsAxiomES3Args(OWLAxiom axiom, OWLOntology ontology,
-			boolean imports, Annotation annotation) {
-		return HelperFacade.containsAxiomES3Args(axiom, ontology, imports, annotation);
-	}
-	
-	/**
-	 * Responsible for handling result of the call to a method returning info 
-	 * about containment of this axiom in one of these ontologies, 
-	 * if this method is provided by org.semanticweb.owlapi.search.EntitySearcher, and 
-	 * if this method was called from a context annotated with either {@link OWLAspectAnd} or {@link OWLAspectOr}
-	 * The context may be a class, a method or a constructor.
-	 * 
-	 * @param axiom
-	 * 			OWLAxiom
-	 * @param ontologies
-	 * 			ontologies to be checked (Iterable)
-	 * @param imports
-	 * 			boolean (whether to consider imports)
-	 * @param annotation
-	 * 			Annotation of type {@link OWLAspectAnd} or {@link OWLAspectOr} specifying current aspects
-	 * @return
-	 * 			true, if this axiom is contained and has current aspects, 
-	 * 			otherwise false.
-	 * @throws Throwable
-	 * 			in case something goes wrong
-	 */
-	private Object handleContainsAxiomESIterable3Args(OWLAxiom axiom, Iterable<OWLOntology> ontologies,
-			boolean imports, Annotation annotation) {
-		return HelperFacade.containsAxiomESIterable3Args(axiom, ontologies, imports, annotation);
+	private Object handleContainsAxiom2Args(OWLAxiom axiom, boolean includeImports, OWLOntology ontology,
+			Annotation annotation) throws Throwable {
+
+		return HelperFacade.containsAxiom2(axiom, includeImports, true, ontology, annotation);
 	}
 
+
+
+
+
+    /**
+     * Responsible for handling result of the call to a method returning info about containment of this axiom
+     * if this method has one argument of type OWLAxiom, Annoations should be ignored and
+     * if this method was called from a context annotated with either {@link OWLAspectAnd} or {@link OWLAspectOr}
+     * The context may be a class, a method or a constructor.
+     *
+     * @param ontology
+     * 			Ontology
+     * @param annotation
+     * 			Annotation of type {@link OWLAspectAnd} or {@link OWLAspectOr} specifying current aspects
+     * @param axiom
+     * 			OWLAxiom
+     * @return
+     * 			true, if this axiom is contained and has current aspects,
+     * 			otherwise false.
+     * @throws Throwable
+     * 			in case something goes wrong
+     */
+    private Object handleContainsAxiom1ArgIgnoreAnnotations(OWLOntology ontology, Annotation annotation, OWLAxiom axiom) {
+        return HelperFacade.containsAxiom2(axiom, true, false, ontology, annotation);
+    }
+
+    /**
+     * Responsible for handling result of the call to a method returning info about containment of this axiom
+     * if this method is provided by types from org.semanticweb.owlapi.model package,Annoations should be ignored and
+     * if this method has two arguments, and
+     * if this method was called from a context annotated with either {@link OWLAspectAnd} or {@link OWLAspectOr}
+     * The context may be a class, a method or a constructor.
+     *
+     * @param axiom
+     * 			OWLAxiom
+     * @param includeImports
+     * 			boolean (whether to consider)
+     * @param ontology
+     * 			Ontology
+     * @param annotation
+     * 			Annotation of type {@link OWLAspectAnd} or {@link OWLAspectOr} specifying current aspects
+     * @return
+     * 			true, if this axiom is contained and has current aspects,
+     * 			otherwise false.
+     * @throws Throwable
+     * 			in case something goes wrong
+     */
+    private Object handleContainsAxiom2ArgsIgnoreAnnotations(OWLAxiom axiom, boolean includeImports, OWLOntology ontology,
+                                            Annotation annotation) throws Throwable {
+
+        return HelperFacade.containsAxiom2(axiom, includeImports, false, ontology, annotation);
+    }
+
+
+
+
+
+
+
+
+
+
+
 }
+
+
+

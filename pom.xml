@@ -31,7 +31,7 @@
 		<dependency>
 			<groupId>net.sourceforge.owlapi</groupId>
 			<artifactId>owlapi-distribution</artifactId>
-			<version>4.0.2</version>
+			<version>3.5.2</version>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
@@ -48,6 +48,11 @@
 			<artifactId>aspectjtools</artifactId>
 			<version>${aspectj.version}</version>
 		</dependency>
+        <dependency>
+            <groupId>com.google.code.findbugs</groupId>
+            <artifactId>jsr305</artifactId>
+            <version>3.0.0</version>
+        </dependency>
 	</dependencies>
 	<build>
 		<plugins>

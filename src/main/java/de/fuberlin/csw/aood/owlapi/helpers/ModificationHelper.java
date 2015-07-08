@@ -29,7 +29,6 @@ import org.semanticweb.owlapi.model.OWLAxiom;
 import org.semanticweb.owlapi.model.OWLOntology;
 import org.semanticweb.owlapi.model.OWLOntologyChange;
 import org.semanticweb.owlapi.model.RemoveAxiom;
-import org.semanticweb.owlapi.model.parameters.ChangeApplied;
 
 import de.fuberlin.csw.aood.owlapi.OWLAspectAnd;
 import de.fuberlin.csw.aood.owlapi.OWLAspectOr;
@@ -51,7 +50,7 @@ public class ModificationHelper extends BasicHelper {
 	 * @return ChangeApplied : status telling if the change was applied successfully 
 	 * 			(if aspect annotations were updated successfully)
 	 */
-	public static ChangeApplied handleAxiomChange(OWLOntologyChange change, Annotation annotation) {	
+	public static List<OWLOntologyChange> handleAxiomChange(OWLOntologyChange change, Annotation annotation) {
 		if (change.isAddAxiom()) {
 			return ModificationHelperAdd.handleChangeAddAxiom(change, annotation);
 		} else {
@@ -73,13 +72,13 @@ public class ModificationHelper extends BasicHelper {
 		for (OWLOntologyChange change : changes) {
 			if (change.isAxiomChange()) { 
 				if (change.isAddAxiom()) { // change is AddAxiom
-					changesApplied.addAll(ModificationHelperAdd.handleChangeAddAxiomReturnListOfChanges(change, annotation));
+					changesApplied.addAll(ModificationHelperAdd.handleChangeAddAxiom(change, annotation));
 				} else { // change is RemoveAxiom
-					changesApplied.addAll(ModificationHelperRemove.handleChangeRemoveAxiomReturnListOfChanges(change, annotation));
+					changesApplied.addAll(ModificationHelperRemove.handleChangeRemoveAxiom(change, annotation));
 				}
 			} else { // change is something else, e.g. Import change
-				ChangeApplied chgApplied = change.getOntology().getOWLOntologyManager().applyChange(change);
-				if (chgApplied.equals(ChangeApplied.SUCCESSFULLY)) {
+                List<OWLOntologyChange> changesApplied2 = change.getOntology().getOWLOntologyManager().applyChange(change);
+				if (!(changesApplied2==null)) {
 					changesApplied.add(change);
 				}
 			}
@@ -106,12 +105,12 @@ public class ModificationHelper extends BasicHelper {
 		List<OWLOntologyChange> changesApplied = new ArrayList<OWLOntologyChange>();
 		if (isAddAxioms) {		
 			for (OWLAxiom axiom : axioms) {
-				changesApplied.addAll(ModificationHelperAdd.handleChangeAddAxiomReturnListOfChanges(new AddAxiom(ontology, axiom), annotation));
+				changesApplied.addAll(ModificationHelperAdd.handleChangeAddAxiom(new AddAxiom(ontology, axiom), annotation));
 			}	
 		} else {		
 			for (OWLAxiom axiom : axioms) {
 //				changesApplied.addAll(ModificationHelperRemove.handleChangeRemoveAxiomReturnListOfChanges(new RemoveAxiom(ontology, axiom), annotation));
-				changesApplied.addAll(ModificationHelperRemove.handleRemoveAxiomReturnChanges(axiom, ontology, annotation));
+				changesApplied.addAll(ModificationHelperRemove.handleChangeRemoveAxiom(new RemoveAxiom(ontology, axiom), annotation));
 			}
 		}
 		return changesApplied;

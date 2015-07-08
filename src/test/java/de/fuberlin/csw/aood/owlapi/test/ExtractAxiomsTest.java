@@ -30,8 +30,6 @@ import org.semanticweb.owlapi.model.OWLEntity;
 import org.semanticweb.owlapi.model.OWLOntology;
 import org.semanticweb.owlapi.model.OWLOntologyCreationException;
 import org.semanticweb.owlapi.model.OWLOntologyManager;
-import org.semanticweb.owlapi.model.parameters.Imports;
-import org.semanticweb.owlapi.search.EntitySearcher;
 
 import de.fuberlin.csw.aood.owlapi.OWLAspectAnd;
 
@@ -59,12 +57,10 @@ public class ExtractAxiomsTest extends BaseTest {
 		  "http://www.corporate-semantic-web.de/ontologies/aspect/owl/provenance/example#BerlinerZeitung"
 	})
 	private void testAxiomExtractionAnd() {
-		
-		Set<OWLAxiom> set = onto.getABoxAxioms(Imports.EXCLUDED);
-		assertEquals(2, set.size());
+
 		
 		OWLEntity entity = df.getOWLNamedIndividual(IRI.create(base + "#FelsenschlossObj"));
-		Collection<OWLAxiom> coll = EntitySearcher.getReferencingAxioms(entity, onto);
+		Collection<OWLAxiom> coll = entity.getReferencingAxioms(onto);
 		assertEquals(2, coll.size());	
 	}
 	
@@ -76,12 +72,10 @@ public class ExtractAxiomsTest extends BaseTest {
 		  "http://www.corporate-semantic-web.de/ontologies/aspect/owl/provenance/example#Spiegel"
 	})
 	private void testAxiomExtractionOr() {
-		
-		Set<OWLAxiom> set = onto.getABoxAxioms(Imports.EXCLUDED);
-		assertEquals(4, set.size());
+
 		
 		OWLEntity entity = df.getOWLNamedIndividual(IRI.create(base + "#FelsenschlossObj"));
-		Collection<OWLAxiom> coll = EntitySearcher.getReferencingAxioms(entity, onto);
+		Collection<OWLAxiom> coll = entity.getReferencingAxioms(onto);
 		assertEquals(2, coll.size());		
 	}
 

@@ -111,6 +111,17 @@ public class AxiomExtractionAspect {
 	set = onto.getAxiomsIgnoreAnnotations(axiom);
 	set = onto.getAxiomsIgnoreAnnotations(axiom, Imports.EXCLUDED);	
 	 */
+
+    /**
+     * quantifies over calls to different types of methods extracting axioms,
+     * where the method name begins with "get", and contains substring "Axioms" in the rest of the method name
+     * <p>( e.g. ontology.getSubClassAxiomsForSubClass(owlClass); )
+     */
+    @Pointcut("call(public java.util.Set<org.semanticweb.owlapi.model.OWLAxiom+> org.semanticweb.owlapi.model.OWLEntity.getReferencingAxioms(org.semanticweb.owlapi.model.OWLOntology))")
+    void getReferencingAxiomzz() {}
+
+
+
 	/**
 	 * quantifies over calls to different types of methods extracting axioms, 
 	 * where the method name begins with "get", and contains substring "Axioms" in the rest of the method name 
@@ -152,40 +163,13 @@ public class AxiomExtractionAspect {
 	 */
 	@Pointcut("getAxiomzz() || getDatatypeDef() || filterAxiomzz()")
 	void getAxiomsDifferentTypes() {}
-	
+
+
+
+
 	// Group 2 -------------------------------------
-	
-	// e.g.Collection<? extends OWLAxiom> tstAxioms = EntitySearcher.getAxiomsIgnoreAnnotations(ax, onto, false);
-	/**
-	 * quantifies over calls to EntitySearcher methods of type getAxiomsIgnoreAnnotations 
-	 * <p>( e.g. EntitySearcher.getAxiomsIgnoreAnnotations(ax, onto, false); )
-	 */	
-	@Pointcut("call(public java.util.Collection<org.semanticweb.owlapi.model.OWLAxiom+> org.semanticweb.owlapi.search.EntitySearcher.getAxiomsIgnoreAnnotations(..))")
-	void getEntitySearcherAxsIgnoreAnnos() {}
-	
-//	Z.B. Collection<? extends OWLAxiom> tstAxioms = EntitySearcher.getAnnotationAssertionAxioms(michelle, onto);
-	/**
-	 * quantifies over calls to EntitySearcher methods of type getAnnotationAssertionAxioms() 
-	 * <p>( e.g. EntitySearcher.getAnnotationAssertionAxioms(namedInd, onto); )
-	 */	
-	@Pointcut("call(public java.util.Collection<org.semanticweb.owlapi.model.OWLAxiom+> org.semanticweb.owlapi.search.EntitySearcher.getAnnotationAssertionAxioms(..))")
-	void getEntitySearcherAnnoAssertAxs() {}
-	
-	/**
-	 * quantifies over calls to EntitySearcher methods of type getReferencingAxioms() 
-	 * <p>( e.g. EntitySearcher.getReferencingAxioms(entity, onto); )
-	 */	
-	@Pointcut("call(public java.util.Collection<org.semanticweb.owlapi.model.OWLAxiom+> org.semanticweb.owlapi.search.EntitySearcher.getReferencingAxioms(..))")
-	void getEntitySearcherReferencingAxs() {}
-	
-	// combined
-	/**
-	 * quantifies over calls to different types of axiom extraction methods 
-	 * provided by org.semanticweb.owlapi.search.EntitySearcher.
-	 */
-	@Pointcut("getEntitySearcherAxsIgnoreAnnos() || getEntitySearcherReferencingAxs() || getEntitySearcherAnnoAssertAxs()")
-	void getEntitySearcherAxs() {}
-	
+
+    // obsolete since OWLAPI 3 has no EntitySearcher Class
 	
 	
 	
@@ -278,92 +262,99 @@ public class AxiomExtractionAspect {
 	}
 
 	// Group 2 -------------------------------
-	
-	/**
-	 * Responsible for handling result of the calls to different types of axiom extraction methods 
-	 * provided by org.semanticweb.owlapi.search.EntitySearcher, 
-	 * if such method was called from a class annotated with {@link OWLAspectAnd}
-	 * 
-	 * @param pjp
-	 * 			Proceeding Join Point
-	 * @param ontology
-	 * 			Ontology
-	 * @param annotation
-	 * 			Annotation of type {@link OWLAspectAnd} specifying current aspects
-	 * @return
-	 * 			Set of axioms associated with current aspects
-	 * @throws Throwable
-	 * 			in case something goes wrong
-	 */
-	@Around("getEntitySearcherAxs() && args(*, ontology, ..) && @within(annotation)")
-	public Object aroundEntitySearcherAxsWithinClassMarkedWithAnd(ProceedingJoinPoint pjp, OWLOntology ontology, OWLAspectAnd annotation) throws Throwable  {
-		return handleAxioms(pjp, ontology, annotation);	
-	}
-	
-	/**
-	 * Responsible for handling result of the calls to different types of axiom extraction methods 
-	 * provided by org.semanticweb.owlapi.search.EntitySearcher, 
-	 * if such method was called from a class annotated with {@link OWLAspectOr}
-	 * 
-	 * @param pjp
-	 * 			Proceeding Join Point
-	 * @param ontology
-	 * 			Ontology
-	 * @param annotation
-	 * 			Annotation of type {@link OWLAspectOr} specifying current aspects
-	 * @return
-	 * 			Set of axioms associated with current aspects
-	 * @throws Throwable
-	 * 			in case something goes wrong
-	 */
-	@Around("getEntitySearcherAxs() && args(*, ontology, ..) && @within(annotation)")
-	public Object aroundEntitySearcherAxsWithinClassMarkedWithOr(ProceedingJoinPoint pjp, OWLOntology ontology, OWLAspectOr annotation) throws Throwable  {
-		return handleAxioms(pjp, ontology, annotation);	
-	}
 
-	/**
-	 * Responsible for handling result of the calls to different types of axiom extraction methods 
-	 * provided by org.semanticweb.owlapi.search.EntitySearcher, 
-	 * if such method was called from a method or constructor annotated with {@link OWLAspectAnd}
-	 * 
-	 * @param pjp
-	 * 			Proceeding Join Point
-	 * @param ontology
-	 * 			Ontology
-	 * @param annotation
-	 * 			Annotation of type {@link OWLAspectAnd} specifying current aspects
-	 * @return
-	 * 			Set of axioms associated with current aspects
-	 * @throws Throwable
-	 * 			in case something goes wrong
-	 */
-	@Around("getEntitySearcherAxs() && args(*, ontology, ..) && @withincode(annotation)")
-	public Object aroundEntitySearcherAxsInsideAMethodMarkedWithAnd(ProceedingJoinPoint pjp, OWLOntology ontology, OWLAspectAnd annotation) throws Throwable  {
-		return handleAxioms(pjp, ontology, annotation);	
-	}
-	
-	/**
-	 * Responsible for handling result of the calls to different types of axiom extraction methods 
-	 * provided by org.semanticweb.owlapi.search.EntitySearcher, 
-	 * if such method was called from a method or constructor annotated with {@link OWLAspectOr}
-	 * 
-	 * @param pjp
-	 * 			Proceeding Join Point
-	 * @param ontology
-	 * 			Ontology
-	 * @param annotation
-	 * 			Annotation of type {@link OWLAspectOr} specifying current aspects
-	 * @return
-	 * 			Set of axioms associated with current aspects
-	 * @throws Throwable
-	 * 			in case something goes wrong
-	 */
-	@Around("getEntitySearcherAxs() && args(*, ontology, ..) && @withincode(annotation)")
-	public Object aroundEntitySearcherAxsInsideAMethod(ProceedingJoinPoint pjp, OWLOntology ontology, OWLAspectOr annotation) throws Throwable  {
-		return handleAxioms(pjp, ontology, annotation);	
-	}
-	
-	// ------------------------ HELPER ------------------------
+
+    /**
+     * Responsible for handling result of the calls to different types of axiom extraction methods
+     * mostly available from OWLOntology interface
+     * if such method was called from a class annotated with {@link OWLAspectAnd}
+     *
+     * @param pjp
+     * 			Proceeding Join Point
+     * @param ontology
+     * 			Ontology
+     * @param annotation
+     * 			Annotation of type {@link OWLAspectAnd} specifying current aspects
+     * @return
+     * 			Set of axioms associated with current aspects
+     * @throws Throwable
+     * 			in case something goes wrong
+     */
+    @Around("(getReferencingAxiomzz()) && args(ontology) && @within(annotation)")
+    public Object aroundGetAxiomsForEntityWithinClassMarkedWithAnd(ProceedingJoinPoint pjp, OWLOntology ontology, OWLAspectAnd annotation) throws Throwable  {
+        return handleAxioms(pjp, ontology, annotation);
+    }
+
+    /**
+     * Responsible for handling result of the calls to different types of axiom extraction methods
+     * mostly available from OWLOntology interface
+     * if such method was called from a class annotated with {@link OWLAspectOr}
+     *
+     * @param pjp
+     * 			Proceeding Join Point
+     * @param ontology
+     * 			Ontology
+     * @param annotation
+     * 			Annotation of type {@link OWLAspectOr} specifying current aspects
+     * @return
+     * 			Set of axioms associated with current aspects
+     * @throws Throwable
+     * 			in case something goes wrong
+     */
+    @Around("(getReferencingAxiomzz()) && args(ontology) && @within(annotation)")
+    public Object aroundGetAxiomsForEntityWithinClassMarkedWithOr(ProceedingJoinPoint pjp, OWLOntology ontology, OWLAspectOr annotation) throws Throwable  {
+        return handleAxioms(pjp, ontology, annotation);
+    }
+
+    /**
+     * Responsible for handling result of the calls to different types of axiom extraction methods
+     * mostly available from OWLOntology interface
+     * if such method was called from a method or constructor annotated with {@link OWLAspectAnd}
+     *
+     * @param pjp
+     * 			Proceeding Join Point
+     * @param ontology
+     * 			Ontology
+     * @param annotation
+     * 			Annotation of type {@link OWLAspectAnd} specifying current aspects
+     * @return
+     * 			Set of axioms associated with current aspects
+     * @throws Throwable
+     * 			in case something goes wrong
+     */
+    @Around("(getReferencingAxiomzz()) && args(ontology) && @withincode(annotation)")
+    public Object aroundGetAxiomsForEntityWithinCodeMarkedWithAnd(ProceedingJoinPoint pjp, OWLOntology ontology, OWLAspectAnd annotation) throws Throwable  {
+        return handleAxioms(pjp, ontology, annotation);
+    }
+
+    /**
+     * Responsible for handling result of the calls to different types of axiom extraction methods
+     * mostly available from OWLOntology interface
+     * if such method was called from a method or constructor annotated with {@link OWLAspectOr}
+     *
+     * @param pjp
+     * 			Proceeding Join Point
+     * @param ontology
+     * 			Ontology
+     * @param annotation
+     * 			Annotation of type {@link OWLAspectOr} specifying current aspects
+     * @return
+     * 			Set of axioms associated with current aspects
+     * @throws Throwable
+     * 			in case something goes wrong
+     */
+    @Around("(getReferencingAxiomzz()) && args(ontology) && @withincode(annotation)")
+    public Object aroundGetAxiomsForEntityWithinCodeMarkedWithOr(ProceedingJoinPoint pjp, OWLOntology ontology, OWLAspectOr annotation) throws Throwable  {
+        return handleAxioms(pjp, ontology, annotation);
+    }
+
+
+
+
+
+
+
+    // ------------------------ HELPER ------------------------
 
 	/**
 	 * Responsible for handling result of the call to a method extracting owl axioms 

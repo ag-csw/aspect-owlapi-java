@@ -26,7 +26,6 @@ import org.semanticweb.owlapi.model.OWLAnnotation;
 import org.semanticweb.owlapi.model.OWLAnnotationProperty;
 import org.semanticweb.owlapi.model.OWLAxiom;
 import org.semanticweb.owlapi.model.OWLOntology;
-import org.semanticweb.owlapi.search.EntitySearcher;
 
 import de.fuberlin.csw.aood.owlapi.OWLAspectAnd;
 import de.fuberlin.csw.aood.owlapi.OWLAspectOr;
@@ -133,7 +132,7 @@ public abstract class FilteringHelper extends BasicHelper {
 	 */
 	private static Set<OWLAnnotationProperty> fillSubProperties(Set<OWLAnnotationProperty> set, OWLAnnotationProperty property, OWLOntology onto) {
 		set.add(property);
-		for(OWLAnnotationProperty subProperty : EntitySearcher.getSubProperties(property, onto, true)) {
+		for(OWLAnnotationProperty subProperty : property.getSubProperties(onto, true)) {
 			fillSubProperties(set, subProperty, onto);
 		}
 		return set;

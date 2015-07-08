@@ -48,18 +48,11 @@ public class MultimapExtractionAspect {
 	 * which are referencing a given individual in this one ontology
 	 * <p>e.g. EntitySearcher.getObjectPropertyValues(individual, ontology);
 	 */
-	@Pointcut("call(public com.google.common.collect.Multimap<*,*> org.semanticweb.owlapi.search.EntitySearcher.get*(*, org.semanticweb.owlapi.model.OWLOntology))")
-	void getMultimap() {}
-	
-	/**
-	 * quantifies over EntitySearcher methods 
-	 * returning multimap of properties and corresponding property values,  
-	 * which are referencing a given individual in these multiple ontologies
-	 * <p>e.g. EntitySearcher.getObjectPropertyValues(individual, ontologies);
-	 */
-	@Pointcut("call(public com.google.common.collect.Multimap<*,*> org.semanticweb.owlapi.search.EntitySearcher.get*(*, java.lang.Iterable<org.semanticweb.owlapi.model.OWLOntology>))")
-	void getMultimapFromOntologies() {}
-	
+	@Pointcut("call(public java.util.Map<*,*> org.semanticweb.owlapi.model.*.get*(org.semanticweb.owlapi.model.OWLOntology))")
+	void getMap() {}
+
+
+
 	// USED POINTCUTS and ADVICES ============================================================
 	
 	// for Multimaps from single ontology ------------------------------------------------
@@ -85,10 +78,10 @@ public class MultimapExtractionAspect {
 	 * @throws Throwable
 	 * 			in case something goes wrong
 	 */
-	@Around("getMultimap() && args(ind, onto) && @within(annotation)")
+	@Around("getMap() && target(ind) && args(onto) && @within(annotation)")
 	public Object aroundMultimapWithinAnd(ProceedingJoinPoint pjp, 
 			OWLIndividual ind, OWLOntology onto, OWLAspectAnd annotation) throws Throwable  {
-		return handleMultimap(pjp, ind, Collections.singleton(onto), annotation);
+		return handleMap(pjp, ind, Collections.singleton(onto), annotation);
 	}
 	
 	/**
@@ -112,10 +105,10 @@ public class MultimapExtractionAspect {
 	 * @throws Throwable
 	 * 			in case something goes wrong
 	 */
-	@Around("getMultimap() && args(ind, onto) && @within(annotation)")
+	@Around("getMap() && target(ind) && args(onto) && @within(annotation)")
 	public Object aroundMultimapWithinOr(ProceedingJoinPoint pjp, 
 			OWLIndividual ind, OWLOntology onto, OWLAspectOr annotation) throws Throwable  {
-		return handleMultimap(pjp, ind, Collections.singleton(onto), annotation);
+		return handleMap(pjp, ind, Collections.singleton(onto), annotation);
 	}
 	
 	/**
@@ -139,10 +132,10 @@ public class MultimapExtractionAspect {
 	 * @throws Throwable
 	 * 			in case something goes wrong
 	 */
-	@Around("getMultimap() && args(ind, onto) && @withincode(annotation)")
+	@Around("getMap() && target(ind) && args(onto) && @withincode(annotation)")
 	public Object aroundMultimapWithinCodeAnd(ProceedingJoinPoint pjp, 
 			OWLIndividual ind, OWLOntology onto, OWLAspectAnd annotation) throws Throwable  {
-		return handleMultimap(pjp, ind, Collections.singleton(onto), annotation);
+		return handleMap(pjp, ind, Collections.singleton(onto), annotation);
 	}
 	
 	/**
@@ -166,121 +159,13 @@ public class MultimapExtractionAspect {
 	 * @throws Throwable
 	 * 			in case something goes wrong
 	 */
-	@Around("getMultimap() && args(ind, onto) && @withincode(annotation)")
+	@Around("getMap() && target(ind) && args(onto) && @withincode(annotation)")
 	public Object aroundMultimapWithinCodeOr(ProceedingJoinPoint pjp, 
 			OWLIndividual ind, OWLOntology onto, OWLAspectOr annotation) throws Throwable  {
-		return handleMultimap(pjp, ind, Collections.singleton(onto), annotation);
+		return handleMap(pjp, ind, Collections.singleton(onto), annotation);
 	}
 	
-	// for Multimaps from ontologies ----------------------------------------------------------
-	
-	/**
-	 * advice responsible for handling result of the call to an EntitySearcher method 
-	 * returning multimap of properties and corresponding property values,  
-	 * which are referencing a given individual in these multiple ontologies, 
-	 * if this method was called from a class annotated with {@link OWLAspectAnd}
-	 * 
-	 * @param pjp
-	 * 			Proceeding Join Point
-	 * @param ind
-	 * 			OWLIndividual
-	 * @param ontologies
-	 * 			ontologies (Iterable)
-	 * @param annotation
-	 * 			Annotation of type {@link OWLAspectAnd} specifying current aspects
-	 * @return
-	 * 			Multimap of properties and corresponding property values such that 
-	 * 			the axiom relating this individual to this property value via this property 
-	 * 			in these ontologies has current aspects
-	 * @throws Throwable
-	 * 			in case something goes wrong
-	 */
-	@Around("getMultimapFromOntologies() && args(ind, ontologies) && @within(annotation)")
-	public Object aroundMultimapFromOntologiesWithinAnd(ProceedingJoinPoint pjp, 
-			OWLIndividual ind, Iterable<OWLOntology> ontologies, OWLAspectAnd annotation) throws Throwable  {
-		return handleMultimap(pjp, ind, ontologies, annotation);
-	}
-	
-	/**
-	 * advice responsible for handling result of the call to an EntitySearcher method 
-	 * returning multimap of properties and corresponding property values,  
-	 * which are referencing a given individual in these multiple ontologies, 
-	 * if this method was called from a class annotated with {@link OWLAspectOr}
-	 * 
-	 * @param pjp
-	 * 			Proceeding Join Point
-	 * @param ind
-	 * 			OWLIndividual
-	 * @param ontologies
-	 * 			ontologies (Iterable)
-	 * @param annotation
-	 * 			Annotation of type {@link OWLAspectOr} specifying current aspects
-	 * @return
-	 * 			Multimap of properties and corresponding property values such that 
-	 * 			the axiom relating this individual to this property value via this property 
-	 * 			in these ontologies has current aspects
-	 * @throws Throwable
-	 * 			in case something goes wrong
-	 */
-	@Around("getMultimapFromOntologies() && args(ind, ontologies) && @within(annotation)")
-	public Object aroundMultimapFromOntologiesWithinOr(ProceedingJoinPoint pjp, 
-			OWLIndividual ind, Iterable<OWLOntology> ontologies, OWLAspectOr annotation) throws Throwable  {
-		return handleMultimap(pjp, ind, ontologies, annotation);
-	}
-	
-	/**
-	 * advice responsible for handling result of the call to an EntitySearcher method 
-	 * returning multimap of properties and corresponding property values,  
-	 * which are referencing a given individual in these multiple ontologies, 
-	 * if this method was called from a method or constructor annotated with {@link OWLAspectAnd}
-	 * 
-	 * @param pjp
-	 * 			Proceeding Join Point
-	 * @param ind
-	 * 			OWLIndividual
-	 * @param ontologies
-	 * 			ontologies (Iterable)
-	 * @param annotation
-	 * 			Annotation of type {@link OWLAspectAnd} specifying current aspects
-	 * @return
-	 * 			Multimap of properties and corresponding property values such that 
-	 * 			the axiom relating this individual to this property value via this property 
-	 * 			in these ontologies has current aspects
-	 * @throws Throwable
-	 * 			in case something goes wrong
-	 */
-	@Around("getMultimapFromOntologies() && args(ind, ontologies) && @withincode(annotation)")
-	public Object aroundMultimapFromOntologiesWithinCodeAnd(ProceedingJoinPoint pjp, 
-			OWLIndividual ind, Iterable<OWLOntology> ontologies, OWLAspectAnd annotation) throws Throwable  {
-		return handleMultimap(pjp, ind, ontologies, annotation);
-	}
-	
-	/**
-	 * advice responsible for handling result of the call to an EntitySearcher method 
-	 * returning multimap of properties and corresponding property values,  
-	 * which are referencing a given individual in these multiple ontologies, 
-	 * if this method was called from a method or constructor annotated with {@link OWLAspectOr}
-	 * 
-	 * @param pjp
-	 * 			Proceeding Join Point
-	 * @param ind
-	 * 			OWLIndividual
-	 * @param ontologies
-	 * 			ontologies (Iterable)
-	 * @param annotation
-	 * 			Annotation of type {@link OWLAspectOr} specifying current aspects
-	 * @return
-	 * 			Multimap of properties and corresponding property values such that 
-	 * 			the axiom relating this individual to this property value via this property 
-	 * 			in these ontologies has current aspects
-	 * @throws Throwable
-	 * 			in case something goes wrong
-	 */
-	@Around("getMultimapFromOntologies() && args(ind, ontologies) && @withincode(annotation)")
-	public Object aroundMultimapFromOntologiesWithinCodeOr(ProceedingJoinPoint pjp, 
-			OWLIndividual ind, Iterable<OWLOntology> ontologies, OWLAspectOr annotation) throws Throwable  {
-		return handleMultimap(pjp, ind, ontologies, annotation);
-	}
+
 	
 	// ------------------------ HELPER ------------------------
 	
@@ -307,10 +192,10 @@ public class MultimapExtractionAspect {
 	 * @throws Throwable
 	 * 			in case something goes wrong
 	 */
-	private Object handleMultimap(ProceedingJoinPoint pjp, 
+	private Object handleMap(ProceedingJoinPoint pjp,
 			OWLIndividual ind, Iterable<OWLOntology> ontologies, Annotation annotation) throws Throwable {
 		String methodName = pjp.getSignature().getName();
-		return HelperFacade.filterMultimap(methodName, ind, ontologies, annotation);
+		return HelperFacade.filterMap(methodName, ind, ontologies, annotation);
 	}
 	
 

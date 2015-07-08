@@ -29,7 +29,6 @@ import org.semanticweb.owlapi.model.OWLDataFactory;
 import org.semanticweb.owlapi.model.OWLOntology;
 import org.semanticweb.owlapi.model.OWLOntologyChange;
 import org.semanticweb.owlapi.model.OWLOntologyManager;
-import org.semanticweb.owlapi.model.parameters.ChangeApplied;
 
 import de.fuberlin.csw.aood.owlapi.OWLAspectAnd;
 import de.fuberlin.csw.aood.owlapi.OWLAspectOr;
@@ -48,27 +47,14 @@ public class ModificationHelperAdd extends ModificationHelper {
 	 * 		Annotation of type {@link OWLAspectAnd} or {@link OWLAspectOr} specifying current aspects
 	 * @return status whether this change has been applied successfully (aspect annotations updated)
 	 */
-	public static ChangeApplied handleChangeAddAxiom(OWLOntologyChange change, Annotation annotation) {
-		String[] currentAspects = getCurrentAspectsAdd(annotation);	
-		ChangeApplied result = handleAddAxiom(change.getAxiom(), change.getOntology(), currentAspects);//handleChangeAdd(change, currentAspects);
+	public static List<OWLOntologyChange> handleChangeAddAxiom(OWLOntologyChange change, Annotation annotation) {
+		String[] currentAspects = getCurrentAspectsAdd(annotation);
+        List<OWLOntologyChange> result = handleAddAxiom(change.getAxiom(), change.getOntology(), currentAspects);//handleChangeAdd(change, currentAspects);
 //	we have decided not to do this step
 //		ModificationHelperPostprocess.postprocessChange(currentAspects, change);
 		return result;
 	}
 
-	/**
-	 * handle ontology change of type AddAxiom (update current aspect annotations)
-	 * 
-	 * @param change
-	 * 			change of type AddAxiom
-	 * @param annotation
-	 * 			Annotation of type {@link OWLAspectAnd} or {@link OWLAspectOr} specifying current aspects
-	 * @return list of successfully applied ontology changes (if aspect annotations were updated successfully)
-	 */
-	public static List<OWLOntologyChange> handleChangeAddAxiomReturnListOfChanges(OWLOntologyChange change, Annotation annotation) {
-		ChangeApplied chgApplied = handleChangeAddAxiom(change, annotation);
-		return produceListOfChangesFromChangeApplied(change.getOntology(), change.getAxiom(), chgApplied);
-	}
 
 	/**
 	 * handle axiom addition (update current aspects)
@@ -82,13 +68,13 @@ public class ModificationHelperAdd extends ModificationHelper {
 	 * @return status whether the change was applied successfully 
 	 * 			(if aspect annotations were updated successfully)
 	 */
-	private static ChangeApplied handleAddAxiom(OWLAxiom userAx, OWLOntology onto, String[] currentAspects) {
+	private static List<OWLOntologyChange> handleAddAxiom(OWLAxiom userAx, OWLOntology onto, String[] currentAspects) {
 		// TRICKY ALGORITHM
 		// Check all axioms for which is true:
 		// set (real annos) = all annos on this ax which are not aspects
 		// if anno (set of real annos) equals axiom user asked for : add aspects
 		// else add new axiom with aspects
-		ChangeApplied chgApplied = ChangeApplied.UNSUCCESSFULLY;	
+        List<OWLOntologyChange> changesList = null;
 		OWLOntologyManager om = onto.getOWLOntologyManager();
 		OWLDataFactory df = om.getOWLDataFactory();
 		for (OWLAxiom similarAxiom : onto.getAxiomsIgnoreAnnotations(userAx)) {
@@ -100,13 +86,13 @@ public class ModificationHelperAdd extends ModificationHelper {
 				Set<OWLAnnotation> currentAspectAnnotations = createSetOfRelevantAnnotations(onto, currentAspects);
 				OWLAxiom axiomToStay = similarAxiom.getAnnotatedAxiom(currentAspectAnnotations);
 				om.removeAxiom(onto, similarAxiom);
-				chgApplied = om.addAxiom(onto, axiomToStay);
+                changesList = om.addAxiom(onto, axiomToStay);
 			}				
 		}
-		if (chgApplied.equals(ChangeApplied.UNSUCCESSFULLY)) {
+		if (changesList==null) {
 			om.addAxiom(onto, associateAxiomWithAspects(onto, userAx, currentAspects));
 		}
-		return chgApplied;
+		return changesList;
 	}
 	
 	/**
@@ -129,27 +115,6 @@ public class ModificationHelperAdd extends ModificationHelper {
 		}
 		return currentAspects;
 	}
-	
-	/**
-	 * checks if argument chgApplied equals SUCCESSFULLY, 
-	 * and if yes create list of changes of type AddAxiom from this axiom
-	 * 
-	 * @param ontology
-	 * 			ontology
-	 * @param axiom 
-	 * 			axiom to be transformed to AddAxiom change (maybe)
-	 * @param chgApplied 
-	 * 			Status whether a change has been applied successfully
-	 * @return list of changes according to chgApplied
-	 */
-	private static List<OWLOntologyChange> produceListOfChangesFromChangeApplied(
-			OWLOntology ontology, OWLAxiom axiom, ChangeApplied chgApplied) {
-		// needed to match signature of removeAxiom()
-		List<OWLOntologyChange> changesApplied = new ArrayList<OWLOntologyChange>();
-		if(chgApplied.equals(ChangeApplied.SUCCESSFULLY)) {
-			changesApplied.add(new AddAxiom(ontology, axiom));
-		}
-		return changesApplied;
-	}
+
 
 }

@@ -25,8 +25,7 @@ import org.semanticweb.owlapi.model.OWLAnnotation;
 import org.semanticweb.owlapi.model.OWLAxiom;
 import org.semanticweb.owlapi.model.OWLDataFactory;
 import org.semanticweb.owlapi.model.OWLOntology;
-import org.semanticweb.owlapi.model.parameters.AxiomAnnotations;
-import org.semanticweb.owlapi.model.parameters.Imports;
+
 
 import de.fuberlin.csw.aood.owlapi.OWLAspectAnd;
 import de.fuberlin.csw.aood.owlapi.OWLAspectOr;
@@ -68,10 +67,10 @@ public class ContainmentHelper extends FilteringHelper {
 	 * 
 	 * @param axiom
 	 * 			axiom to be checked
-	 * @param imports
-	 * 			Imports (included or exluded)
-	 * @param axiomAnnotations
-	 * 			AxiomAnnotations (consider or ignore)
+	 * @param includeImports
+	 * 			boolean (included or exluded)
+	 * @param considerAnnotations
+	 * 			boolean (consider or ignore)
 	 * @param ontology
 	 * 			Ontology to be searched
 	 * @param annotation
@@ -80,11 +79,11 @@ public class ContainmentHelper extends FilteringHelper {
 	 * 			true, if ontology contains the axiom like this which has current aspects; 
 	 * 			false otherwise
 	 */
-	public static boolean containsAxiom3(OWLAxiom axiom, Imports imports,
-			AxiomAnnotations axiomAnnotations, OWLOntology ontology,
+	public static boolean containsAxiom2(OWLAxiom axiom, boolean includeImports,
+			boolean considerAnnotations, OWLOntology ontology,
 			Annotation annotation) {	
 		Set<OWLAxiom> axsToTest = getSimilarAxioms(
-				axiom, imports, axiomAnnotations, ontology); 
+				axiom, includeImports, considerAnnotations, ontology);
 		// check if one of the axioms in question has current aspects	
 		for (OWLAxiom ax : axsToTest) {
 			if (passAspectsTest(ax, ontology, annotation)) {
@@ -94,57 +93,9 @@ public class ContainmentHelper extends FilteringHelper {
 		return false;
 	}
 	
-	/**
-	 * checks whether a given ontology contains this axiom considering current aspects
-	 * (aspects are provided in an Annotation of type {@link OWLAspectAnd} or {@link OWLAspectOr})
-	 * 
-	 * @param axiom
-	 * 			axiom to be checked
-	 * @param ontology
-	 * 			Ontology to be searched
-	 * @param imports
-	 * 			information, whether to include imports (boolean) 
-	 * @param annotation
-	 * 			Annotation of type {@link OWLAspectAnd} or {@link OWLAspectOr} specifying current aspects
-	 * @return
-	 * 			true, if ontology contains the axiom like this which has current aspects; 
-	 * 			false otherwise
-	 */
-	public static boolean containsAxiomES3Args(OWLAxiom axiom,
-			OWLOntology ontology, boolean imports, Annotation annotation) {
-		// transform imports statement from boolean to Imports
-		Imports importsClosure = (imports) ? Imports.INCLUDED : Imports.EXCLUDED;
-		return containsAxiom3(axiom, importsClosure, 
-				AxiomAnnotations.CONSIDER_AXIOM_ANNOTATIONS, ontology, annotation);
-	}
 
 
-	/**
-	 * checks whether any of the given ontologies contains this axiom considering current aspects
-	 * (aspects are provided in an Annotation of type {@link OWLAspectAnd} or {@link OWLAspectOr})
-	 * 
-	 * @param axiom
-	 * 			axiom to be checked
-	 * @param ontologies
-	 * 			Ontologies to be searched (Iterable)
-	 * @param imports
-	 * 			information, whether to include imports (boolean) 
-	 * @param annotation
-	 * 			Annotation of type {@link OWLAspectAnd} or {@link OWLAspectOr} specifying current aspects
-	 * @return
-	 * 			true, if at least one of the ontologies contains the axiom like this which has current aspects; 
-	 * 			false otherwise
-	 */
-	public static boolean containsAxiomESIterable3Args(OWLAxiom axiom,
-			Iterable<OWLOntology> ontologies, boolean imports,
-			Annotation annotation) {
-		for (OWLOntology onto : ontologies) {
-			if (containsAxiomES3Args(axiom, onto, imports, annotation)) {
-				return true;
-			}
-		} // we have checked all the ontologies, and none of them contains such axiom
-		return false;
-	}
+
 	
 	// ------------------------ HELPER ------------------------
 	
@@ -154,22 +105,22 @@ public class ContainmentHelper extends FilteringHelper {
 	 * 
 	 * @param axiom
 	 * 			axiom for which the similar axioms have to be found
-	 * @param imports
+	 * @param includeImports
 	 * 			info whether to include imports
-	 * @param axiomAnnotations
+	 * @param considerAnnotations
 	 * 			info whether to consider annotations
 	 * @param ontology
 	 * 			ontology to be checked
 	 * @return set of similar axioms
 	 */
 	private static Set<OWLAxiom> getSimilarAxioms(OWLAxiom axiom,
-			Imports imports, AxiomAnnotations axiomAnnotations,
+			boolean includeImports, boolean considerAnnotations,
 			OWLOntology ontology) {
 		OWLDataFactory df = ontology.getOWLOntologyManager().getOWLDataFactory();
-		Set<OWLAxiom> similarAxioms = ontology.getAxiomsIgnoreAnnotations(axiom, imports);
+		Set<OWLAxiom> similarAxioms = ontology.getAxiomsIgnoreAnnotations(axiom, includeImports);
 		Set<OWLAxiom> axsToTest = new HashSet<OWLAxiom>();	
 		
-		if (axiomAnnotations.equals(AxiomAnnotations.IGNORE_AXIOM_ANNOTATIONS)) {
+		if (!considerAnnotations) {
 			axsToTest = similarAxioms;
 		} else { // do not ignore axiom annotations		
 			for (OWLAxiom similarAxiom : similarAxioms) {

@@ -30,9 +30,6 @@ import org.semanticweb.owlapi.model.OWLObjectProperty;
 import org.semanticweb.owlapi.model.OWLOntology;
 import org.semanticweb.owlapi.model.OWLOntologyCreationException;
 import org.semanticweb.owlapi.model.OWLOntologyManager;
-import org.semanticweb.owlapi.model.parameters.AxiomAnnotations;
-import org.semanticweb.owlapi.model.parameters.Imports;
-import org.semanticweb.owlapi.search.EntitySearcher;
 
 import de.fuberlin.csw.aood.owlapi.OWLAspectAnd;
 
@@ -74,16 +71,13 @@ public class ContainmentMethodsTest extends BaseTest {
 	  public void testContainmentAndTrue(OWLAxiom axiom) {
 		  
 			boolean contains1 = onto.containsAxiom(axiom);
-			boolean contains2 = onto.containsAxiom(axiom, Imports.EXCLUDED, AxiomAnnotations.CONSIDER_AXIOM_ANNOTATIONS);
-			boolean contains3 = onto.containsAxiom(axiom, Imports.EXCLUDED, AxiomAnnotations.IGNORE_AXIOM_ANNOTATIONS);
-			boolean contains4 = EntitySearcher.containsAxiom(axiom, onto, true);
-			boolean contains5 = EntitySearcher.containsAxiom(axiom, Collections.singleton(onto), true);
+			boolean contains2 = onto.containsAxiom(axiom, false);
+			boolean contains3 = onto.containsAxiomIgnoreAnnotations(axiom, false);
+
 			
 			assertEquals(contains1, true);
 			assertEquals(contains2, true);
 			assertEquals(contains3, true);
-			assertEquals(contains4, true);	
-			assertEquals(contains5, true);	
 
 	  }
 	  
@@ -94,16 +88,13 @@ public class ContainmentMethodsTest extends BaseTest {
 	  public void testContainmentAndFalse(OWLAxiom axiom) {
 		  
 			boolean contains1 = onto.containsAxiom(axiom);
-			boolean contains2 = onto.containsAxiom(axiom, Imports.EXCLUDED, AxiomAnnotations.CONSIDER_AXIOM_ANNOTATIONS);
-			boolean contains3 = onto.containsAxiom(axiom, Imports.EXCLUDED, AxiomAnnotations.IGNORE_AXIOM_ANNOTATIONS);
-			boolean contains4 = EntitySearcher.containsAxiom(axiom, onto, true);
-			boolean contains5 = EntitySearcher.containsAxiom(axiom, Collections.singleton(onto), true);			
+			boolean contains2 = onto.containsAxiom(axiom, false);
+			boolean contains3 = onto.containsAxiomIgnoreAnnotations(axiom, false);
 			
 			assertEquals(contains1, false);
 			assertEquals(contains2, false);
 			assertEquals(contains3, false);
-			assertEquals(contains4, false);	
-			assertEquals(contains5, false);	
+
 
 	  }
 	  
@@ -118,17 +109,13 @@ public class ContainmentMethodsTest extends BaseTest {
 	  public void testContainmentOrTrue(OWLAxiom axiom) {
 		
 			boolean contains1 = onto.containsAxiom(axiom);
-			boolean contains2 = onto.containsAxiom(axiom, Imports.EXCLUDED, AxiomAnnotations.CONSIDER_AXIOM_ANNOTATIONS);
-			boolean contains3 = onto.containsAxiom(axiom, Imports.EXCLUDED, AxiomAnnotations.IGNORE_AXIOM_ANNOTATIONS);
-			boolean contains4 = EntitySearcher.containsAxiom(axiom, onto, true);
-			boolean contains5 = EntitySearcher.containsAxiom(axiom, Collections.singleton(onto), true);
-			
-			assertEquals(contains1, true);
+			boolean contains2 = onto.containsAxiom(axiom, false);
+			boolean contains3 = onto.containsAxiomIgnoreAnnotations(axiom, false);
+
+            assertEquals(contains1, true);
 			assertEquals(contains2, true);
 			assertEquals(contains3, true);
-			assertEquals(contains4, true);	
-			assertEquals(contains5, true);	
-			
+
 	  }
 	  
 	  @OWLAspectAnd({
@@ -141,17 +128,12 @@ public class ContainmentMethodsTest extends BaseTest {
 	  })	  public void testContainmentOrFalse(OWLAxiom axiom) {
 		
 			boolean contains1 = onto.containsAxiom(axiom);
-			boolean contains2 = onto.containsAxiom(axiom, Imports.EXCLUDED, AxiomAnnotations.CONSIDER_AXIOM_ANNOTATIONS);
-			boolean contains3 = onto.containsAxiom(axiom, Imports.EXCLUDED, AxiomAnnotations.IGNORE_AXIOM_ANNOTATIONS);
-			boolean contains4 = EntitySearcher.containsAxiom(axiom, onto, true);
-			boolean contains5 = EntitySearcher.containsAxiom(axiom, Collections.singleton(onto), true);
-			
+			boolean contains2 = onto.containsAxiom(axiom, false);
+			boolean contains3 = onto.containsAxiomIgnoreAnnotations(axiom, false);
+
 			assertEquals(contains1, false);
 			assertEquals(contains2, false);
 			assertEquals(contains3, false);
-			assertEquals(contains4, false);	
-			assertEquals(contains5, false);	
-			
 	  }
 	  
 }

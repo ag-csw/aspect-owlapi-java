@@ -22,16 +22,8 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-import org.semanticweb.owlapi.model.AxiomType;
-import org.semanticweb.owlapi.model.OWLAnonymousIndividual;
-import org.semanticweb.owlapi.model.OWLAxiom;
-import org.semanticweb.owlapi.model.OWLEntity;
-import org.semanticweb.owlapi.model.OWLIndividual;
-import org.semanticweb.owlapi.model.OWLOntology;
-import org.semanticweb.owlapi.model.OWLOntologyChange;
-import org.semanticweb.owlapi.model.parameters.AxiomAnnotations;
-import org.semanticweb.owlapi.model.parameters.ChangeApplied;
-import org.semanticweb.owlapi.model.parameters.Imports;
+import org.semanticweb.owlapi.model.*;
+
 
 import de.fuberlin.csw.aood.owlapi.OWLAspectAnd;
 import de.fuberlin.csw.aood.owlapi.OWLAspectOr;
@@ -110,7 +102,7 @@ public class HelperFacade {
 	 * 		  Annotation of type {@link OWLAspectAnd} or {@link OWLAspectOr} specifying current aspects
 	 * @return filtered multimap
 	 */
-	public static Object filterMultimap( String methodName,
+	public static Object filterMap( String methodName,
 			OWLIndividual userParam, Iterable<OWLOntology> ontologies, Annotation annotation) {
 		return FilteringHelperMultimap.filterMultimapFromOntologies(methodName, userParam, ontologies, annotation);
 	}
@@ -145,7 +137,7 @@ public class HelperFacade {
 	 * @return ChangeApplied : status telling if the change was applied successfully 
 	 * 			(if aspect annotations were updated successfully)
 	 */
-	public static ChangeApplied handleAxiomChange(OWLOntologyChange change, Annotation annotation) {
+	public static List<OWLOntologyChange> handleAxiomChange(OWLOntologyChange change, Annotation annotation) {
 		return ModificationHelper.handleAxiomChange(change, annotation);
 	}
 	
@@ -162,7 +154,7 @@ public class HelperFacade {
 	 */
 	public static List<OWLOntologyChange> handleRemoveAxiomReturnChanges(
 			OWLAxiom userAx, OWLOntology onto, Annotation annotation) {
-		return ModificationHelperRemove.handleRemoveAxiomReturnChanges(userAx, onto, annotation);
+		return ModificationHelperRemove.handleChangeRemoveAxiom(new RemoveAxiom(onto, userAx), annotation);
 	}
 	
 	/**
@@ -223,10 +215,10 @@ public class HelperFacade {
 	 * 
 	 * @param axiom
 	 * 			axiom to be checked
-	 * @param imports
-	 * 			Imports (included or exluded)
-	 * @param axiomAnnotations
-	 * 			AxiomAnnotations (consider or ignore)
+	 * @param includeImports
+	 * 			boolean (included or exluded)
+	 * @param considerAnnotations
+	 * 			boolean (consider or ignore)
 	 * @param ontology
 	 * 			Ontology to be searched
 	 * @param annotation
@@ -235,54 +227,14 @@ public class HelperFacade {
 	 * 			true, if ontology contains the axiom like this which has current aspects; 
 	 * 			false otherwise
 	 */
-	public static boolean containsAxiom3(OWLAxiom axiom, Imports imports,
-			AxiomAnnotations axiomAnnotations, OWLOntology ontology,
+	public static boolean containsAxiom2(OWLAxiom axiom, boolean includeImports,
+			boolean considerAnnotations, OWLOntology ontology,
 			Annotation annotation) {
-		return ContainmentHelper.containsAxiom3(axiom, imports, axiomAnnotations, ontology, annotation);
+		return ContainmentHelper.containsAxiom2(axiom, includeImports, considerAnnotations, ontology, annotation);
 	}
 
-	/**
-	 * checks whether a given ontology contains this axiom considering current aspects
-	 * (aspects are provided in an Annotation of type {@link OWLAspectAnd} or {@link OWLAspectOr})
-	 * 
-	 * @param axiom
-	 * 			axiom to be checked
-	 * @param ontology
-	 * 			Ontology to be searched
-	 * @param imports
-	 * 			information, whether to include imports (boolean) 
-	 * @param annotation
-	 * 			Annotation of type {@link OWLAspectAnd} or {@link OWLAspectOr} specifying current aspects
-	 * @return
-	 * 			true, if ontology contains the axiom like this which has current aspects; 
-	 * 			false otherwise
-	 */
-	public static Object containsAxiomES3Args(OWLAxiom axiom,
-			OWLOntology ontology, boolean imports, Annotation annotation) {
-		return ContainmentHelper.containsAxiomES3Args(axiom, ontology, imports, annotation);
-	}
 
-	/**
-	 * checks whether any of the given ontologies contains this axiom considering current aspects
-	 * (aspects are provided in an Annotation of type {@link OWLAspectAnd} or {@link OWLAspectOr})
-	 * 
-	 * @param axiom
-	 * 			axiom to be checked
-	 * @param ontologies
-	 * 			Ontologies to be searched (Iterable)
-	 * @param imports
-	 * 			information, whether to include imports (boolean) 
-	 * @param annotation
-	 * 			Annotation of type {@link OWLAspectAnd} or {@link OWLAspectOr} specifying current aspects
-	 * @return
-	 * 			true, if at least one of the ontologies contains the axiom like this which has current aspects; 
-	 * 			false otherwise
-	 */
-	public static Object containsAxiomESIterable3Args(OWLAxiom axiom,
-			Iterable<OWLOntology> ontologies, boolean imports,
-			Annotation annotation) {
-		return ContainmentHelper.containsAxiomESIterable3Args(axiom, ontologies, imports, annotation);
-	}
+
 	
 	// ----------------- AXIOM COUNT HELPERS --------------------------
 	
@@ -298,21 +250,7 @@ public class HelperFacade {
 	public static int handleAxiomCount(OWLOntology ontology, Annotation annotation) {
 		return FilteringHelperAxiomCount.handleAxiomCount(ontology, annotation);
 	}
-	
-	/**
-	 * count axioms with current aspects in this ontology optionally including imports
-	 * 
-	 * @param imports
-	 * 			info whether to include imports
-	 * @param ontology
-	 * 			ontology to check
-	 * @param annotation
-	 * 			Annotation of type {@link OWLAspectAnd} or {@link OWLAspectOr} specifying current aspects
-	 * @return number of axioms with current aspects
-	 */
-	public static int handleAxiomCount1(Imports imports, OWLOntology ontology, Annotation annotation) {
-		return FilteringHelperAxiomCount.handleAxiomCount1(imports, ontology, annotation);
-	}
+
 	
 	/**
 	 * count axioms of this type associated with current aspects in this ontology
@@ -339,7 +277,7 @@ public class HelperFacade {
 	 * 			type extending OWLAxiom
 	 * @param axType
 	 * 			Axiom type
-	 * @param imports 
+	 * @param includeImports
 	 * 			info whether to include imports
 	 * @param ontology
 	 * 			ontology to check
@@ -348,9 +286,9 @@ public class HelperFacade {
 	 * @return number of axioms with current aspects
 	 */
 	public static <T extends OWLAxiom> int handleAxiomCount2(
-			AxiomType<T> axType, Imports imports, 
+			AxiomType<T> axType, boolean includeImports,
 			OWLOntology ontology, Annotation annotation) {
-		return FilteringHelperAxiomCount.handleAxiomCount2(axType, imports, ontology, annotation);
+		return FilteringHelperAxiomCount.handleAxiomCount2(axType, includeImports, ontology, annotation);
 	}
 	
 	/**
@@ -366,19 +304,6 @@ public class HelperFacade {
 		return FilteringHelperAxiomCount.handleLogicalAxiomCount(ontology, annotation);
 	}
 	
-	/**
-	 * count logical axioms associated with current aspects in this ontology, optionally including imports
-	 * 
-	 * @param imports
-	 * 			info whether to include imports
-	 * @param ontology
-	 * 			ontology to check
-	 * @param annotation
-	 * 			Annotation of type {@link OWLAspectAnd} or {@link OWLAspectOr} specifying current aspects
-	 * @return number of axioms with current aspects
-	 */
-	public static int handleLogicalAxiomCountImports(Imports imports, OWLOntology ontology, Annotation annotation) {
-		return FilteringHelperAxiomCount.handleLogicalAxiomCountImports(imports, ontology, annotation);
-	}
+
 
 }

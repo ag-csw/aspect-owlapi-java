@@ -24,7 +24,6 @@ import org.semanticweb.owlapi.model.AxiomType;
 import org.semanticweb.owlapi.model.OWLAxiom;
 import org.semanticweb.owlapi.model.OWLLogicalAxiom;
 import org.semanticweb.owlapi.model.OWLOntology;
-import org.semanticweb.owlapi.model.parameters.Imports;
 
 import de.fuberlin.csw.aood.owlapi.OWLAspectAnd;
 import de.fuberlin.csw.aood.owlapi.OWLAspectOr;
@@ -48,22 +47,6 @@ public class FilteringHelperAxiomCount extends FilteringHelperAxioms {
 		return countFilteredAxioms(ontology, annotation, axs);
 	}
 
-	/**
-	 * count axioms with current aspects in this ontology optionally including imports
-	 * 
-	 * @param imports
-	 * 			info whether to include imports
-	 * @param ontology
-	 * 			ontology to check
-	 * @param annotation
-	 * 			Annotation of type {@link OWLAspectAnd} or {@link OWLAspectOr} specifying current aspects
-	 * @return number of axioms with current aspects
-	 */
-	public static int handleAxiomCount1(Imports imports,
-			OWLOntology ontology, Annotation annotation) {
-		Set<OWLAxiom> axs = ontology.getAxioms(imports);
-		return countFilteredAxioms(ontology, annotation, axs);
-	}
 	
 	/**
 	 * count axioms of this type associated with current aspects in this ontology
@@ -92,7 +75,7 @@ public class FilteringHelperAxiomCount extends FilteringHelperAxioms {
 	 * 			type extending OWLAxiom
 	 * @param axType
 	 * 			Axiom type
-	 * @param imports 
+	 * @param includeImports
 	 * 			info whether to include imports
 	 * @param ontology
 	 * 			ontology to check
@@ -101,9 +84,9 @@ public class FilteringHelperAxiomCount extends FilteringHelperAxioms {
 	 * @return number of axioms with current aspects
 	 */
 	public static <T extends OWLAxiom> int handleAxiomCount2(
-			AxiomType<T> axType, Imports imports,
+			AxiomType<T> axType, boolean includeImports,
 			OWLOntology ontology, Annotation annotation) {
-		Set<T> axs = ontology.getAxioms(axType, imports);
+		Set<T> axs = ontology.getAxioms(axType, includeImports);
 		return countFilteredAxioms(ontology, annotation, axs);
 	}
 
@@ -121,23 +104,7 @@ public class FilteringHelperAxiomCount extends FilteringHelperAxioms {
 		Set<OWLLogicalAxiom> axs = ontology.getLogicalAxioms();
 		return countFilteredAxioms(ontology, annotation, axs);
 	}
-	
-	/**
-	 * count logical axioms associated with current aspects in this ontology, optionally including imports
-	 * 
-	 * @param imports
-	 * 			info whether to include imports
-	 * @param ontology
-	 * 			ontology to check
-	 * @param annotation
-	 * 			Annotation of type {@link OWLAspectAnd} or {@link OWLAspectOr} specifying current aspects
-	 * @return number of axioms with current aspects
-	 */
-	public static int handleLogicalAxiomCountImports(
-			Imports imports, OWLOntology ontology, Annotation annotation) {
-		Set<OWLLogicalAxiom> axs = ontology.getLogicalAxioms(imports);
-		return countFilteredAxioms(ontology, annotation, axs);
-	}
+
 	
 	// ----------------- HELPER ------------------------------
 	

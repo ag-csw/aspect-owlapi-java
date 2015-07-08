@@ -47,7 +47,7 @@ public class OntologyModificationAspect {
 	 * quantifies over calls to methods of type applyChange(), 
 	 * dealing with single change
 	 */
-	@Pointcut("call(org.semanticweb.owlapi.model.parameters.ChangeApplied org.semanticweb.owlapi.model.*.applyChange(org.semanticweb.owlapi.model.OWLOntologyChange))")
+	@Pointcut("call(public java.util.List<org.semanticweb.owlapi.model.OWLOntologyChange> org.semanticweb.owlapi.model.*.applyChange(org.semanticweb.owlapi.model.*))")
 	void singleChange() {}
 	
 	// om.addAxiom(onto, ax); // Add single Axiom
@@ -55,7 +55,7 @@ public class OntologyModificationAspect {
 	 * quantifies over calls to methods of type addAxiom(), 
 	 * dealing with single Axiom
 	 */
-	@Pointcut("call(org.semanticweb.owlapi.model.parameters.ChangeApplied org.semanticweb.owlapi.model.*.addAxiom(..))")
+	@Pointcut("call(java.util.List<OWLOntologyChange> org.semanticweb.owlapi.model.*.addAxiom(..))")
 	void callAddAxiom() {}
 	
 	// om.removeAxiom(onto, ax); // Remove single Axiom
@@ -106,7 +106,7 @@ public class OntologyModificationAspect {
 	 * @param annotation
 	 * 			Annotation of type {@link OWLAspectAnd} specifying current aspects
 	 * @return
-	 * 			ChangeApplied (status whether the change has been applied successfully)
+	 * 			java.util.List<OWLOntologyChange> (status whether the change has been applied successfully)
 	 * @throws Throwable
 	 * 			in case something goes wrong
 	 */
@@ -160,7 +160,7 @@ public class OntologyModificationAspect {
 	 * @param annotation
 	 * 			Annotation of type {@link OWLAspectAnd} specifying current aspects
 	 * @return
-	 * 			ChangeApplied (status whether the change has been applied successfully)
+	 * 			java.util.List<OWLOntologyChange> (status whether the change has been applied successfully)
 	 * @throws Throwable
 	 * 			in case something goes wrong
 	 */
@@ -186,7 +186,7 @@ public class OntologyModificationAspect {
 	 * @param annotation
 	 * 			Annotation of type {@link OWLAspectOr} specifying current aspects
 	 * @return
-	 * 			ChangeApplied (status whether the change has been applied successfully)
+	 * 			java.util.List<OWLOntologyChange> (status whether the change has been applied successfully)
 	 * @throws Throwable
 	 * 			in case something goes wrong
 	 */
@@ -216,7 +216,7 @@ public class OntologyModificationAspect {
 	 * @param annotation
 	 * 			Annotation of type {@link OWLAspectAnd} specifying current aspects
 	 * @return
-	 * 			ChangeApplied (status whether the axiom has been added successfully)
+	 * 			java.util.List<OWLOntologyChange> (status whether the axiom has been added successfully)
 	 * @throws Throwable
 	 * 			in case something goes wrong
 	 */
@@ -240,7 +240,7 @@ public class OntologyModificationAspect {
 	 * @param annotation
 	 * 			Annotation of type {@link OWLAspectOr} specifying current aspects
 	 * @return
-	 * 			ChangeApplied (status whether the axiom has been added successfully)
+	 * 			java.util.List<OWLOntologyChange> (status whether the axiom has been added successfully)
 	 * @throws Throwable
 	 * 			in case something goes wrong
 	 */
@@ -264,7 +264,7 @@ public class OntologyModificationAspect {
 	 * @param annotation
 	 * 			Annotation of type {@link OWLAspectAnd} specifying current aspects
 	 * @return
-	 * 			ChangeApplied (status whether the axiom has been added successfully)
+	 * 			java.util.List<OWLOntologyChange> (status whether the axiom has been added successfully)
 	 * @throws Throwable
 	 * 			in case something goes wrong
 	 */
@@ -288,7 +288,7 @@ public class OntologyModificationAspect {
 	 * @param annotation
 	 * 			Annotation of type {@link OWLAspectOr} specifying current aspects
 	 * @return
-	 * 			ChangeApplied (status whether the axiom has been added successfully)
+	 * 			java.util.List<OWLOntologyChange> (status whether the axiom has been added successfully)
 	 * @throws Throwable
 	 * 			in case something goes wrong
 	 */

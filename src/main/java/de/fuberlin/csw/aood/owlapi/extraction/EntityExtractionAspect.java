@@ -38,38 +38,19 @@ import de.fuberlin.csw.aood.owlapi.helpers.HelperFacade;
 public class EntityExtractionAspect {
 	
 	// Pointcuts for OWL API Methods =========================================================
-	
-	// from org.semanticweb.owlapi.search.EntitySearcher -------------------------------------
-	
-	/**
-	 * quantifies over calls to axiom extraction methods
-	 * provided by org.semanticweb.owlapi.search.EntitySearcher
-	 */
-	@Pointcut("call(public java.util.Collection<org.semanticweb.owlapi.model.OWLAxiom+> org.semanticweb.owlapi.search.EntitySearcher.get*Axioms*(..))")
-	void getAxiomColl() {}
-	
-	/**
-	 * quantifies over calls to methods extracting owl objects from one ontology, 
-	 * which are provided by org.semanticweb.owlapi.search.EntitySearcher
-	 */
-	@Pointcut("call(public java.util.Collection<org.semanticweb.owlapi.model.OWLObject+> org.semanticweb.owlapi.search.EntitySearcher.get*(*, org.semanticweb.owlapi.model.OWLOntology, ..))")
-	void getObjectColl() {}
-	
-	/**
-	 * quantifies over calls to methods extracting owl objects from multiple ontologies, 
-	 * if these methods are provided by org.semanticweb.owlapi.search.EntitySearcher
-	 */
-	@Pointcut("call(public java.util.Collection<org.semanticweb.owlapi.model.OWLObject+> org.semanticweb.owlapi.search.EntitySearcher.get*(*, java.lang.Iterable<org.semanticweb.owlapi.model.OWLOntology>, ..))")
-	void getObjectCollFromOntologies() {}
+
 
 	// from org.semanticweb.owlapi.model.OWLOntology -------------------------------------
-	
-	/**
+
+
+    /**
 	 * quantifies over calls to methods related to extracting signature
 	 * available via org.semanticweb.owlapi.model.OWLOntology
 	 */
 	@Pointcut("call(public java.util.Set<org.semanticweb.owlapi.model.OWLEntity+> org.semanticweb.owlapi.model.*.get*Signature(..))")
 	void getSignatureRelated() {}
+
+
 		
 	
 	// USED POINTCUTS and ADVICES ============================================================
