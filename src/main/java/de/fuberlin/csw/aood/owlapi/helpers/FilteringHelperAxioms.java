@@ -18,19 +18,35 @@
 package de.fuberlin.csw.aood.owlapi.helpers;
 
 import java.lang.annotation.Annotation;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import org.semanticweb.owlapi.model.OWLAxiom;
+import org.semanticweb.owlapi.model.OWLEntity;
 import org.semanticweb.owlapi.model.OWLOntology;
 
+import de.fuberlin.csw.aood.owlapi.Config;
 import de.fuberlin.csw.aood.owlapi.OWLAspectAnd;
 import de.fuberlin.csw.aood.owlapi.OWLAspectOr;
+import uk.ac.manchester.cs.owlapi.modularity.ModuleType;
+import uk.ac.manchester.cs.owlapi.modularity.SyntacticLocalityModuleExtractor;
 
 /**
  * This helper provides methods to filter owl axioms considering current aspects 
  */
 public class FilteringHelperAxioms extends FilteringHelper {
+	
+	private static final Logger log = Logger.getLogger(FilteringHelperAxioms.class.getName());
+	
+	private static final boolean expandModules;
+	
+	// TODO move to more sensible place
+	static {
+		expandModules = (boolean)Config.instance().get("expandModules");
+	}
 	
 	/**
 	 * returns the subset of this axiom set consisting only of axioms associated with current aspects
@@ -49,9 +65,39 @@ public class FilteringHelperAxioms extends FilteringHelper {
 		Set<OWLAxiom> filteredAxioms = new HashSet<OWLAxiom>();
 		for (OWLAxiom ax : axioms) {
 			if (passAspectsTest(ax, onto, aspects)) {
-				filteredAxioms.add(ax);
+				filteredAxioms.add(ax.getAxiomWithoutAnnotations());
 			}	
 		}
+		
+		// TODO move to specialized Helper class
+		if (expandModules) {
+			HashSet<OWLEntity> signature = new HashSet<OWLEntity>();
+			for (OWLAxiom axiom : filteredAxioms) {
+				signature.addAll(axiom.getSignature());
+			}
+			SyntacticLocalityModuleExtractor extractor = new SyntacticLocalityModuleExtractor(onto.getOWLOntologyManager(), onto, ModuleType.STAR);
+			Set<OWLAxiom> expandedModule = extractor.extract(signature);
+			
+			filteredAxioms.addAll(expandedModule);
+			
+			log.log(Level.FINE, "\n\n *** axioms filtered from aspect: ***");
+			log(filteredAxioms);
+			log.log(Level.FINE, " *** signature: ");
+			log(signature);
+			log.log(Level.FINE, "-----\n *** expanded module:***");
+			log(expandedModule);
+			log.log(Level.FINE, "\n\n");
+		}
+		
 		return filteredAxioms;
+	}
+	
+	private static void log(Collection c) {
+		for (Object o : c) {
+			if (o instanceof OWLAxiom) {
+				o = ((OWLAxiom)o).getAxiomWithoutAnnotations();
+			}
+			log.log(Level.FINE, "* " + o);
+		}
 	}
 }
