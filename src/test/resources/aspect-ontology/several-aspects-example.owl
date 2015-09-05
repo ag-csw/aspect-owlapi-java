@@ -21,13 +21,124 @@
     <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
     <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
     <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
-    <Import>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example</Import>
-    <Import>http://www.corporate-semantic-web.de/ontologies/aspect/owl/temporal/example</Import>
     <Import>http://www.corporate-semantic-web.de/ontologies/aspect/owl/provenance/example</Import>
     <Import>http://www.corporate-semantic-web.de/ontologies/aspect/owl/example/testpaintings</Import>
-    
+    <Import>http://www.corporate-semantic-web.de/ontologies/aspect/owl/temporal/example</Import>
+    <Import>http://www.corporate-semantic-web.de/ontologies/aspect/owl/complexity/example</Import>
+    <DLSafeRule>
+        <Body>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="http://www.w3.org/2006/time#hasEnd"/>
+                <Variable IRI="urn:swrl#interval1"/>
+                <Variable IRI="urn:swrl#e1"/>
+            </ObjectPropertyAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="http://www.w3.org/2006/time#hasBeginning"/>
+                <Variable IRI="urn:swrl#interval2"/>
+                <Variable IRI="urn:swrl#b2"/>
+            </ObjectPropertyAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="http://www.w3.org/2006/time#before"/>
+                <Variable IRI="urn:swrl#e1"/>
+                <Variable IRI="urn:swrl#b2"/>
+            </ObjectPropertyAtom>
+        </Body>
+        <Head>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="http://www.w3.org/2006/time#before"/>
+                <Variable IRI="urn:swrl#interval1"/>
+                <Variable IRI="urn:swrl#interval2"/>
+            </ObjectPropertyAtom>
+        </Head>
+    </DLSafeRule>
+    <DLSafeRule>
+        <Body>
+            <DataPropertyAtom>
+                <DataProperty IRI="http://www.w3.org/2006/time#inXSDDateTime"/>
+                <Variable IRI="urn:swrl#instant"/>
+                <Variable IRI="urn:swrl#time1"/>
+            </DataPropertyAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="http://www.w3.org/2006/time#hasBeginning"/>
+                <Variable IRI="urn:swrl#interval"/>
+                <Variable IRI="urn:swrl#b"/>
+            </ObjectPropertyAtom>
+            <DataPropertyAtom>
+                <DataProperty IRI="http://www.w3.org/2006/time#inXSDDateTime"/>
+                <Variable IRI="urn:swrl#b"/>
+                <Variable IRI="urn:swrl#time2"/>
+            </DataPropertyAtom>
+            <BuiltInAtom IRI="http://www.w3.org/2003/11/swrlb#lessThan">
+                <Variable IRI="urn:swrl#time1"/>
+                <Variable IRI="urn:swrl#time2"/>
+            </BuiltInAtom>
+        </Body>
+        <Head>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="http://www.w3.org/2006/time#before"/>
+                <Variable IRI="urn:swrl#instant"/>
+                <Variable IRI="urn:swrl#interval"/>
+            </ObjectPropertyAtom>
+        </Head>
+    </DLSafeRule>
+    <DLSafeRule>
+        <Body>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="http://www.w3.org/2006/time#hasEnd"/>
+                <Variable IRI="urn:swrl#interval"/>
+                <Variable IRI="urn:swrl#e"/>
+            </ObjectPropertyAtom>
+            <DataPropertyAtom>
+                <DataProperty IRI="http://www.w3.org/2006/time#inXSDDateTime"/>
+                <Variable IRI="urn:swrl#e"/>
+                <Variable IRI="urn:swrl#time1"/>
+            </DataPropertyAtom>
+            <DataPropertyAtom>
+                <DataProperty IRI="http://www.w3.org/2006/time#inXSDDateTime"/>
+                <Variable IRI="urn:swrl#instant"/>
+                <Variable IRI="urn:swrl#time2"/>
+            </DataPropertyAtom>
+            <BuiltInAtom IRI="http://www.w3.org/2003/11/swrlb#lessThan">
+                <Variable IRI="urn:swrl#time1"/>
+                <Variable IRI="urn:swrl#time2"/>
+            </BuiltInAtom>
+        </Body>
+        <Head>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="http://www.w3.org/2006/time#before"/>
+                <Variable IRI="urn:swrl#interval"/>
+                <Variable IRI="urn:swrl#instant"/>
+            </ObjectPropertyAtom>
+        </Head>
+    </DLSafeRule>
+    <DLSafeRule>
+        <Body>
+            <DataPropertyAtom>
+                <DataProperty IRI="http://www.w3.org/2006/time#inXSDDateTime"/>
+                <Variable IRI="urn:swrl#instant1"/>
+                <Variable IRI="urn:swrl#tt1"/>
+            </DataPropertyAtom>
+            <DataPropertyAtom>
+                <DataProperty IRI="http://www.w3.org/2006/time#inXSDDateTime"/>
+                <Variable IRI="urn:swrl#instant2"/>
+                <Variable IRI="urn:swrl#tt2"/>
+            </DataPropertyAtom>
+            <BuiltInAtom IRI="http://www.w3.org/2003/11/swrlb#lessThan">
+                <Variable IRI="urn:swrl#tt1"/>
+                <Variable IRI="urn:swrl#tt2"/>
+            </BuiltInAtom>
+        </Body>
+        <Head>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="http://www.w3.org/2006/time#before"/>
+                <Variable IRI="urn:swrl#instant1"/>
+                <Variable IRI="urn:swrl#instant2"/>
+            </ObjectPropertyAtom>
+        </Head>
+    </DLSafeRule>
 </Ontology>
 
 
 
-<!-- Generated by the OWL API (version 3.5.0) http://owlapi.sourceforge.net -->
+<!-- Generated by the OWL API (version 3.5.1) http://owlapi.sourceforge.net -->
+
