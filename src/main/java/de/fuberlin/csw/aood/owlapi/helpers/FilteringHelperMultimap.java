@@ -18,6 +18,10 @@
 package de.fuberlin.csw.aood.owlapi.helpers;
 
 import java.lang.annotation.Annotation;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
 
 import org.semanticweb.owlapi.model.OWLDataPropertyAssertionAxiom;
 import org.semanticweb.owlapi.model.OWLDataPropertyExpression;
@@ -40,42 +44,72 @@ import de.fuberlin.csw.aood.owlapi.OWLAspectOr;
  * This helper provides methods to filter multimaps of owl objects considering current aspects 
  */
 public class FilteringHelperMultimap extends FilteringHelper {
-	
+
+
     /**
-     * Sorts and delegates to filtering the four different EntitySearcher methods which return multimaps: 
-     * getObjectPropertyValues(), getNegativeObjectPropertyValues(), 
+     * Sorts and delegates to filtering the four different EntitySearcher methods which return multimaps:
+     * getObjectPropertyValues(), getNegativeObjectPropertyValues(),
      * getDataPropertyValues(), getNegativeDataPropertyValues().
-     * 
-	 * @param methodName
-	 * 		  name of the method which returns multimap
-	 * @param userParam
-	 * 		  individual
-	 * @param ontologies
-	 * 		  ontologies to search
-	 * @param annotation
-	 * 		  Annotation of type {@link OWLAspectAnd} or {@link OWLAspectOr} specifying current aspects
-	 * @return filtered multimap
-	 */
-	public static Multimap<? extends OWLObject, ? extends OWLObject> filterMultimapFromOntologies(String methodName,
-			OWLIndividual userParam, Iterable<OWLOntology> ontologies, Annotation annotation) {
-		// Transform annotation
-		String[][] aspects = transformAnnotationToAspects(annotation);
-		Multimap<? extends OWLObject, ? extends OWLObject> result = LinkedListMultimap.create();	
-		switch (methodName) {
-			case "getObjectPropertyValues":
-				result = filterObjPropValues(userParam, ontologies, aspects);
-				break;
-			case "getNegativeObjectPropertyValues":
-				result = filterNegObjPropValues(userParam, ontologies, aspects);
-				break;
-			case "getDataPropertyValues":
-				result = filterDataPropValues(userParam, ontologies, aspects);
-				break;
-			case "getNegativeDataPropertyValues":
-				result = filterNegDataPropValues(userParam, ontologies, aspects);		
-		}
-		return result;
-	}
+     *
+     * @param methodName
+     * 		  name of the method which returns multimap
+     * @param userParam
+     * 		  individual
+     * @param ontologies
+     * 		  ontologies to search
+     * @param annotation
+     * 		  Annotation of type {@link OWLAspectAnd} or {@link OWLAspectOr} specifying current aspects
+     * @return filtered multimap
+     */
+    public static Map<? extends OWLObject, Set<OWLLiteral>> filterLiteralMultimapFromOntologies(String methodName,
+                                                                                                  OWLIndividual userParam, Iterable<OWLOntology> ontologies, Annotation annotation) {
+        // Transform annotation
+        String[][] aspects = transformAnnotationToAspects(annotation);
+        Map<? extends OWLObject, Set<OWLLiteral>> result = new HashMap<>();
+        switch (methodName) {
+            case "getDataPropertyValues":
+                result = filterDataPropValues(userParam, ontologies, aspects);
+                break;
+            case "getNegativeDataPropertyValues":
+                result = filterNegDataPropValues(userParam, ontologies, aspects);
+        }
+        return result;
+    }
+
+
+    /**
+     * Sorts and delegates to filtering the four different EntitySearcher methods which return multimaps:
+     * getObjectPropertyValues(), getNegativeObjectPropertyValues(),
+     * getDataPropertyValues(), getNegativeDataPropertyValues().
+     *
+     * @param methodName
+     * 		  name of the method which returns multimap
+     * @param userParam
+     * 		  individual
+     * @param ontologies
+     * 		  ontologies to search
+     * @param annotation
+     * 		  Annotation of type {@link OWLAspectAnd} or {@link OWLAspectOr} specifying current aspects
+     * @return filtered multimap
+     */
+    public static Map<? extends OWLObject, Set<OWLIndividual>> filterIndividualsMultimapFromOntologies(String methodName,
+                                                                                                  OWLIndividual userParam, Iterable<OWLOntology> ontologies, Annotation annotation) {
+        // Transform annotation
+        String[][] aspects = transformAnnotationToAspects(annotation);
+        Map<? extends OWLObject, Set<OWLIndividual>> result = new HashMap<>();
+        switch (methodName) {
+            case "getObjectPropertyValues":
+                result = filterObjPropValues(userParam, ontologies, aspects);
+                break;
+            case "getNegativeObjectPropertyValues":
+                result = filterNegObjPropValues(userParam, ontologies, aspects);
+                break;
+        }
+        return result;
+    }
+
+
+
 	
     /**
      * Obtains the object properties for this individual 
@@ -90,18 +124,40 @@ public class FilteringHelperMultimap extends FilteringHelper {
      *        aspects serving as filter criteria
      * @return properties mapped to property values
      */
-	private static Multimap<OWLObjectPropertyExpression, OWLIndividual> filterObjPropValues(
+	private static Map<OWLObjectPropertyExpression, Set<OWLIndividual>> filterObjPropValues(
 			OWLIndividual userParam, Iterable<OWLOntology> ontologies,
 			String[][] aspects) {
-        Multimap<OWLObjectPropertyExpression, OWLIndividual> resultMap = LinkedListMultimap.create();
+        Multimap<OWLObjectPropertyExpression, OWLIndividual> resultMultMap = LinkedListMultimap.create();
         for (OWLOntology onto : ontologies) {
             for (OWLObjectPropertyAssertionAxiom ax : onto.getObjectPropertyAssertionAxioms(userParam)) {
             	if (passAspectsTest(ax, onto, aspects)) {
-            		 resultMap.put(ax.getProperty(), ax.getObject());
+                    resultMultMap.put(ax.getProperty(), ax.getObject());
             	}
             }
         }
+
+        /*Todo: Mutlimap stopgap...*/
+
+        Map<OWLObjectPropertyExpression, Set<OWLIndividual>> resultMap = new HashMap<>();
+
+        for (OWLOntology onto : ontologies) {
+            for (OWLObjectPropertyAssertionAxiom ax : onto.getObjectPropertyAssertionAxioms(userParam)) {
+                if (passAspectsTest(ax, onto, aspects)) {
+
+                    if (!resultMap.containsKey(ax.getProperty())){
+
+                        Set<OWLIndividual> indSet = new HashSet<>();
+                        for (OWLIndividual ind : resultMultMap.get(ax.getProperty())){
+                            indSet.add(ind);
+                        }
+                        resultMap.put(ax.getProperty(), indSet);
+                    }
+                }
+            }
+        }
+
         return resultMap;
+
 	}
 
     /**
@@ -117,16 +173,36 @@ public class FilteringHelperMultimap extends FilteringHelper {
      *        aspects serving as filter criteria
      * @return properties mapped to property values
      */
-	private static Multimap<OWLObjectPropertyExpression, OWLIndividual> filterNegObjPropValues(
+	private static Map<OWLObjectPropertyExpression, Set<OWLIndividual>> filterNegObjPropValues(
 			OWLIndividual userParam, Iterable<OWLOntology> ontologies, String[][] aspects) {
-        Multimap<OWLObjectPropertyExpression, OWLIndividual> resultMap = LinkedListMultimap.create();
+        Multimap<OWLObjectPropertyExpression, OWLIndividual> resultMultMap = LinkedListMultimap.create();
         for (OWLOntology onto : ontologies) {
             for (OWLNegativeObjectPropertyAssertionAxiom ax : onto.getNegativeObjectPropertyAssertionAxioms(userParam)) {
             	if (passAspectsTest(ax, onto, aspects)) {
-            		 resultMap.put(ax.getProperty(), ax.getObject());
+                    resultMultMap.put(ax.getProperty(), ax.getObject());
             	}
             }
         }
+
+
+        Map<OWLObjectPropertyExpression, Set<OWLIndividual>> resultMap = new HashMap<>();
+
+        for (OWLOntology onto : ontologies) {
+            for (OWLNegativeObjectPropertyAssertionAxiom ax : onto.getNegativeObjectPropertyAssertionAxioms(userParam)) {
+                if (passAspectsTest(ax, onto, aspects)) {
+
+                    if (!resultMap.containsKey(ax.getProperty())){
+
+                        Set<OWLIndividual> indSet = new HashSet<>();
+                        for (OWLIndividual ind : resultMultMap.get(ax.getProperty())){
+                            indSet.add(ind);
+                        }
+                        resultMap.put(ax.getProperty(), indSet);
+                    }
+                }
+            }
+        }
+
         return resultMap;
 	}
 
@@ -143,16 +219,39 @@ public class FilteringHelperMultimap extends FilteringHelper {
      *        aspects serving as filter criteria
      * @return properties mapped to property values
      */
-	private static Multimap<OWLDataPropertyExpression, OWLLiteral> filterDataPropValues(
+	private static Map<OWLDataPropertyExpression, Set<OWLLiteral>>  filterDataPropValues(
 			OWLIndividual userParam, Iterable<OWLOntology> ontologies, String[][] aspects) {
-        Multimap<OWLDataPropertyExpression, OWLLiteral> resultMap = LinkedListMultimap.create();
+        Multimap<OWLDataPropertyExpression, OWLLiteral> resultMultMap = LinkedListMultimap.create();
         for (OWLOntology onto : ontologies) {
             for (OWLDataPropertyAssertionAxiom ax : onto.getDataPropertyAssertionAxioms(userParam)) {
             	if (passAspectsTest(ax, onto, aspects)) {
-            		 resultMap.put(ax.getProperty(), ax.getObject());
+                    resultMultMap.put(ax.getProperty(), ax.getObject());
             	}
             }
         }
+
+        Map<OWLDataPropertyExpression, Set<OWLLiteral>> resultMap = new HashMap<>();
+
+        for (OWLOntology onto : ontologies) {
+            for (OWLDataPropertyAssertionAxiom ax : onto.getDataPropertyAssertionAxioms(userParam)) {
+                if (passAspectsTest(ax, onto, aspects)) {
+
+                    if (!resultMap.containsKey(ax.getProperty())){
+
+                        Set<OWLLiteral> litSet = new HashSet<>();
+                        for (OWLLiteral lit : resultMultMap.get(ax.getProperty())){
+                            litSet.add(lit);
+                        }
+
+                        resultMap.put(ax.getProperty(), litSet);
+                    }
+                }
+            }
+        }
+
+
+
+
         return resultMap;
 	}
 
@@ -169,18 +268,38 @@ public class FilteringHelperMultimap extends FilteringHelper {
      *        aspects serving as filter criteria
      * @return properties mapped to property values
      */
-	private static Multimap<OWLDataPropertyExpression, OWLLiteral> filterNegDataPropValues(
+	private static Map<OWLDataPropertyExpression, Set<OWLLiteral>> filterNegDataPropValues(
 			OWLIndividual userParam, Iterable<OWLOntology> ontologies,
 			String[][] aspects) {
-        Multimap<OWLDataPropertyExpression, OWLLiteral> resultMap = LinkedListMultimap.create();
+        Multimap<OWLDataPropertyExpression, OWLLiteral> resultMultMap = LinkedListMultimap.create();
         for (OWLOntology onto : ontologies) {
             for (OWLNegativeDataPropertyAssertionAxiom ax : onto.getNegativeDataPropertyAssertionAxioms(userParam)) {
             	if (passAspectsTest(ax, onto, aspects)) {
-            		 resultMap.put(ax.getProperty(), ax.getObject());
+                    resultMultMap.put(ax.getProperty(), ax.getObject());
             	}
             }
         }
+
+        Map<OWLDataPropertyExpression, Set<OWLLiteral>> resultMap = new HashMap<>();
+
+        for (OWLOntology onto : ontologies) {
+            for (OWLNegativeDataPropertyAssertionAxiom ax : onto.getNegativeDataPropertyAssertionAxioms(userParam)) {
+                if (passAspectsTest(ax, onto, aspects)) {
+
+                    if (!resultMap.containsKey(ax.getProperty())){
+
+                        Set<OWLLiteral> litSet = new HashSet<>();
+                        for (OWLLiteral lit : resultMultMap.get(ax.getProperty())){
+                            litSet.add(lit);
+                        }
+                        resultMap.put(ax.getProperty(), litSet);
+                    }
+                }
+            }
+        }
+
         return resultMap;
+
 	}
 
 }

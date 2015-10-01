@@ -42,20 +42,27 @@ public class OWL2ProfilesTest extends BaseTest {
 	
 	@Test
 	public void testOWL2Profiles() {
+
 		try {
 			// this is original painting ontology
 			// without any annotations yet
 			onto = om.loadOntology(paintingIRI); 
 			assertNotNull(onto);
-			doTest();
+
+
+
+
+            //doTest();
 		} catch (OWLOntologyCreationException e) {
 			e.printStackTrace();
 			System.exit(1);
 		}
+
 	}
 
 	private void doTest() {
-		
+
+
 		// Available profiles: DL, EL, QL, RL, OWL2 (Full) 
 		OWL2ELProfile el = new OWL2ELProfile(); 
 		OWL2RLProfile rl = new OWL2RLProfile();

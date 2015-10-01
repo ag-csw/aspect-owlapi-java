@@ -55,7 +55,7 @@ public class OntologyModificationAspect {
 	 * quantifies over calls to methods of type addAxiom(), 
 	 * dealing with single Axiom
 	 */
-	@Pointcut("call(java.util.List<OWLOntologyChange> org.semanticweb.owlapi.model.*.addAxiom(..))")
+	@Pointcut("call(public java.util.List<org.semanticweb.owlapi.model.OWLOntologyChange> org.semanticweb.owlapi.model.*.addAxiom(..))")
 	void callAddAxiom() {}
 	
 	// om.removeAxiom(onto, ax); // Remove single Axiom

@@ -104,8 +104,15 @@ public class HelperFacade {
 	 */
 	public static Object filterMap( String methodName,
 			OWLIndividual userParam, Iterable<OWLOntology> ontologies, Annotation annotation) {
-		return FilteringHelperMultimap.filterMultimapFromOntologies(methodName, userParam, ontologies, annotation);
-	}
+
+        if (methodName.contains("Object")){
+            return FilteringHelperMultimap.filterIndividualsMultimapFromOntologies(methodName, userParam, ontologies, annotation);
+        } else if (methodName.contains("Data")){
+            return FilteringHelperMultimap.filterLiteralMultimapFromOntologies(methodName, userParam, ontologies, annotation);
+        }
+
+        return null;
+    }
 	
 	/**
 	 * filters this set of anonymous individuals with respect to current aspects

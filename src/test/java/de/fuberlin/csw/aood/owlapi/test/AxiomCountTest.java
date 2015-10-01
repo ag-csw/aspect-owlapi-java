@@ -20,13 +20,20 @@ package de.fuberlin.csw.aood.owlapi.test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
+import com.clarkparsia.pellet.owlapiv3.PelletReasonerFactory;
+import de.derivo.sparqldlapi.Query;
+import de.derivo.sparqldlapi.QueryEngine;
+import de.derivo.sparqldlapi.QueryResult;
 import org.junit.Test;
+import org.semanticweb.HermiT.Reasoner;
 import org.semanticweb.owlapi.model.AxiomType;
 import org.semanticweb.owlapi.model.OWLOntology;
 import org.semanticweb.owlapi.model.OWLOntologyCreationException;
 import org.semanticweb.owlapi.model.OWLOntologyManager;
 
 import de.fuberlin.csw.aood.owlapi.OWLAspectAnd;
+import org.semanticweb.owlapi.reasoner.OWLReasoner;
+import org.semanticweb.owlapi.reasoner.structural.StructuralReasonerFactory;
 
 public class AxiomCountTest extends BaseTest {
 		
@@ -39,9 +46,34 @@ public class AxiomCountTest extends BaseTest {
 			OWLOntologyManager om = create();
 			OWLOntology onto = loadAdvisedOntologyWithAspects(om); 
 			assertNotNull(onto);
-			
-			// we test all possible count methods which are not deprecated.
-			// Deprecated is e.g. onto.getAxiomCount(boolean imports); Its result is false in our program.
+
+
+
+
+
+          /*
+          try {
+              OWLReasoner rStructural = new StructuralReasonerFactory().createReasoner(onto);
+              //OWLReasoner hermit= new Reasoner(onto);
+
+              OWLReasoner pellet = PelletReasonerFactory.getInstance().createReasoner(onto);
+
+              QueryEngine queryEngine = QueryEngine.create(om, pellet);
+              Query query = Query.create("SELECT ?c WHERE { Class(?c) }");
+              QueryResult result = queryEngine.execute(query);
+              System.out.println(result.toString());
+          } catch (Exception e){
+              e.printStackTrace();
+          }
+           */
+
+
+
+
+
+
+        // we test all possible count methods which are not deprecated.
+		// Deprecated is e.g. onto.getAxiomCount(boolean imports); Its result is false in our program.
 			int count1 = onto.getAxiomCount();
 			int count3 = onto.getAxiomCount(AxiomType.OBJECT_PROPERTY_ASSERTION);
 			int count4 = onto.getAxiomCount(AxiomType.OBJECT_PROPERTY_ASSERTION, false);

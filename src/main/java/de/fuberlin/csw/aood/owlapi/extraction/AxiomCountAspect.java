@@ -63,7 +63,7 @@ public class AxiomCountAspect {
 	 * provided by types from org.semanticweb.owlapi.model package and  
 	 * having two arguments: first one of type AxiomType, second one of type Imports
 	 */
-	@Pointcut("call(public int org.semanticweb.owlapi.model.*.getAxiomCount(org.semanticweb.owlapi.model.AxiomType<*>, org.semanticweb.owlapi.model.parameters.Imports))")
+	@Pointcut("call(public int org.semanticweb.owlapi.model.*.getAxiomCount(org.semanticweb.owlapi.model.AxiomType<*>, boolean ))")
 	void getAxCount2() {}
 	
 	// logical axs

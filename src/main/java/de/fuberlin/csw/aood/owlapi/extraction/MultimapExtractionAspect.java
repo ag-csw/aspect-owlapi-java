@@ -195,6 +195,7 @@ public class MultimapExtractionAspect {
 	private Object handleMap(ProceedingJoinPoint pjp,
 			OWLIndividual ind, Iterable<OWLOntology> ontologies, Annotation annotation) throws Throwable {
 		String methodName = pjp.getSignature().getName();
+
 		return HelperFacade.filterMap(methodName, ind, ontologies, annotation);
 	}
 	

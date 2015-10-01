@@ -34,7 +34,6 @@ import org.semanticweb.owlapi.model.OWLOntology;
 import org.semanticweb.owlapi.model.OWLOntologyCreationException;
 import org.semanticweb.owlapi.model.OWLOntologyManager;
 
-import com.google.common.collect.Multimap;
 
 import de.fuberlin.csw.aood.owlapi.OWLAspectAnd;
 
@@ -81,7 +80,7 @@ public class ExtractMultimapsTest extends BaseTest {
 		Map<OWLObjectPropertyExpression, Set<OWLIndividual>> map =
                 ind.getObjectPropertyValues(onto);
 		// and without aspects this multimap has size 5
-		assertEquals(3, map.size());
+		assertEquals(1, map.size());
 	}
 
 }

@@ -18,6 +18,7 @@
 package de.fuberlin.csw.aood.owlapi.test;
 
 import java.io.File;
+import java.util.HashMap;
 
 import javax.annotation.Nonnull;
 
@@ -33,6 +34,7 @@ import org.semanticweb.owlapi.model.OWLOntologyIRIMapper;
 import org.semanticweb.owlapi.model.OWLOntologyManager;
 import org.semanticweb.owlapi.util.AutoIRIMapper;
 import org.semanticweb.owlapi.util.SimpleIRIMapper;
+import org.dllearner.kb.dataset.OWLOntologyDataset;
 
 public abstract class BaseTest {
 	
@@ -146,6 +148,9 @@ public abstract class BaseTest {
     	om.addIRIMapper(new SimpleIRIMapper(ADVISED_ONTO_IRI, IRI.create(ADVISED_ONTO_NOASPECTS_FILE)));
     	// Load ontology - using ontology IRI. IRI Mapper knows file location.
     	return om.loadOntology(ADVISED_ONTO_IRI);
+
+        //OWLOntologyDataset dataset=new OWLOntologyDataset(om.loadOntology(ADVISED_ONTO_IRI), new HashMap());
+
     }
     
 }
