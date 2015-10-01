@@ -20,7 +20,6 @@ package de.fuberlin.csw.aood.owlapi.test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
-import java.util.Collections;
 import java.util.Map;
 import java.util.Set;
 
@@ -33,7 +32,6 @@ import org.semanticweb.owlapi.model.OWLObjectPropertyExpression;
 import org.semanticweb.owlapi.model.OWLOntology;
 import org.semanticweb.owlapi.model.OWLOntologyCreationException;
 import org.semanticweb.owlapi.model.OWLOntologyManager;
-
 
 import de.fuberlin.csw.aood.owlapi.OWLAspectAnd;
 

@@ -34,7 +34,6 @@ import org.semanticweb.owlapi.model.OWLOntologyIRIMapper;
 import org.semanticweb.owlapi.model.OWLOntologyManager;
 import org.semanticweb.owlapi.util.AutoIRIMapper;
 import org.semanticweb.owlapi.util.SimpleIRIMapper;
-import org.dllearner.kb.dataset.OWLOntologyDataset;
 
 public abstract class BaseTest {
 	

@@ -46,6 +46,8 @@ public class OntologyModificationAspect {
 	/**
 	 * quantifies over calls to methods of type applyChange(), 
 	 * dealing with single change
+	 * 
+	 * TODO: Ralph: debug (must be called from modificationTest)
 	 */
 	@Pointcut("call(public java.util.List<org.semanticweb.owlapi.model.OWLOntologyChange> org.semanticweb.owlapi.model.*.applyChange(org.semanticweb.owlapi.model.*))")
 	void singleChange() {}

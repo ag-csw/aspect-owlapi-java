@@ -82,11 +82,7 @@
         </dependency>
 
 
-        <dependency>
-            <groupId>org.dllearner</groupId>
-            <artifactId>components-core</artifactId>
-            <version>1.2-SNAPSHOT</version>
-        </dependency>
+
 
     </dependencies>
 	<build>
