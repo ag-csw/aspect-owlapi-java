@@ -44,29 +44,6 @@ public class AxiomCountTest extends BaseTest {
 
 
 
-
-
-          /*
-          try {
-              OWLReasoner rStructural = new StructuralReasonerFactory().createReasoner(onto);
-              //OWLReasoner hermit= new Reasoner(onto);
-
-              OWLReasoner pellet = PelletReasonerFactory.getInstance().createReasoner(onto);
-
-              QueryEngine queryEngine = QueryEngine.create(om, pellet);
-              Query query = Query.create("SELECT ?c WHERE { Class(?c) }");
-              QueryResult result = queryEngine.execute(query);
-              System.out.println(result.toString());
-          } catch (Exception e){
-              e.printStackTrace();
-          }
-           */
-
-
-
-
-
-
         // we test all possible count methods which are not deprecated.
 		// Deprecated is e.g. onto.getAxiomCount(boolean imports); Its result is false in our program.
 			int count1 = onto.getAxiomCount();

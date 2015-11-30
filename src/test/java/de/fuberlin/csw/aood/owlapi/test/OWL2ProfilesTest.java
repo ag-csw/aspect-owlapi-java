@@ -51,62 +51,13 @@ public class OWL2ProfilesTest extends BaseTest {
 			onto = om.loadOntology(paintingIRI); 
 			assertNotNull(onto);
 
-			String QUERY = "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n" +
-					"PREFIX owl: <http://www.w3.org/2002/07/owl#>\n" +
-					"PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\n" +
-					"PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n" +
-					"\n" +
-					"CONSTRUCT {?s ?p ?o}\n" +
-					"WHERE {\n" +
-					"	?s ?p ?o .\n" +
-					"}";
-
-			QueryExecutor queryExecutor = new QueryExecutor();
-
-
-			OWLOntology ont2 = queryExecutor.getOntologyModule(QUERY, onto);
-
-
-			for (OWLAxiom ax : ont2.getAxioms()){
-				System.out.println(ax);
-			}
-
-			System.out.println(ont2);
-
             //doTest();
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.exit(1);
 		}
 
-		try{
-			testSparqlAspects();
-		} catch (Exception e){
-			e.printStackTrace();
-		}
-
 	}
-
-
-	@OWLAspectSparql({
-			"PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n" +
-					"PREFIX owl: <http://www.w3.org/2002/07/owl#>\n" +
-					"PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\n" +
-					"PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n" +
-					"\n" +
-					"CONSTRUCT {?s ?p ?o}\n" +
-					"WHERE {\n" +
-					"	?s ?p ?o .\n" +
-					"}"
-	})
-	private void testSparqlAspects() throws OWLOntologyCreationException{
-		onto = om.loadOntology(paintingIRI);
-		assertNotNull(onto);
-
-		onto.getABoxAxioms(true);
-
-	}
-
 
 
 
