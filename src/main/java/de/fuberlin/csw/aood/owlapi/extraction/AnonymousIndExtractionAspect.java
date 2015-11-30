@@ -20,6 +20,8 @@ package de.fuberlin.csw.aood.owlapi.extraction;
 import java.lang.annotation.Annotation;
 import java.util.Set;
 
+import de.fuberlin.csw.aood.owlapi.OWLAspectSparql;
+import de.fuberlin.csw.aood.owlapi.util.QueryExecutor;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -133,15 +135,16 @@ public class AnonymousIndExtractionAspect {
 	
 	/**
 	 * Responsible for handling result of the call to a method extracting anonymous individuals 
-	 * if this method was called from a context annotated with either {@link OWLAspectAnd} or {@link OWLAspectOr}
-	 * The context may be a class, a method or a constructor.
+	 * if this method was called from a context annotated with either {@link OWLAspectAnd}, {@link OWLAspectOr}
+	 * or {@link OWLAspectSparql}
+	 * The context may be a class, a Wie sie fassen, wie sie lassenmethod or a constructor.
 	 * 
 	 * @param pjp
 	 * 			Proceeding Join Point
 	 * @param onto
 	 * 			Ontology
 	 * @param annotation
-	 * 			Annotation of type {@link OWLAspectAnd} or {@link OWLAspectOr} specifying current aspects
+	 * 			Annotation of type {@link OWLAspectAnd}, {@link OWLAspectOr} or {@link OWLAspectSparql} specifying current aspects
 	 * @return
 	 * 			Set of anonymous individuals whose referencing axioms have current aspects
 	 * @throws Throwable
@@ -149,9 +152,18 @@ public class AnonymousIndExtractionAspect {
 	 */
 	private Object handleAnonymousIndividuals(ProceedingJoinPoint pjp,
 			OWLOntology onto, Annotation annotation) throws Throwable {
-		@SuppressWarnings("unchecked")
-		Set<OWLAnonymousIndividual> toFilter = (Set<OWLAnonymousIndividual>) pjp.proceed();
-		return HelperFacade.filterAnonymousIndividuals(toFilter, onto, annotation);
+
+		if (annotation instanceof OWLAspectSparql){
+
+			QueryExecutor qex = new QueryExecutor();
+			OWLOntology filteredOnto = qex.getOntologyModule(((OWLAspectSparql) annotation).value().toString(), onto);
+			return filteredOnto.getAnonymousIndividuals();
+
+		} else {
+			@SuppressWarnings("unchecked")
+			Set<OWLAnonymousIndividual> toFilter = (Set<OWLAnonymousIndividual>) pjp.proceed();
+			return HelperFacade.filterAnonymousIndividuals(toFilter, onto, annotation);
+		}
 	}
 
 }

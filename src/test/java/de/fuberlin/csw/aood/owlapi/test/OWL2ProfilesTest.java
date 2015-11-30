@@ -23,11 +23,11 @@ import static org.junit.Assert.assertNotNull;
 import java.util.HashSet;
 import java.util.Set;
 
+import de.fuberlin.csw.aood.owlapi.OWLAspectSparql;
+import de.fuberlin.csw.aood.owlapi.util.ModelConverter;
+import de.fuberlin.csw.aood.owlapi.util.QueryExecutor;
 import org.junit.Test;
-import org.semanticweb.owlapi.model.OWLAxiom;
-import org.semanticweb.owlapi.model.OWLOntology;
-import org.semanticweb.owlapi.model.OWLOntologyCreationException;
-import org.semanticweb.owlapi.model.OWLOntologyManager;
+import org.semanticweb.owlapi.model.*;
 import org.semanticweb.owlapi.profiles.OWL2ELProfile;
 import org.semanticweb.owlapi.profiles.OWL2QLProfile;
 import org.semanticweb.owlapi.profiles.OWL2RLProfile;
@@ -43,22 +43,77 @@ public class OWL2ProfilesTest extends BaseTest {
 	@Test
 	public void testOWL2Profiles() {
 
+
+
 		try {
 			// this is original painting ontology
 			// without any annotations yet
 			onto = om.loadOntology(paintingIRI); 
 			assertNotNull(onto);
 
+			String QUERY = "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n" +
+					"PREFIX owl: <http://www.w3.org/2002/07/owl#>\n" +
+					"PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\n" +
+					"PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n" +
+					"\n" +
+					"CONSTRUCT {?s ?p ?o}\n" +
+					"WHERE {\n" +
+					"	?s ?p ?o .\n" +
+					"}";
+
+			QueryExecutor queryExecutor = new QueryExecutor();
 
 
+			OWLOntology ont2 = queryExecutor.getOntologyModule(QUERY, onto);
+
+
+			for (OWLAxiom ax : ont2.getAxioms()){
+				System.out.println(ax);
+			}
+
+			System.out.println(ont2);
 
             //doTest();
-		} catch (OWLOntologyCreationException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 			System.exit(1);
 		}
 
+		try{
+			testSparqlAspects();
+		} catch (Exception e){
+			e.printStackTrace();
+		}
+
 	}
+
+
+	@OWLAspectSparql({
+			"PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n" +
+					"PREFIX owl: <http://www.w3.org/2002/07/owl#>\n" +
+					"PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\n" +
+					"PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n" +
+					"\n" +
+					"CONSTRUCT {?s ?p ?o}\n" +
+					"WHERE {\n" +
+					"	?s ?p ?o .\n" +
+					"}"
+	})
+	private void testSparqlAspects() throws OWLOntologyCreationException{
+		onto = om.loadOntology(paintingIRI);
+		assertNotNull(onto);
+
+		onto.getABoxAxioms(true);
+
+	}
+
+
+
+
+
+
+
+
 
 	private void doTest() {
 

@@ -20,10 +20,14 @@ package de.fuberlin.csw.aood.owlapi.extraction;
 import java.lang.annotation.Annotation;
 import java.util.Set;
 
+import de.fuberlin.csw.aood.owlapi.OWLAspectSparql;
+import de.fuberlin.csw.aood.owlapi.util.QueryExecutor;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
+import org.aspectj.lang.reflect.MethodSignature;
+import org.semanticweb.owlapi.model.OWLAxiom;
 import org.semanticweb.owlapi.model.OWLEntity;
 import org.semanticweb.owlapi.model.OWLOntology;
 
@@ -98,6 +102,27 @@ public class EntityExtractionAspect {
 	public Object aroundGetSignatureWithinClassMarkedWithOr(ProceedingJoinPoint pjp, OWLOntology ontology, OWLAspectOr annotation) throws Throwable  {
 		return handleEntities(pjp, ontology, annotation);	
 	}
+
+	/**
+	 * advice responsible for handling result of the call to a method extracting signature,
+	 * if this method is available via org.semanticweb.owlapi.model.OWLOntology, and
+	 * if this method was called from a class annotated with {@link OWLAspectSparql}
+	 *
+	 * @param pjp
+	 * 			Proceeding Join Point
+	 * @param ontology
+	 * 			Ontology
+	 * @param annotation
+	 * 			Annotation of type {@link OWLAspectSparql} specifying current aspects
+	 * @return
+	 * 			Set of entities whose declaration axioms have current aspects
+	 * @throws Throwable
+	 * 			in case something goes wrong
+	 */
+	@Around("getSignatureRelated() && target(ontology) && @within(annotation)")
+	public Object aroundGetSignatureWithinClassMarkedWithSparql(ProceedingJoinPoint pjp, OWLOntology ontology, OWLAspectSparql annotation) throws Throwable  {
+		return handleEntities(pjp, ontology, annotation);
+	}
 	
 	/**
 	 * advice responsible for handling result of the call to a method extracting signature, 
@@ -140,6 +165,27 @@ public class EntityExtractionAspect {
 	public Object aroundGetSignatureWithinCodeMarkedWithOr(ProceedingJoinPoint pjp, OWLOntology ontology, OWLAspectOr annotation) throws Throwable  {
 		return handleEntities(pjp, ontology, annotation);
 	}
+
+	/**
+	 * advice responsible for handling result of the call to a method extracting signature,
+	 * if this method is available via org.semanticweb.owlapi.model.OWLOntology, and
+	 * if this method was called from a method or constructor annotated with {@link OWLAspectSparql}
+	 *
+	 * @param pjp
+	 * 			Proceeding Join Point
+	 * @param ontology
+	 * 			Ontology
+	 * @param annotation
+	 * 			Annotation of type {@link OWLAspectSparql} specifying current aspects
+	 * @return
+	 * 			Set of entities whose declaration axioms have current aspects
+	 * @throws Throwable
+	 * 			in case something goes wrong
+	 */
+	@Around("getSignatureRelated() && target(ontology) && @withincode(annotation)")
+	public Object aroundGetSignatureWithinCodeMarkedWithSparql(ProceedingJoinPoint pjp, OWLOntology ontology, OWLAspectSparql annotation) throws Throwable  {
+		return handleEntities(pjp, ontology, annotation);
+	}
 	
 	// ------------------------ HELPER ------------------------
 	
@@ -147,7 +193,7 @@ public class EntityExtractionAspect {
 	/**
 	 * Responsible for handling result of the call to a method extracting signature (set of entities), 
 	 * if this method is available via org.semanticweb.owlapi.model.OWLOntology, and 
-	 * if this method was called from a context annotated with either {@link OWLAspectAnd} or {@link OWLAspectOr}
+	 * if this method was called from a context annotated with either {@link OWLAspectAnd}, {@link OWLAspectOr} or {@link OWLAspectSparql}
 	 * The context may be a class, a method or a constructor.
 	 * 
 	 * @param pjp
@@ -155,16 +201,49 @@ public class EntityExtractionAspect {
 	 * @param ontology
 	 * 			Ontology
 	 * @param annotation
-	 * 			Annotation of type {@link OWLAspectAnd} or {@link OWLAspectOr} specifying current aspects
+	 * 			Annotation of type {@link OWLAspectAnd}, {@link OWLAspectOr} or {@link OWLAspectSparql}  specifying current aspects
 	 * @return
 	 * 			Set of entities whose declaration axioms have current aspects
 	 * @throws Throwable
 	 * 			in case something goes wrong
 	 */
 	private Object handleEntities(ProceedingJoinPoint pjp, OWLOntology ontology, Annotation annotation) throws Throwable {
-		@SuppressWarnings("unchecked")
-		Set<OWLEntity> entities = (Set<OWLEntity>) pjp.proceed();
-		return HelperFacade.filterEntities(ontology, entities, annotation);
+
+		if (annotation instanceof OWLAspectSparql) {
+
+			QueryExecutor qex = new QueryExecutor();
+			OWLOntology filteredOnto = qex.getOntologyModule(((OWLAspectSparql) annotation).value().toString(), ontology);
+
+			MethodSignature signature = (MethodSignature) pjp.getSignature();
+
+			java.lang.reflect.Method method = signature.getMethod();
+
+			Set<OWLAxiom> result = null;
+
+			switch (pjp.getArgs().length){
+				case 0: result = (Set<OWLAxiom>) method.invoke(filteredOnto);
+					break;
+				case 1: result = (Set<OWLAxiom>) method.invoke(filteredOnto, pjp.getArgs()[0]);
+					break;
+				case 2: result = (Set<OWLAxiom>) method.invoke(filteredOnto, pjp.getArgs()[0], pjp.getArgs()[1]);
+					break;
+				case 3: result = (Set<OWLAxiom>) method.invoke(filteredOnto, pjp.getArgs()[0], pjp.getArgs()[1], pjp.getArgs()[2]);
+					break;
+				case 4: result = (Set<OWLAxiom>) method.invoke(filteredOnto, pjp.getArgs()[0], pjp.getArgs()[1], pjp.getArgs()[2], pjp.getArgs()[4]);
+					break;
+
+			}
+
+			return result;
+
+
+		} else {
+			@SuppressWarnings("unchecked")
+			Set<OWLEntity> entities = (Set<OWLEntity>) pjp.proceed();
+			return HelperFacade.filterEntities(ontology, entities, annotation);
+		}
+
+
 	}
 	
 	

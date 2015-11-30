@@ -20,9 +20,7 @@ package de.fuberlin.csw.aood.owlapi.test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
-import com.clarkparsia.pellet.owlapiv3.PelletReasonerFactory;
 import org.junit.Test;
-import org.semanticweb.HermiT.Reasoner;
 import org.semanticweb.owlapi.model.AxiomType;
 import org.semanticweb.owlapi.model.OWLOntology;
 import org.semanticweb.owlapi.model.OWLOntologyCreationException;

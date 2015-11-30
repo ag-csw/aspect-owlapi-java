@@ -19,13 +19,13 @@ package de.fuberlin.csw.aood.owlapi.extraction;
 
 import java.lang.annotation.Annotation;
 
+import de.fuberlin.csw.aood.owlapi.OWLAspectSparql;
+import de.fuberlin.csw.aood.owlapi.util.QueryExecutor;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
-import org.semanticweb.owlapi.model.AxiomType;
-import org.semanticweb.owlapi.model.OWLAxiom;
-import org.semanticweb.owlapi.model.OWLOntology;
+import org.semanticweb.owlapi.model.*;
 
 import de.fuberlin.csw.aood.owlapi.OWLAspectAnd;
 import de.fuberlin.csw.aood.owlapi.OWLAspectOr;
@@ -47,7 +47,7 @@ public class AxiomCountAspect {
 	@Pointcut("call(public int org.semanticweb.owlapi.model.*.getAxiomCount())")
 	void getAxCount() {}
 	
-	// with 1 arg (AxiomType or Imports)
+	// with 1 arg (AxiomType)
 	// we ignore deprecated method getAxiomCount(boolean imports)
 	/**
 	 * quantifies over calls to methods of type getAxiomCount(axType) 
@@ -57,7 +57,7 @@ public class AxiomCountAspect {
 	@Pointcut("call(public int org.semanticweb.owlapi.model.*.getAxiomCount(org.semanticweb.owlapi.model.AxiomType<*>))")
 	void getAxCountAxiomType() {}
 	
-	// with 2 args (AxiomType, Imports)
+	// with 2 args (AxiomType, inlcudeImports)
 	/**
 	 * quantifies over calls to methods of type getAxiomCount(axType, imports)
 	 * provided by types from org.semanticweb.owlapi.model package and  
@@ -263,7 +263,7 @@ public class AxiomCountAspect {
 	 * @param annotation
 	 * 			Annotation of type {@link OWLAspectAnd} specifying current aspects
 	 * @param includeImports
-	 * 			boolean
+	 * 			boolean (specifies whether to consider imports closure)
 	 * @return
 	 * 			Number of axioms related to current aspects
 	 * @throws Throwable
@@ -286,7 +286,7 @@ public class AxiomCountAspect {
 	 * @param annotation
 	 * 			Annotation of type {@link OWLAspectOr} specifying current aspects
 	 * @param includeImports
-	 * 			boolean
+	 * 			boolean (specifies whether to consider imports closure)
 	 * @return
 	 * 			Number of axioms related to current aspects
 	 * @throws Throwable
@@ -309,7 +309,7 @@ public class AxiomCountAspect {
 	 * @param annotation
 	 * 			Annotation of type {@link OWLAspectAnd} specifying current aspects
 	 * @param includeImports
-	 * 			boolean
+	 * 			boolean (specifies whether to consider imports closure)
 	 * @return
 	 * 			Number of axioms related to current aspects
 	 * @throws Throwable
@@ -332,7 +332,7 @@ public class AxiomCountAspect {
 	 * @param annotation
 	 * 			Annotation of type {@link OWLAspectOr} specifying current aspects
 	 * @param includeImports
-	 * 			inlcudeImports
+	 * 			boolean (specifies whether to consider imports closure)
 	 * @return
 	 * 			Number of axioms related to current aspects
 	 * @throws Throwable
@@ -440,24 +440,41 @@ public class AxiomCountAspect {
 	/**
 	 * Responsible for handling result of the call to a method of type getAxiomCount()
 	 * if this method has zero arguments 
-	 * if this method was called from a context annotated with either {@link OWLAspectAnd} or {@link OWLAspectOr}
+	 * if this method was called from a context annotated with either {@link OWLAspectAnd}, {@link OWLAspectOr}
+	 * or {@link OWLAspectSparql}
 	 * The context may be a class, a method or a constructor.
 	 * 
-	 * @param ontology
+	 * @param onto
 	 * 			Ontology
 	 * @param annotation
-	 * 			Annotation of type {@link OWLAspectAnd} or {@link OWLAspectOr} specifying current aspects
+	 * 			Annotation of type {@link OWLAspectAnd}, {@link OWLAspectOr} or {@link OWLAspectSparql}  specifying current aspects
 	 * @return
 	 * 			Number of axioms related to current aspects
 	 */
-	private Object handleAxiomCount(OWLOntology ontology, Annotation annotation) {
-		return HelperFacade.handleAxiomCount(ontology, annotation);
+	private Object handleAxiomCount(OWLOntology onto, Annotation annotation)
+			throws OWLOntologyCreationException,
+					OWLOntologyStorageException {
+
+		if (annotation instanceof OWLAspectSparql){
+
+			QueryExecutor qex = new QueryExecutor();
+			OWLOntology filteredOnto = qex.getOntologyModule(((OWLAspectSparql) annotation).value().toString(), onto);
+			return filteredOnto.getAxiomCount();
+
+		} else {
+
+			return HelperFacade.handleAxiomCount(onto, annotation);
+
+		}
+
+
 	}
 	
 	/**
 	 * Responsible for handling result of the call to a method of type getAxiomCount(arg)
 	 * if this method has one argument and
-	 * if this method was called from a context annotated with either {@link OWLAspectAnd} or {@link OWLAspectOr}
+	 * if this method was called from a context annotated with either {@link OWLAspectAnd}, {@link OWLAspectOr}
+	 * or {@link OWLAspectSparql}
 	 * The context may be a class, a method or a constructor.
 	 * 
 	 * @param pjp
@@ -465,23 +482,36 @@ public class AxiomCountAspect {
 	 * @param ontology
 	 * 			Ontology
 	 * @param annotation
-	 * 			Annotation of type {@link OWLAspectAnd} or {@link OWLAspectOr} specifying current aspects
+	 * 			Annotation of type {@link OWLAspectAnd}, {@link OWLAspectOr} or {@link OWLAspectSparql}  specifying current aspects
 	 * @return
 	 * 			Number of axioms related to current aspects
 	 */
 	private Object handleAxiomCount1(ProceedingJoinPoint pjp,
-			OWLOntology ontology, Annotation annotation) {
+			OWLOntology ontology, Annotation annotation) throws OWLOntologyCreationException,
+				OWLOntologyStorageException {
+
 		Object arg = (pjp.getArgs())[0];
 		@SuppressWarnings("unchecked")
         AxiomType<? extends OWLAxiom> axType = (AxiomType<? extends OWLAxiom>) arg;
-		return HelperFacade.handleAxiomCount1(axType, ontology, annotation);
+
+		if (annotation instanceof OWLAspectSparql){
+
+			QueryExecutor qex = new QueryExecutor();
+			OWLOntology filteredOnto = qex.getOntologyModule(((OWLAspectSparql) annotation).value().toString(), ontology);
+			return filteredOnto.getAxiomCount(axType);
+
+		} else {
+
+			return HelperFacade.handleAxiomCount1(axType, ontology, annotation);
+		}
 
 	}
 	
 	/**
 	 * Responsible for handling result of the call to a method of type getAxiomCount(axType, imports)
 	 * if this method has two arguments (AxiomType axType, Imports imports) and
-	 * if this method was called from a context annotated with either {@link OWLAspectAnd} or {@link OWLAspectOr}
+	 * if this method was called from a context annotated with either {@link OWLAspectAnd}, {@link OWLAspectOr}
+	 * or {@link OWLAspectSparql}
 	 * The context may be a class, a method or a constructor.
 	 * 
 	 * @param pjp
@@ -489,34 +519,57 @@ public class AxiomCountAspect {
 	 * @param ontology
 	 * 			Ontology
 	 * @param annotation
-	 * 			Annotation of type {@link OWLAspectAnd} or {@link OWLAspectOr} specifying current aspects
+	 * 			Annotation of type {@link OWLAspectAnd}, {@link OWLAspectOr} or {@link OWLAspectSparql}  specifying current aspects
 	 * @param includeImports
-	 * 			boolean
+	 * 			boolean (specifies whether to consider imports closure)
 	 * @return
 	 * 			Number of axioms related to current aspects
 	 */
 	private Object handleAxiomCount2(ProceedingJoinPoint pjp,
-			OWLOntology ontology, Annotation annotation, boolean includeImports) {
+			OWLOntology ontology, Annotation annotation, boolean includeImports) throws OWLOntologyCreationException,
+			OWLOntologyStorageException {
 		@SuppressWarnings("unchecked")
-		AxiomType<? extends OWLAxiom> axType = (AxiomType<? extends OWLAxiom>) (pjp.getArgs())[0];	
-		return HelperFacade.handleAxiomCount2(axType, includeImports, ontology, annotation);
+		AxiomType<? extends OWLAxiom> axType = (AxiomType<? extends OWLAxiom>) (pjp.getArgs())[0];
+
+
+		if (annotation instanceof OWLAspectSparql){
+
+			QueryExecutor qex = new QueryExecutor();
+			OWLOntology filteredOnto = qex.getOntologyModule(((OWLAspectSparql) annotation).value().toString(), ontology);
+			return filteredOnto.getAxiomCount(axType, includeImports);
+
+		} else {
+			return HelperFacade.handleAxiomCount2(axType, includeImports, ontology, annotation);
+		}
+
 	}
 	
 	/**
 	 * Responsible for handling result of the call to a method of type getLogicalAxiomCount()
 	 * if this method has zero arguments 
-	 * if this method was called from a context annotated with either {@link OWLAspectAnd} or {@link OWLAspectOr}
+	 * if this method was called from a context annotated with either {@link OWLAspectAnd}, {@link OWLAspectOr}
+	 * or {@link OWLAspectSparql}
 	 * The context may be a class, a method or a constructor.
 	 * 
 	 * @param ontology
 	 * 			Ontology
 	 * @param annotation
-	 * 			Annotation of type {@link OWLAspectAnd} or {@link OWLAspectOr} specifying current aspects
+	 * 			Annotation of type {@link OWLAspectAnd}, {@link OWLAspectOr} or {@link OWLAspectSparql}  specifying current aspects
 	 * @return
 	 * 			Number of logical axioms related to current aspects
 	 */
-	private Object handleLogicalAxiomCount(OWLOntology ontology, Annotation annotation) {
-		return HelperFacade.handleLogicalAxiomCount(ontology, annotation);
+	private Object handleLogicalAxiomCount(OWLOntology ontology, Annotation annotation) throws OWLOntologyCreationException,
+			OWLOntologyStorageException {
+
+		if (annotation instanceof OWLAspectSparql){
+
+			QueryExecutor qex = new QueryExecutor();
+			OWLOntology filteredOnto = qex.getOntologyModule(((OWLAspectSparql) annotation).value().toString(), ontology);
+			return filteredOnto.getLogicalAxiomCount();
+
+		} else {
+			return HelperFacade.handleLogicalAxiomCount(ontology, annotation);
+		}
 	}
 
 

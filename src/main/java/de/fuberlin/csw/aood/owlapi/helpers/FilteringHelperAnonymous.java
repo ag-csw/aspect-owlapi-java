@@ -49,7 +49,11 @@ public class FilteringHelperAnonymous extends FilteringHelper {
 	public static Set<OWLAnonymousIndividual> filterAnonymousIndividuals(
 			Set<OWLAnonymousIndividual> anInds, OWLOntology onto, Annotation annotation) {
 		Set<OWLAnonymousIndividual> result = new HashSet<OWLAnonymousIndividual>();
+
+
+
 		String[][] aspects = transformAnnotationToAspects(annotation);
+
 		for (OWLAnonymousIndividual anInd : anInds) {
 			// check if any of the axiom in this ontology referring to this anonymous individual 
 			// has current aspects

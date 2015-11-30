@@ -21,6 +21,8 @@ import java.lang.annotation.Annotation;
 import java.util.Set;
 
 
+import de.fuberlin.csw.aood.owlapi.OWLAspectSparql;
+import de.fuberlin.csw.aood.owlapi.util.QueryExecutor;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -31,6 +33,8 @@ import org.semanticweb.owlapi.model.OWLOntology;
 import de.fuberlin.csw.aood.owlapi.OWLAspectAnd;
 import de.fuberlin.csw.aood.owlapi.OWLAspectOr;
 import de.fuberlin.csw.aood.owlapi.helpers.HelperFacade;
+import org.semanticweb.owlapi.model.OWLOntologyCreationException;
+import org.semanticweb.owlapi.model.OWLOntologyStorageException;
 
 /**
  * This Aspect implements concern "containment information about axioms associated with owl-aspects"
@@ -129,6 +133,29 @@ public class ContainmentAspect {
 	public Object aroundContainsAx1WithinClassMarkedWithOr(ProceedingJoinPoint pjp, OWLOntology ontology, OWLAspectOr annotation, OWLAxiom axiom) throws Throwable {
 		return handleContainsAxiom1Arg(ontology, annotation, axiom);
 	}
+
+	/**
+	 * advice responsible for handling result of the call to a method of type containsAxiom(axiom)
+	 * if this method is provided by a type from org.semanticweb.owlapi.model package and
+	 * if this method was called from a class annotated with {@link OWLAspectSparql}
+	 *
+	 * @param pjp
+	 * 			Proceeding Join Point
+	 * @param ontology
+	 * 			Ontology
+	 * @param annotation
+	 * 			Annotation of type {@link OWLAspectSparql} specifying current aspects
+	 * @param axiom
+	 * 			OWLAxiom whose containment is to be checked
+	 * @return
+	 * 			true, if this axiom is contained and has current aspects, otherwise false.
+	 * @throws Throwable
+	 * 			in case something goes wrong
+	 */
+	@Around("containsAx1() && target(ontology) && args(axiom) && @within(annotation)")
+	public Object aroundContainsAx1WithinClassMarkedWithSparql(ProceedingJoinPoint pjp, OWLOntology ontology, OWLAspectSparql annotation, OWLAxiom axiom) throws Throwable {
+		return handleContainsAxiom1Arg(ontology, annotation, axiom);
+	}
 	
 	/**
 	 * advice responsible for handling result of the call to a method of type containsAxiom(axiom)
@@ -173,6 +200,29 @@ public class ContainmentAspect {
 	 */
 	@Around("containsAx1() && target(ontology) && args(axiom) && @withincode(annotation)") 
 	public Object aroundContainsAx1WithinCodeMarkedWithOr(ProceedingJoinPoint pjp, OWLOntology ontology, OWLAspectOr annotation, OWLAxiom axiom) throws Throwable {
+		return handleContainsAxiom1Arg(ontology, annotation, axiom);
+	}
+
+	/**
+	 * advice responsible for handling result of the call to a method of type containsAxiom(axiom)
+	 * if this method is provided by a type from org.semanticweb.owlapi.model package and
+	 * if this method was called from a method or constructor annotated with {@link OWLAspectSparql}
+	 *
+	 * @param pjp
+	 * 			Proceeding Join Point
+	 * @param ontology
+	 * 			Ontology
+	 * @param annotation
+	 * 			Annotation of type {@link OWLAspectSparql} specifying current aspects
+	 * @param axiom
+	 * 			OWLAxiom whose containment is to be checked
+	 * @return
+	 * 			true, if this axiom is contained and has current aspects, otherwise false.
+	 * @throws Throwable
+	 * 			in case something goes wrong
+	 */
+	@Around("containsAx1() && target(ontology) && args(axiom) && @withincode(annotation)")
+	public Object aroundContainsAx1WithinCodeMarkedWithSparql(ProceedingJoinPoint pjp, OWLOntology ontology, OWLAspectSparql annotation, OWLAxiom axiom) throws Throwable {
 		return handleContainsAxiom1Arg(ontology, annotation, axiom);
 	}
 
@@ -235,6 +285,35 @@ public class ContainmentAspect {
 	public Object aroundContainsAxWithImportFlagWithinClassMarkedWithOr(ProceedingJoinPoint pjp, OWLAxiom axiom, boolean includeImports, OWLOntology ontology, OWLAspectOr annotation) throws Throwable {
 		return handleContainsAxiom2Args(axiom, includeImports, ontology, annotation);
 	}
+
+	/**
+	 * advice responsible for handling result of the call
+	 * to a method of type containsAxiom(axiom, imports, axiomAnnotations)
+	 * with three arguments having types (OWLAxiom, Imports, AxiomAnnotations),
+	 * if this method is provided by a type from org.semanticweb.owlapi.model package and
+	 * if this method was called from a class annotated with {@link OWLAspectSparql}
+	 *
+	 * @param pjp
+	 * 			Proceeding Join Point
+	 * @param axiom
+	OWLAxiom
+	 * @param includeImports
+	 * 			boolean (specifies whether to consider imports closure)
+	 * @param ontology
+	 * 			Ontology
+	 * @param annotation
+	 * 			Annotation of type {@link OWLAspectSparql} specifying current aspects
+	 * @param axiom
+	 * 			OWLAxiom whose containment is to be checked
+	 * @return
+	 * 			true, if this axiom is contained and has current aspects, otherwise false.
+	 * @throws Throwable
+	 * 			in case something goes wrong
+	 */
+	@Around("containsAxWithImportFlag() && args(axiom, includeImports) && target(ontology) && @within(annotation)")
+	public Object aroundContainsAxWithImportFlagWithinClassMarkedWithSparql(ProceedingJoinPoint pjp, OWLAxiom axiom, boolean includeImports, OWLOntology ontology, OWLAspectSparql annotation) throws Throwable {
+		return handleContainsAxiom2Args(axiom, includeImports, ontology, annotation);
+	}
 	
 	/**
 	 * advice responsible for handling result of the call 
@@ -266,16 +345,16 @@ public class ContainmentAspect {
 	}
 	
 	/**
-	 * advice responsible for handling result of the call 
-	 * to a method of type containsAxiom(axiom, imports, axiomAnnotations) 
-	 * with three arguments having types (OWLAxiom, Imports, AxiomAnnotations), 
-	 * if this method is provided by a type from org.semanticweb.owlapi.model package and 
+	 * advice responsible for handling result of the call
+	 * to a method of type containsAxiom(axiom, imports, axiomAnnotations)
+	 * with three arguments having types (OWLAxiom, Imports, AxiomAnnotations),
+	 * if this method is provided by a type from org.semanticweb.owlapi.model package and
 	 * if this method was called from a method or constructor annotated with {@link OWLAspectOr}
-	 * 
+	 *
 	 * @param pjp
 	 * 			Proceeding Join Point
 	 * @param axiom
-				OWLAxiom
+	OWLAxiom
 	 * @param includeImports
 	 * 			boolean (specifies whether to consider imports closure)
 	 * @param ontology
@@ -294,6 +373,35 @@ public class ContainmentAspect {
 		return handleContainsAxiom2Args(axiom, includeImports, ontology, annotation);
 	}
 
+
+	/**
+	 * advice responsible for handling result of the call
+	 * to a method of type containsAxiom(axiom, imports, axiomAnnotations)
+	 * with three arguments having types (OWLAxiom, Imports, AxiomAnnotations),
+	 * if this method is provided by a type from org.semanticweb.owlapi.model package and
+	 * if this method was called from a method or constructor annotated with {@link OWLAspectSparql}
+	 *
+	 * @param pjp
+	 * 			Proceeding Join Point
+	 * @param axiom
+	OWLAxiom
+	 * @param includeImports
+	 * 			boolean (specifies whether to consider imports closure)
+	 * @param ontology
+	 * 			Ontology
+	 * @param annotation
+	 * 			Annotation of type {@link OWLAspectSparql} specifying current aspects
+	 * @param axiom
+	 * 			OWLAxiom whose containment is to be checked
+	 * @return
+	 * 			true, if this axiom is contained and has current aspects, otherwise false.
+	 * @throws Throwable
+	 * 			in case something goes wrong
+	 */
+	@Around("containsAxWithImportFlag() && args(axiom, includeImports) && target(ontology) && @withincode(annotation)")
+	public Object aroundContainsAxWithImportFlagWithinCodeMarkedWithSparql(ProceedingJoinPoint pjp, OWLAxiom axiom, boolean includeImports, OWLOntology ontology, OWLAspectSparql annotation) throws Throwable {
+		return handleContainsAxiom2Args(axiom, includeImports, ontology, annotation);
+	}
 
 
     // 1 arg and ignore Annotations
@@ -344,6 +452,30 @@ public class ContainmentAspect {
         return handleContainsAxiom1ArgIgnoreAnnotations(ontology, annotation, axiom);
     }
 
+
+	/**
+	 * advice responsible for handling result of the call to a method of type containsAxiom(axiom)
+	 * if this method is provided by a type from org.semanticweb.owlapi.model package and
+	 * if this method was called from a class annotated with {@link OWLAspectSparql}
+	 *
+	 * @param pjp
+	 * 			Proceeding Join Point
+	 * @param ontology
+	 * 			Ontology
+	 * @param annotation
+	 * 			Annotation of type {@link OWLAspectSparql} specifying current aspects
+	 * @param axiom
+	 * 			OWLAxiom whose containment is to be checked
+	 * @return
+	 * 			true, if this axiom is contained and has current aspects, otherwise false.
+	 * @throws Throwable
+	 * 			in case something goes wrong
+	 */
+	@Around("containsAx1IgnoreAnnotations() && target(ontology) && args(axiom) && @within(annotation)")
+	public Object aroundContainsAx1IgnoreAnnotationsWithinClassMarkedWithSparql(ProceedingJoinPoint pjp, OWLOntology ontology, OWLAspectSparql annotation, OWLAxiom axiom) throws Throwable {
+		return handleContainsAxiom1ArgIgnoreAnnotations(ontology, annotation, axiom);
+	}
+
     /**
      * advice responsible for handling result of the call to a method of type containsAxiom(axiom)
      * if this method is provided by a type from org.semanticweb.owlapi.model package and
@@ -389,6 +521,29 @@ public class ContainmentAspect {
     public Object aroundContainsAx1IgnoreAnnotationsWithinCodeMarkedWithOr(ProceedingJoinPoint pjp, OWLOntology ontology, OWLAspectOr annotation, OWLAxiom axiom) throws Throwable {
         return handleContainsAxiom1ArgIgnoreAnnotations(ontology, annotation, axiom);
     }
+
+	/**
+	 * advice responsible for handling result of the call to a method of type containsAxiom(axiom)
+	 * if this method is provided by a type from org.semanticweb.owlapi.model package and
+	 * if this method was called from a method or constructor annotated with {@link OWLAspectSparql}
+	 *
+	 * @param pjp
+	 * 			Proceeding Join Point
+	 * @param ontology
+	 * 			Ontology
+	 * @param annotation
+	 * 			Annotation of type {@link OWLAspectSparql} specifying current aspects
+	 * @param axiom
+	 * 			OWLAxiom whose containment is to be checked
+	 * @return
+	 * 			true, if this axiom is contained and has current aspects, otherwise false.
+	 * @throws Throwable
+	 * 			in case something goes wrong
+	 */
+	@Around("containsAx1IgnoreAnnotations() && target(ontology) && args(axiom) && @withincode(annotation)")
+	public Object aroundContainsAx1IgnoreAnnotationsWithinCodeMarkedWithSparql(ProceedingJoinPoint pjp, OWLOntology ontology, OWLAspectSparql annotation, OWLAxiom axiom) throws Throwable {
+		return handleContainsAxiom1ArgIgnoreAnnotations(ontology, annotation, axiom);
+	}
 
 
 
@@ -453,6 +608,35 @@ public class ContainmentAspect {
         return handleContainsAxiom2ArgsIgnoreAnnotations(axiom, includeImports, ontology, annotation); // Todo :: handler method is responsable to call method with or without Annotations (pjp)
     }
 
+	/**
+	 * advice responsible for handling result of the call
+	 * to a method of type containsAxiom(axiom, imports, axiomAnnotations)
+	 * with three arguments having types (OWLAxiom, Imports, AxiomAnnotations),
+	 * if this method is provided by a type from org.semanticweb.owlapi.model package and
+	 * if this method was called from a class annotated with {@link OWLAspectSparql}
+	 *
+	 * @param pjp
+	 * 			Proceeding Join Point
+	 * @param axiom
+	OWLAxiom
+	 * @param includeImports
+	 * 			boolean (specifies whether to consider imports closure)
+	 * @param ontology
+	 * 			Ontology
+	 * @param annotation
+	 * 			Annotation of type {@link OWLAspectSparql} specifying current aspects
+	 * @param axiom
+	 * 			OWLAxiom whose containment is to be checked
+	 * @return
+	 * 			true, if this axiom is contained and has current aspects, otherwise false.
+	 * @throws Throwable
+	 * 			in case something goes wrong
+	 */
+	@Around("containsAxWithImportFlagIgnoreAnnotations() && args(axiom, includeImports) && target(ontology) && @within(annotation)")
+	public Object aroundContainsAxWithImportFlagIgnoreAnnotationsWithinClassMarkedWithSparql(ProceedingJoinPoint pjp, OWLAxiom axiom, boolean includeImports, OWLOntology ontology, OWLAspectSparql annotation) throws Throwable {
+		return handleContainsAxiom2ArgsIgnoreAnnotations(axiom, includeImports, ontology, annotation); // Todo :: handler method is responsable to call method with or without Annotations (pjp)
+	}
+
     /**
      * advice responsible for handling result of the call
      * to a method of type containsAxiom(axiom, imports, axiomAnnotations)
@@ -512,7 +696,34 @@ public class ContainmentAspect {
     }
 
 
-
+	/**
+	 * advice responsible for handling result of the call
+	 * to a method of type containsAxiom(axiom, imports, axiomAnnotations)
+	 * with three arguments having types (OWLAxiom, Imports, AxiomAnnotations),
+	 * if this method is provided by a type from org.semanticweb.owlapi.model package and
+	 * if this method was called from a method or constructor annotated with {@link OWLAspectSparql}
+	 *
+	 * @param pjp
+	 * 			Proceeding Join Point
+	 * @param axiom
+	 *          OWLAxiom
+	 * @param includeImports
+	 * 			boolean (specifies whether to consider imports closure)
+	 * @param ontology
+	 * 			Ontology
+	 * @param annotation
+	 * 			Annotation of type {@link OWLAspectSparql} specifying current aspects
+	 * @param axiom
+	 * 			OWLAxiom whose containment is to be checked
+	 * @return
+	 * 			true, if this axiom is contained and has current aspects, otherwise false.
+	 * @throws Throwable
+	 * 			in case something goes wrong
+	 */
+	@Around("containsAxWithImportFlagIgnoreAnnotations() && args(axiom, includeImports) && target(ontology) && @withincode(annotation)")
+	public Object aroundContainsAxWithImportFlagIgnoreAnnotationsWithinCodeMarkedWithSparql(ProceedingJoinPoint pjp, OWLAxiom axiom, boolean includeImports, OWLOntology ontology, OWLAspectSparql annotation) throws Throwable {
+		return handleContainsAxiom2ArgsIgnoreAnnotations(axiom, includeImports, ontology, annotation);
+	}
 
 
 
@@ -522,13 +733,14 @@ public class ContainmentAspect {
 	/**
 	 * Responsible for handling result of the call to a method returning info about containment of this axiom 
 	 * if this method has one argument of type OWLAxiom, and 
-	 * if this method was called from a context annotated with either {@link OWLAspectAnd} or {@link OWLAspectOr}
+	 * if this method was called from a context annotated with either {@link OWLAspectAnd}, {@link OWLAspectOr}
+	 * or {@link OWLAspectSparql}
 	 * The context may be a class, a method or a constructor.
 	 * 
 	 * @param ontology
 	 * 			Ontology
 	 * @param annotation
-	 * 			Annotation of type {@link OWLAspectAnd} or {@link OWLAspectOr} specifying current aspects
+	 * 			Annotation of type {@link OWLAspectAnd}, {@link OWLAspectOr} or {@link OWLAspectSparql} specifying current aspects
 	 * @param axiom
 	 * 			OWLAxiom
 	 * @return
@@ -537,25 +749,41 @@ public class ContainmentAspect {
 	 * @throws Throwable
 	 * 			in case something goes wrong
 	 */
-	private Object handleContainsAxiom1Arg(OWLOntology ontology, Annotation annotation, OWLAxiom axiom) {
-		return HelperFacade.containsAxiom1(ontology, axiom, annotation);
+	private Object handleContainsAxiom1Arg(OWLOntology ontology, Annotation annotation, OWLAxiom axiom) throws OWLOntologyCreationException,
+			OWLOntologyStorageException {
+
+		// TODO try catch
+
+		if (annotation instanceof OWLAspectSparql){
+
+			QueryExecutor qex = new QueryExecutor();
+			OWLOntology filteredOnto = qex.getOntologyModule(((OWLAspectSparql) annotation).value().toString(), ontology);
+
+			return  filteredOnto.containsAxiom(axiom);
+
+		} else {
+
+			return HelperFacade.containsAxiom1(ontology, axiom, annotation);
+
+		}
 	}
 	
 	/**
 	 * Responsible for handling result of the call to a method returning info about containment of this axiom 
 	 * if this method is provided by types from org.semanticweb.owlapi.model package, and 
 	 * if this method has two arguments, and
-	 * if this method was called from a context annotated with either {@link OWLAspectAnd} or {@link OWLAspectOr}
+	 * if this method was called from a context annotated with either {@link OWLAspectAnd}, {@link OWLAspectOr}
+	 * or {@link OWLAspectSparql}
 	 * The context may be a class, a method or a constructor.
 	 * 
 	 * @param axiom
 	 * 			OWLAxiom
 	 * @param includeImports
-	 * 			boolean (whether to consider)
+	 * 			boolean (specifies whether to consider imports closure)
 	 * @param ontology
 	 * 			Ontology
 	 * @param annotation
-	 * 			Annotation of type {@link OWLAspectAnd} or {@link OWLAspectOr} specifying current aspects
+	 * 			Annotation of type {@link OWLAspectAnd}, {@link OWLAspectOr} or {@link OWLAspectSparql}  specifying current aspects
 	 * @return
 	 * 			true, if this axiom is contained and has current aspects, 
 	 * 			otherwise false.
@@ -565,7 +793,17 @@ public class ContainmentAspect {
 	private Object handleContainsAxiom2Args(OWLAxiom axiom, boolean includeImports, OWLOntology ontology,
 			Annotation annotation) throws Throwable {
 
-		return HelperFacade.containsAxiom2(axiom, includeImports, true, ontology, annotation);
+		if (annotation instanceof OWLAspectSparql){
+
+			QueryExecutor qex = new QueryExecutor();
+			OWLOntology filteredOnto = qex.getOntologyModule(((OWLAspectSparql) annotation).value().toString(), ontology);
+
+			return  filteredOnto.containsAxiom(axiom, includeImports);
+
+		} else {
+
+			return HelperFacade.containsAxiom2(axiom, includeImports, true, ontology, annotation);
+		}
 	}
 
 
@@ -575,13 +813,14 @@ public class ContainmentAspect {
     /**
      * Responsible for handling result of the call to a method returning info about containment of this axiom
      * if this method has one argument of type OWLAxiom, Annoations should be ignored and
-     * if this method was called from a context annotated with either {@link OWLAspectAnd} or {@link OWLAspectOr}
-     * The context may be a class, a method or a constructor.
+     * if this method was called from a context annotated with either {@link OWLAspectAnd}, {@link OWLAspectOr}
+	 * or {@link OWLAspectSparql}
+	 * The context may be a class, a method or a constructor.
      *
      * @param ontology
      * 			Ontology
      * @param annotation
-     * 			Annotation of type {@link OWLAspectAnd} or {@link OWLAspectOr} specifying current aspects
+     * 			Annotation of type {@link OWLAspectAnd}, {@link OWLAspectOr} or {@link OWLAspectSparql}  specifying current aspects
      * @param axiom
      * 			OWLAxiom
      * @return
@@ -590,25 +829,40 @@ public class ContainmentAspect {
      * @throws Throwable
      * 			in case something goes wrong
      */
-    private Object handleContainsAxiom1ArgIgnoreAnnotations(OWLOntology ontology, Annotation annotation, OWLAxiom axiom) {
-        return HelperFacade.containsAxiom2(axiom, true, false, ontology, annotation);
+    private Object handleContainsAxiom1ArgIgnoreAnnotations(OWLOntology ontology, Annotation annotation, OWLAxiom axiom)
+			throws OWLOntologyCreationException,
+			OWLOntologyStorageException{
+
+
+		if (annotation instanceof OWLAspectSparql){
+
+			QueryExecutor qex = new QueryExecutor();
+			OWLOntology filteredOnto = qex.getOntologyModule(((OWLAspectSparql) annotation).value().toString(), ontology);
+
+			return  filteredOnto.containsAxiomIgnoreAnnotations(axiom);
+
+		} else {
+
+			return HelperFacade.containsAxiom2(axiom, true, false, ontology, annotation);
+		}
     }
 
     /**
      * Responsible for handling result of the call to a method returning info about containment of this axiom
      * if this method is provided by types from org.semanticweb.owlapi.model package,Annoations should be ignored and
      * if this method has two arguments, and
-     * if this method was called from a context annotated with either {@link OWLAspectAnd} or {@link OWLAspectOr}
-     * The context may be a class, a method or a constructor.
+     * if this method was called from a context annotated with either {@link OWLAspectAnd}, {@link OWLAspectOr}
+	 * or {@link OWLAspectSparql}
+	 * The context may be a class, a method or a constructor.
      *
      * @param axiom
      * 			OWLAxiom
      * @param includeImports
-     * 			boolean (whether to consider)
+     * 			boolean (specifies whether to consider imports closure)
      * @param ontology
      * 			Ontology
      * @param annotation
-     * 			Annotation of type {@link OWLAspectAnd} or {@link OWLAspectOr} specifying current aspects
+     * 			Annotation of type {@link OWLAspectAnd}, {@link OWLAspectOr} or {@link OWLAspectSparql}  specifying current aspects
      * @return
      * 			true, if this axiom is contained and has current aspects,
      * 			otherwise false.
@@ -618,16 +872,18 @@ public class ContainmentAspect {
     private Object handleContainsAxiom2ArgsIgnoreAnnotations(OWLAxiom axiom, boolean includeImports, OWLOntology ontology,
                                             Annotation annotation) throws Throwable {
 
-        return HelperFacade.containsAxiom2(axiom, includeImports, false, ontology, annotation);
+
+		if (annotation instanceof OWLAspectSparql){
+
+			QueryExecutor qex = new QueryExecutor();
+			OWLOntology filteredOnto = qex.getOntologyModule(((OWLAspectSparql) annotation).value().toString(), ontology);
+
+			return  filteredOnto.containsAxiomIgnoreAnnotations(axiom, includeImports);
+
+		} else {
+			return HelperFacade.containsAxiom2(axiom, includeImports, false, ontology, annotation);
+		}
     }
-
-
-
-
-
-
-
-
 
 
 

@@ -20,6 +20,7 @@ package de.fuberlin.csw.aood.owlapi.helpers;
 import java.lang.annotation.Annotation;
 import java.util.Set;
 
+import de.fuberlin.csw.aood.owlapi.OWLAspectSparql;
 import org.semanticweb.owlapi.model.AxiomType;
 import org.semanticweb.owlapi.model.OWLAxiom;
 import org.semanticweb.owlapi.model.OWLLogicalAxiom;
@@ -43,6 +44,7 @@ public class FilteringHelperAxiomCount extends FilteringHelperAxioms {
 	 * @return number of axioms with current aspects
 	 */
 	public static int handleAxiomCount(OWLOntology ontology, Annotation annotation) {
+
 		Set<OWLAxiom> axs = ontology.getAxioms();
 		return countFilteredAxioms(ontology, annotation, axs);
 	}

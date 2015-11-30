@@ -23,6 +23,7 @@ import static org.junit.Assert.assertNotNull;
 import java.util.Collection;
 import java.util.Set;
 
+import de.fuberlin.csw.aood.owlapi.OWLAspectSparql;
 import org.junit.Test;
 import org.semanticweb.owlapi.model.IRI;
 import org.semanticweb.owlapi.model.OWLAxiom;
@@ -47,7 +48,8 @@ public class ExtractAxiomsTest extends BaseTest {
 			
 			testAxiomExtractionAnd();
 			testAxiomExtractionOr();	 
-			
+//			testAxiomExtractionSparql();
+
 			om.removeOntology(onto);
 	 }
 	 
@@ -77,6 +79,28 @@ public class ExtractAxiomsTest extends BaseTest {
 		OWLEntity entity = df.getOWLNamedIndividual(IRI.create(base + "#FelsenschlossObj"));
 		Collection<OWLAxiom> coll = entity.getReferencingAxioms(onto);
 		assertEquals(2, coll.size());		
+	}
+
+
+
+
+	@OWLAspectSparql({
+			"PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n" +
+					"PREFIX owl: <http://www.w3.org/2002/07/owl#>\n" +
+					"PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\n" +
+					"PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n" +
+					"\n" +
+					"CONSTRUCT {?s rdfs:subClassOf Agent}\n" +
+					"WHERE {\n" +
+					"	?s rdfs:subClassOf Agent .\n" +
+					"}"
+	})
+	private void testAxiomExtractionSparql() {
+
+		Collection<OWLAxiom> coll = onto.getAxioms();
+
+		//assertEquals(2, coll.size());
+
 	}
 
 
