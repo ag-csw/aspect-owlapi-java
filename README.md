@@ -1,8 +1,48 @@
-# aspect-owlapi
+# aspect-owlapi-java
 
 An aspect-oriented extension to the OWL API.
 
-##Usage
+The aspect-owlapi-java allows programmers to access ontology aspects from Java
+code, using tags.
+
+## Usage
+
+
+Ontology aspects describe ontology modules, which may or may not be activated,
+depending on a variety of conditions. Using this API, a programmer may specify
+these conditions using the Java tags `OWLAspect`, `OWLAspectAnd`, and
+`OWLAspectOr`.
+
+Example:
+
+```java
+@OWLAspect("http://www.fu-berlin.de/csw/ontologies/aood/ontologies/aspect123")
+public void doSomething () {
+ Set<OWLAxiom> allAxioms = myOntology.getAxioms();
+ ...}
+```
+
+This would filter the axioms returned by `myOntology.getAxioms();`, such that
+the resulting set only contains axioms that are either aspect-free or have the
+aspect *aspect123*.
+
+The tags `OWLAspectAnd` and `OWLAspectOr` allow the combination of aspects. They
+take sets of aspect IRIs as arguments. Their respective semantics are
+self-explanatory: `OWLAspectAnd` builds the conjunction while `OWLAspectOr`
+builds the disjunction of the filtered sets of axioms.
+
+Example:    
+
+```java
+@OWLAspectOr({
+ @OWLAspectAnd({"http://...#Aspect1",
+  "http://...#Aspect2"}),
+ @OWLAspectAnd({"http://...#Aspect2",
+  "http://...#Aspect3"})
+})
+```
+
+##Setup
 
 ### Prerequisites
 

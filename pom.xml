@@ -18,13 +18,13 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>de.fuberlin.csw</groupId>
-	<artifactId>aspect-owlapi</artifactId>
+	<groupId>de.fuberlin.csw.aood</groupId>
+	<artifactId>aspect-owlapi-java</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>aspect-owlapi</name>
 	<description>An aspect-oriented extension to the OWL API</description>
 	<properties>
-		<aspectj.version>1.8.2</aspectj.version>
+		<aspectj.version>1.8.10</aspectj.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 	<dependencies>
@@ -63,7 +63,7 @@
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>aspectj-maven-plugin</artifactId>
-				<version>1.7</version>
+				<version>1.8</version>
 				<configuration>
 					<complianceLevel>1.8</complianceLevel>
 					<source>1.8</source>
