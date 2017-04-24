@@ -1,2 +1,5 @@
 target
 **/catalog-v*.xml
+.classpath
+.project
+.settings
